@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.luciada.normotos.app-mergeDebugResources-48:/values-pa/values-pa.xml",
+            "outputFile": "com.luciada.normotos.app-mergeDebugResources-39:/values-pa/values-pa.xml",
             "map": [
                 {
                     "source": "C:\\Users\\div79\\.gradle\\caches\\transforms-3\\27540a57ab4f5659524e99550837ec2e\\transformed\\browser-1.4.0\\res\\values-pa\\values-pa.xml",

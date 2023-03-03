@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.luciada.normotos.app-mergeDebugResources-48:/values-lo/values-lo.xml",
+            "outputFile": "com.luciada.normotos.app-mergeDebugResources-39:/values-lo/values-lo.xml",
             "map": [
                 {
                     "source": "C:\\Users\\div79\\.gradle\\caches\\transforms-3\\92f21639d0bee7ef1c1175c66e92ffe6\\transformed\\jetified-firebase-messaging-22.0.0\\res\\values-lo\\values.xml",

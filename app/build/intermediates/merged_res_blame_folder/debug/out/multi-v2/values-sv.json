@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.luciada.normotos.app-mergeDebugResources-48:/values-sv/values-sv.xml",
+            "outputFile": "com.luciada.normotos.app-mergeDebugResources-39:/values-sv/values-sv.xml",
             "map": [
                 {
                     "source": "C:\\Users\\div79\\.gradle\\caches\\transforms-3\\6e9454f6c44ec280c1b0af1e5fba1af8\\transformed\\jetified-play-services-basement-18.0.0\\res\\values-sv\\values.xml",

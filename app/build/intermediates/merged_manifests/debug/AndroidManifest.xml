@@ -48,7 +48,6 @@
     <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" /> <!-- EvMe -->
     <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
     <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <queries>
         <package android:name="com.facebook.katana" />
@@ -67,9 +66,9 @@
     </queries>
 
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
-        android:name="com.luciada.normotos.MyApplicationclass"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -77,14 +76,9 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:networkSecurityConfig="@xml/sdk_captive_portal_network_security"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/Theme.FinalProject" >
-        <activity
-            android:name="com.luciada.normotos.MainActivity"
-            android:exported="false" />
         <activity
             android:name="com.luciada.normotos.MActivity"
             android:exported="true" >
@@ -183,95 +177,6 @@
             android:exported="true"
             android:noHistory="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-        <meta-data
-            android:name="com.anchorfree.vpnsdk.vpn_config.openvpn"
-            android:resource="@raw/openvpn_vpn_config" />
-        <meta-data
-            android:name="com.anchorfree.sdk.transports"
-            android:resource="@raw/hydra_transports_config" />
-        <meta-data
-            android:name="com.anchorfree.vpnsdk.vpn_config.hydra"
-            android:resource="@raw/hydra_vpn_config" />
-
-        <provider
-            android:name="com.anchorfree.sdk.HydraTransportInitProvider"
-            android:authorities="com.luciada.normotos.sdk.transport.hydra"
-            android:exported="false"
-            android:initOrder="1" />
-        <provider
-            android:name="com.anchorfree.sdk.DBProvider"
-            android:authorities="com.luciada.normotos.hydra.sdk.db.provider"
-            android:exported="false"
-            android:initOrder="1" />
-
-        <meta-data
-            android:name="com.anchorfree.vpnsdk.vpn_config"
-            android:resource="@raw/core_vpn_config" />
-
-        <provider
-            android:name="com.anchorfree.sdk.UnifiedSDKInitProviderMain"
-            android:authorities="com.luciada.normotos.anchorfree.sdk.init.provider"
-            android:exported="false"
-            android:initOrder="100" />
-        <provider
-            android:name="com.anchorfree.sdk.UnifiedSDKInitProviderVpn"
-            android:authorities="com.luciada.normotos.anchorfree.sdk.init.provider.vpn"
-            android:exported="false"
-            android:initOrder="100"
-            android:process="@string/vpn_process_name" />
-
-        <service
-            android:name="com.anchorfree.vpnsdk.transporthydra.proxyservice.HydraProxyService"
-            android:permission="android.permission.BIND_VPN_SERVICE" >
-        </service>
-        <service
-            android:name="com.anchorfree.sdk.SdkNotificationService"
-            android:exported="false"
-            android:process="@string/vpn_process_name" />
-
-        <provider
-            android:name="com.anchorfree.ucr.UCRContentProvider"
-            android:authorities="com.luciada.normotos.ucr.provider"
-            android:enabled="true"
-            android:exported="false"
-            android:multiprocess="false" >
-        </provider>
-
-        <service
-            android:name="com.anchorfree.ucr.UCRService"
-            android:enabled="true"
-            android:exported="false" >
-        </service>
-
-        <activity
-            android:name="com.anchorfree.vpnsdk.vpnservice.StartVPNServiceShadowActivity"
-            android:exported="false"
-            android:label="@string/app_name"
-            android:launchMode="singleTask"
-            android:process="@string/vpn_process_name"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-        <provider
-            android:name="com.anchorfree.vpnsdk.vpnservice.config.VpnConfigProvider"
-            android:authorities="com.luciada.normotos.vpn_config"
-            android:exported="false" />
-        <provider
-            android:name="com.anchorfree.vpnsdk.vpnservice.credentials.CredentialsContentProvider"
-            android:authorities="com.luciada.normotos.credentials"
-            android:exported="false" />
-
-        <service
-            android:name="com.anchorfree.vpnsdk.vpnservice.AFVpnService"
-            android:enabled="@bool/vpn_process_enabled"
-            android:exported="false"
-            android:permission="android.permission.BIND_VPN_SERVICE"
-            android:process="@string/vpn_process_name" >
-            <intent-filter>
-                <action android:name="android.net.VpnService" />
-            </intent-filter>
-        </service>
-
         <activity
             android:name="com.facebook.ads.AudienceNetworkActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

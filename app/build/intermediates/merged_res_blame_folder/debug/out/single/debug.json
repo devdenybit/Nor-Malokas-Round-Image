@@ -1,22 +1,18 @@
 [
     {
-        "merged": "com.luciada.normotos.app-merged_res-50:/layout_activity_m.xml.flat",
-        "source": "com.luciada.normotos.app-main-52:/layout/activity_m.xml"
+        "merged": "com.luciada.normotos.app-merged_res-41:/xml_backup_rules.xml.flat",
+        "source": "com.luciada.normotos.app-main-43:/xml/backup_rules.xml"
     },
     {
-        "merged": "com.luciada.normotos.app-merged_res-50:/drawable_logo.png.flat",
-        "source": "com.luciada.normotos.app-main-52:/drawable/logo.png"
+        "merged": "com.luciada.normotos.app-merged_res-41:/xml_data_extraction_rules.xml.flat",
+        "source": "com.luciada.normotos.app-main-43:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "com.luciada.normotos.app-merged_res-50:/xml_backup_rules.xml.flat",
-        "source": "com.luciada.normotos.app-main-52:/xml/backup_rules.xml"
+        "merged": "com.luciada.normotos.app-merged_res-41:/drawable_logo.png.flat",
+        "source": "com.luciada.normotos.app-main-43:/drawable/logo.png"
     },
     {
-        "merged": "com.luciada.normotos.app-merged_res-50:/xml_data_extraction_rules.xml.flat",
-        "source": "com.luciada.normotos.app-main-52:/xml/data_extraction_rules.xml"
-    },
-    {
-        "merged": "com.luciada.normotos.app-merged_res-50:/layout_activity_main.xml.flat",
-        "source": "com.luciada.normotos.app-main-52:/layout/activity_main.xml"
+        "merged": "com.luciada.normotos.app-merged_res-41:/layout_activity_m.xml.flat",
+        "source": "com.luciada.normotos.app-main-43:/layout/activity_m.xml"
     }
 ]

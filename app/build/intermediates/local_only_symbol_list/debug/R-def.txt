@@ -9,7 +9,6 @@ color teal_700
 color white
 drawable logo
 layout activity_m
-layout activity_main
 string GPSAlertDialogMessage
 string GPSAlertDialogTitle
 string action_settings

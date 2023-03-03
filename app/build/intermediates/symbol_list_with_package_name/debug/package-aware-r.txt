@@ -531,7 +531,6 @@ attr flow_verticalGap
 attr flow_verticalStyle
 attr flow_wrapMode
 attr font
-attr fontFace
 attr fontFamily
 attr fontProviderAuthority
 attr fontProviderCerts
@@ -3304,10 +3303,6 @@ drawable admob_close_button_black_circle_white_cross
 drawable admob_close_button_white_circle_black_cross
 drawable avd_hide_password
 drawable avd_show_password
-drawable baseline_vpn_lock_black_18
-drawable baseline_vpn_lock_black_24
-drawable baseline_vpn_lock_black_36
-drawable baseline_vpn_lock_black_48
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3354,7 +3349,6 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_os_notification_fallback_white_24dp
-drawable ic_vpn
 drawable install_btn
 drawable logo
 drawable m3_appbar_background
@@ -4010,7 +4004,6 @@ integer design_snackbar_text_max_lines
 integer design_tab_indicator_anim_duration_ms
 integer google_play_services_version
 integer hide_password_duration
-integer hydra_crash_delay_seconds
 integer m3_btn_anim_delay_ms
 integer m3_btn_anim_duration_ms
 integer m3_card_anim_delay_ms
@@ -4232,23 +4225,10 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 plurals mtrl_badge_content_description
 raw ad_loading
-raw anchorfree_ucr_settings
 raw closealert
 raw consumer_onesignal_keep
-raw core_vpn_config
-raw empty_vpn_config
-raw example_vpn_config
-raw hydra
-raw hydra2
-raw hydra_categorization
-raw hydra_torrent_ports
-raw hydra_transports_config
-raw hydra_vpn_config
 raw nointernet
-raw openvpn_vpn_config
-raw pango_default_urls
 raw updatingstyle
-raw vpn_report_config
 string GPSAlertDialogMessage
 string GPSAlertDialogTitle
 string abc_action_bar_home_description
@@ -4317,13 +4297,6 @@ string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
 string copy_toast_msg
-string default_connect_channel_description
-string default_connect_channel_title
-string default_connect_notification_message
-string default_notification_connected_message
-string default_notification_connecting_message
-string default_notification_idle_message
-string default_notification_paused_message
 string developererrer
 string do_you_realy_want_to_buy_premium_or_watch_video_to_activate_for_one_time
 string error_a11y_label
@@ -4379,7 +4352,6 @@ string material_timepicker_minute
 string material_timepicker_pm
 string material_timepicker_select_time
 string material_timepicker_text_input_mode_description
-string missing_vpn_config_error
 string mtrl_badge_numberless_content_description
 string mtrl_checkbox_button_icon_path_checked
 string mtrl_checkbox_button_icon_path_group_name
@@ -4468,7 +4440,6 @@ string search_menu_title
 string servicediss
 string servicetime
 string status_bar_notification_info_overflow
-string vpn_process_name
 string vpncon
 string watchad
 style AdAttribution
@@ -5596,7 +5567,6 @@ styleable FloatingActionButton_Behavior_Layout behavior_autoHide
 styleable FlowLayout itemSpacing lineSpacing
 styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery fontProviderSystemFontFamily
 styleable FontFamilyFont android_font android_fontWeight android_fontStyle android_ttcIndex android_fontVariationSettings font fontStyle fontVariationSettings fontWeight ttcIndex
-styleable FontTextView fontFace
 styleable ForegroundLinearLayout android_foreground android_foregroundGravity foregroundInsidePadding
 styleable Fragment android_name android_id android_tag
 styleable FragmentContainerView android_name android_tag
@@ -5696,8 +5666,5 @@ styleable ViewStubCompat android_id android_layout android_inflatedId
 styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration ifTagNotSet ifTagSet motionInterpolator motionTarget onStateTransition pathMotionArc setsTag transitionDisable upDuration viewTransitionMode
 styleable include constraintSet
 xml backup_rules
-xml captive_portal_network_security_config
 xml data_extraction_rules
-xml hydra_backup_rules
 xml image_share_filepaths
-xml sdk_captive_portal_network_security
