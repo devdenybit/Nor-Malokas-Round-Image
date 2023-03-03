@@ -4,7 +4,6 @@
     package="com.luciada.normotos">
 
     <application
-        android:name=".MyApplicationclass"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,9 +14,6 @@
         android:theme="@style/Theme.FinalProject"
         tools:replace="android:icon,android:roundIcon,android:theme"
         tools:targetApi="32">
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
         <activity
             android:name=".MActivity"
             android:exported="true">
