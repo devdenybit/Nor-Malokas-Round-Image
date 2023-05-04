@@ -11,17 +11,10 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.facebook.ads.AudienceNetworkAds;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
-
 public class Applicationclass extends  Application {
-
 
     private static Applicationclass myApp;
     public static Resources resource;
-
 
     @Override
     public void onCreate() {
@@ -29,18 +22,6 @@ public class Applicationclass extends  Application {
 
         resource = getResources();
         myApp = this;
-
-
-
-        AudienceNetworkAds.initialize(this);
-        MobileAds.initialize(this, new OnInitializationCompleteListener() {
-            @Override
-            public void onInitializationComplete(InitializationStatus initializationStatus) {
-            }
-        });
-
-
-
 
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override

@@ -1,15 +1,20 @@
 package com.luciada.modids;
 
+import static com.luciada.modids.MyAdZOne.app_AllAdShowStatus;
 import static com.luciada.modids.MyAdZOne.app_BannerPeriority;
 import static com.luciada.modids.MyAdZOne.app_NativeAdCodeType;
+import static com.luciada.modids.MyAdZOne.app_UnityAppId;
+import static com.luciada.modids.MyAdZOne.app_UnityTestMode;
 import static com.luciada.modids.MyAdZOne.app_UpdatePackageName;
 import static com.luciada.modids.MyAdZOne.app_newPackageName;
 import static com.luciada.modids.MyAdZOne.app_onesingle_appid;
 import static com.luciada.modids.MyAdZOne.app_redirectOtherAppStatus;
 import static com.luciada.modids.MyAdZOne.app_updateAppDialogStatus;
 import static com.luciada.modids.MyAdZOne.app_versionCode;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Application;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -17,10 +22,17 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -28,8 +40,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.facebook.ads.AudienceNetworkAds;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.onesignal.OneSignal;
+import com.unity3d.ads.UnityAds;
+
 import org.json.JSONObject;
+
 import java.util.Arrays;
 
 public class GetLoadAsds {
@@ -45,6 +64,7 @@ public class GetLoadAsds {
     public static Handler refreshHandler;
     public static Runnable runnable;
     public static int vercode;
+
     public GetLoadAsds(Activity activity1) {
         activity = activity1;
     }
@@ -127,7 +147,11 @@ public class GetLoadAsds {
                     JSONObject jsonObject = new JSONObject(response);
                     if (jsonObject.getInt("success") == 1) {
                         MyAdZOne.getInstance(activity).configDatas(jsonObject);
-                        Allloadeddarts();
+                        if (app_AllAdShowStatus == 1) {
+                            Allloadeddarts();
+                        } else {
+                            NoInzilseAllloadeddarts();
+                        }
                     } else {
                         Toast.makeText(activity, "Not Found Data!!!", Toast.LENGTH_LONG).show();
                     }
@@ -188,7 +212,39 @@ public class GetLoadAsds {
 
     }
 
+    public void getInlize() {
+        Log.e("TAG", "getInlize: ");
+        if (app_AllAdShowStatus == 0) {
+            return;
+        }
+        AudienceNetworkAds.initialize(activity);
+        MobileAds.initialize(activity, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        UnityAds.initialize(activity, app_UnityAppId, app_UnityTestMode);
+    }
+
+    public void NoInzilseAllloadeddarts() {
+        if (app_onesingle_appid != null) {
+            OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE);
+            OneSignal.initWithContext(activity);
+            OneSignal.setAppId(app_onesingle_appid);
+        }
+
+        if (app_redirectOtherAppStatus == 1) {
+            showRedirectDialog(activity, app_newPackageName);
+            return;
+        } else if (app_updateAppDialogStatus == 1 && checkUpdate(vercode)) {
+            showUpdateDialog(activity, app_UpdatePackageName);
+            return;
+        }
+        SuccessloadedRedirect();
+    }
+
     public void Allloadeddarts() {
+        getInlize();
         MyAdZOne.getInstance(activity).loadInterstitialAd(activity);
 
         if (app_BannerPeriority.equalsIgnoreCase("native")) {

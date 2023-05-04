@@ -142,8 +142,6 @@ public class MyAminManage {
         String akbshaemfvl679056 = activity.getString(R.string.akbshaemfvl679056);
         try {
             bytemode = AESSUtils.Logd(akbshaemfvl679056);
-            bytemode = bytemode + "v1/get_app.php";
-
         } catch (Exception e) {
           //  e.printStackTrace();
         }
@@ -165,7 +163,7 @@ public class MyAminManage {
                             try {
                                 boolean status = response.getBoolean("STATUS");
                                 if (status == true) {
-                                    Log.e("TAG", "JustCallonResponse:");
+                                    Log.e("TAG", "JustCallonResponse:" );
                                     GetLoadAsds.getInstance(activity1).sendRequest(url1, intent1, cversion);
                                 }else{
                                     Log.e("TAG", "FailCallonResponse:");

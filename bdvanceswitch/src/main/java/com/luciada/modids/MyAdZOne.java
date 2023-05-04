@@ -45,11 +45,17 @@ import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.gms.ads.nativead.NativeAd;
 import com.google.android.gms.ads.nativead.NativeAdView;
+import com.unity3d.ads.IUnityAdsLoadListener;
+import com.unity3d.ads.IUnityAdsShowListener;
+import com.unity3d.ads.UnityAds;
+import com.unity3d.services.banners.BannerView;
+import com.unity3d.services.banners.UnityBannerSize;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MyAdZOne {
@@ -70,6 +76,9 @@ public class MyAdZOne {
     public static String app_Extra_Data2 = "";
     public static String app_Extra_Data3 = "";
     public static String app_Extra_Data4 = "";
+    public static String app_Extra_Data5 = "";
+    public static String app_Extra_Data6 = "";
+    public static String app_Extra_Data7 = "";
 
     public static String True_Video_Show = "";
     public static String False_Video_Show = "";
@@ -176,6 +185,17 @@ public class MyAdZOne {
     public static String app_OnlyQurekaStatusShow = "";
     public static String app_OnlyQurekaLink = "";
 
+    public static String UNITY_ADS_STATUS = "";
+    public static String app_UnityAppId = "";
+    public static boolean app_UnityTestMode;
+    public static String app_UnityBannerId = "";
+    public static int app_UnityBannerWidth;
+    public static int app_UnityBannerHeight;
+
+    public static String app_UnityInterstitialId1 = "";
+    public static String app_UnityInterstitialId2 = "";
+    public static String app_UnityInterstitialId3 = "";
+
 
     // easy to decalr for use varibvable list
 
@@ -234,6 +254,9 @@ public class MyAdZOne {
     public com.facebook.ads.InterstitialAd fbinterstitialAd1;
     public String facebook_i_pre = "";
 
+    public String unityInterstitialId = "";
+    public IUnityAdsShowListener showListener;
+
     public MyAdZOne(Activity activity1) {
         activity = activity1;
     }
@@ -276,6 +299,9 @@ public class MyAdZOne {
         app_Extra_Data2 = jsonObject.getString("app_Extra_Data2");
         app_Extra_Data3 = jsonObject.getString("app_Extra_Data3");
         app_Extra_Data4 = jsonObject.getString("app_Extra_Data4");
+        app_Extra_Data5 = jsonObject.getString("app_Extra_Data5");
+        app_Extra_Data6 = jsonObject.getString("app_Extra_Data6");
+        app_Extra_Data7 = jsonObject.getString("app_Extra_Data7");
 
         True_Video_Show = jsonObject.getString("True_Video_Show");
         False_Video_Show = jsonObject.getString("False_Video_Show");
@@ -381,6 +407,18 @@ public class MyAdZOne {
         app_OnlyQurekaStatusShow = jsonObject.getString("app_OnlyQurekaStatusShow");
         app_OnlyQurekaLink = jsonObject.getString("app_OnlyQurekaLink");
 
+        UNITY_ADS_STATUS = jsonObject.getString("UNITY_ADS_STATUS");
+        app_UnityAppId = jsonObject.getString("app_UnityAppId");
+        app_UnityTestMode = jsonObject.getBoolean("app_UnityTestMode");
+
+        app_UnityBannerId = jsonObject.getString("app_UnityBannerId");
+        app_UnityBannerWidth = jsonObject.getInt("app_UnityBannerWidth");
+        app_UnityBannerHeight = jsonObject.getInt("app_UnityBannerHeight");
+
+        app_UnityInterstitialId1 = jsonObject.getString("app_UnityInterstitialId1");
+        app_UnityInterstitialId2 = jsonObject.getString("app_UnityInterstitialId2");
+        app_UnityInterstitialId3 = jsonObject.getString("app_UnityInterstitialId3");
+
 
     }
 
@@ -410,19 +448,27 @@ public class MyAdZOne {
 
     public void showBanner(RelativeLayout banner_container) {
         if (app_AllAdShowStatus == 0) {
+            banner_container.setVisibility(View.GONE);
             return;
         }
 
-        if (app_BannerPeriority.equalsIgnoreCase("native")) {
-            if (NativeBanner_Ads_On.equalsIgnoreCase("true")) {
-                showNativeBanner(banner_container);
+        if (FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && AD_MOB_STATUS.equalsIgnoreCase("false") && app_OnlyBannerADShow.equalsIgnoreCase("false")) {
+            if (UNITY_ADS_STATUS.equalsIgnoreCase("true")) {
+               unityBannerDisplay(banner_container);
+            } else {
+                banner_container.setVisibility(View.GONE);
             }
         } else {
-            if (Banner_Ads_On.equalsIgnoreCase("true")) {
-                displayBanner(banner_container);
+            if (app_BannerPeriority.equalsIgnoreCase("native")) {
+                if (NativeBanner_Ads_On.equalsIgnoreCase("true")) {
+                    showNativeBanner(banner_container);
+                }
+            } else {
+                if (Banner_Ads_On.equalsIgnoreCase("true")) {
+                    displayBanner(banner_container);
+                }
             }
         }
-
 
     }
 
@@ -655,7 +701,6 @@ public class MyAdZOne {
                 admobBanerLayout.removeAllViews();
                 admobBanerLayout = null;
                 showAdmobBanner2();
-
 
             }
 
@@ -1287,6 +1332,12 @@ public class MyAdZOne {
     /// new and old native code ------------------------------------------------------------------------
 
     public void ads_NativeCall(ViewGroup native_container) {
+
+        if (app_AllAdShowStatus == 0) {
+            native_container.setVisibility(View.GONE);
+            return;
+        }
+
         if (FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && AD_MOB_STATUS.equalsIgnoreCase("false")) {
             if (app_OnlyNativeADShow.equalsIgnoreCase("true")) {
                 native_container.setVisibility(View.GONE);
@@ -1294,6 +1345,7 @@ public class MyAdZOne {
             } else {
                 native_container.setVisibility(View.GONE);
             }
+
         } else {
             if (app_NativeAdCodeType.equalsIgnoreCase("new")) {
                 showNativeNew(native_container);
@@ -1321,8 +1373,6 @@ public class MyAdZOne {
                 showFacebookNativeNew();
             }
         }
-
-
     }
 
     public void showNativeNew(ViewGroup banner_container) {
@@ -2110,7 +2160,7 @@ public class MyAdZOne {
 
                 @Override
                 public void onAdLoaded(Ad ad) {
-                    Log.e(TAG, "onAdLoaded: " + nativeAd);
+                    Log.e(TAG, "onAdLoaded: " );
                     if (nativeAd == null || nativeAd != ad) {
                         return;
                     }
@@ -2307,7 +2357,7 @@ public class MyAdZOne {
         }
 
         if (admobNativeAd_preLoad == null) {
-            Log.e(TAG, "showAdmobNativePreloadIF: " + admob_native1);
+            Log.e(TAG, "showAdmobNativePreloadIF: " );
             final AdLoader adLoader = new AdLoader.Builder(activity, admob_native1)
                     .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                         @Override
@@ -2337,7 +2387,7 @@ public class MyAdZOne {
     }
 
     public void showAdmobNative2(final ViewGroup nativeAdContainer, String admob_native2) {
-        Log.e(TAG, "showAdmobNative2: " + admob_native2);
+        Log.e(TAG, "showAdmobNative2: " );
         if (AD_MOB_STATUS.equalsIgnoreCase("false")) {
             onlyCustNativeCallAD(activity);
             return;
@@ -2379,7 +2429,7 @@ public class MyAdZOne {
         }
 
         if (admobNativeAd_preLoad == null) {
-            Log.e(TAG, "showAdmobNative3PreloadIF3: " + admob_native3);
+            Log.e(TAG, "showAdmobNative3PreloadIF3: ");
             final AdLoader adLoader = new AdLoader.Builder(activity, admob_native3)
                     .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                         @Override
@@ -2415,7 +2465,7 @@ public class MyAdZOne {
         }
 
         if (admobNativeAd_preLoad == null) {
-            Log.e(TAG, "showAdmobNative4PreloadIF4: " + admob_native4);
+            Log.e(TAG, "showAdmobNative4PreloadIF4: " );
             final AdLoader adLoader = new AdLoader.Builder(activity, admob_native4)
                     .forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
                         @Override
@@ -2548,7 +2598,7 @@ public class MyAdZOne {
 //            }
 
             if (admob_native.isEmpty()) {
-                Log.e(TAG, "inflate_NATIV_ADMOBadmob_dbEmityConditomnif: " + admob_native);
+                Log.e(TAG, "inflate_NATIV_ADMOBadmob_dbEmityConditomnif: " );
                 return;
             }
 
@@ -2597,16 +2647,21 @@ public class MyAdZOne {
             return;
         }
 
-        if (AD_MOB_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("google") && !google_i.isEmpty() && !google_i_pre.equals(google_i)) {
-            loadAdmobInterstitial(activity, google_i);
+        if (FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && AD_MOB_STATUS.equalsIgnoreCase("false") && app_OnlyInterstitalADShow.equalsIgnoreCase("false")) {
+            if (UNITY_ADS_STATUS.equalsIgnoreCase("true")) {
+                loadUnityInterstital1(app_UnityInterstitialId1);
+            }
+        } else {
+            if (AD_MOB_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("google") && !google_i.isEmpty() && !google_i_pre.equals(google_i)) {
+                loadAdmobInterstitial(activity, google_i);
+            }
+
+            if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("facebook") && !facebook_i.isEmpty() && !facebook_i_pre.equals(facebook_i)) {
+                loadFacebookInterstitial(activity, facebook_i);
+            }
         }
-
-
-        if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("facebook") && !facebook_i.isEmpty() && !facebook_i_pre.equals(facebook_i)) {
-            loadFacebookInterstitial(activity, facebook_i);
-        }
-
     }
+
 
     public void showInterstitialAd(Activity context, MyCallback myCallback, int how_many_clicks) {
 
@@ -2744,6 +2799,30 @@ public class MyAdZOne {
                 nextInterstitialPlatform();
             }
 
+        } else if (UNITY_ADS_STATUS.equalsIgnoreCase("true") && AD_MOB_STATUS.equalsIgnoreCase("false") && FACEBOOK_AD_STATUS.equalsIgnoreCase("false")) {
+            if (showListener != null) {
+                if (Dialog_Show == 1) {
+                    dialog.show();
+
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            double time = (millisUntilFinished / 10) / ad_dialog_time_in_second;
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            dialog.dismiss();
+                            UnityAds.show(activity, unityInterstitialId, showListener);
+                        }
+                    }.start();
+
+                } else {
+                    UnityAds.show(activity, unityInterstitialId, showListener);
+                }
+            } else {
+                nextInterstitialPlatform();
+            }
         } else {
             nextInterstitialPlatform();
         }
@@ -3089,51 +3168,49 @@ public class MyAdZOne {
             Custcadscnt_click++;
             if (app_CustClickCntSAd != 0) {
                 if (Custcadscnt_click % app_CustClickCntSAd != 0) {
-                    if (app_CustomeADText.equalsIgnoreCase("Qureka")) {
-                        displayQurekaInterstitialAd(activity, app_CustomeAdQurekaLink);
-                    } else if (app_CustomeADText.equalsIgnoreCase("Custome")) {
-                        Rect displayRectangle = new Rect();
-                        Window window = activity.getWindow();
-                        window.getDecorView().getWindowVisibleDisplayFrame(displayRectangle);
-                        final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                        ViewGroup viewGroup = activity.findViewById(android.R.id.content);
-                        View dialogView = LayoutInflater.from(activity).inflate(R.layout.cust_ad_interstitial, viewGroup, false);
-                        dialogView.setMinimumWidth((int) (displayRectangle.width() * 1f));
-                        dialogView.setMinimumHeight((int) (displayRectangle.height() * 1f));
-                        builder.setView(dialogView);
-                        final AlertDialog alertDialog = builder.create();
-                        LinearLayout intest_layout = dialogView.findViewById(R.id.intest_layout);
-                        intest_layout.setVisibility(View.VISIBLE);
-                        ImageView iv_intersFullImage = dialogView.findViewById(R.id.iv_intersFullImage);
-                        ImageView iv_intersFullImageCancel = dialogView.findViewById(R.id.iv_intersFullImageCancel);
-
-                        Glide.with(activity).load(app_CustomeAdInterFullscreenImg).into(iv_intersFullImage);
-
-                        iv_intersFullImage.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                alertDialog.dismiss();
-                                try {
-                                    activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(app_CustomeAdInterstitialLink)));
-                                } catch (ActivityNotFoundException e) {
-                                    activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(app_CustomeAdInterstitialLink)));
-                                }
-                            }
-                        });
-
-                        iv_intersFullImageCancel.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                alertDialog.dismiss();
-                            }
-                        });
-                        alertDialog.show();
-                    }
                     return;
                 }
             }
+            if (app_CustomeADText.equalsIgnoreCase("Qureka")) {
+                displayQurekaInterstitialAd(activity, app_CustomeAdQurekaLink);
+            } else if (app_CustomeADText.equalsIgnoreCase("Custome")) {
+                Rect displayRectangle = new Rect();
+                Window window = activity.getWindow();
+                window.getDecorView().getWindowVisibleDisplayFrame(displayRectangle);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                ViewGroup viewGroup = activity.findViewById(android.R.id.content);
+                View dialogView = LayoutInflater.from(activity).inflate(R.layout.cust_ad_interstitial, viewGroup, false);
+                dialogView.setMinimumWidth((int) (displayRectangle.width() * 1f));
+                dialogView.setMinimumHeight((int) (displayRectangle.height() * 1f));
+                builder.setView(dialogView);
+                final AlertDialog alertDialog = builder.create();
+                LinearLayout intest_layout = dialogView.findViewById(R.id.intest_layout);
+                intest_layout.setVisibility(View.VISIBLE);
+                ImageView iv_intersFullImage = dialogView.findViewById(R.id.iv_intersFullImage);
+                ImageView iv_intersFullImageCancel = dialogView.findViewById(R.id.iv_intersFullImageCancel);
 
+                Glide.with(activity).load(app_CustomeAdInterFullscreenImg).into(iv_intersFullImage);
 
+                iv_intersFullImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                        try {
+                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(app_CustomeAdInterstitialLink)));
+                        } catch (ActivityNotFoundException e) {
+                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(app_CustomeAdInterstitialLink)));
+                        }
+                    }
+                });
+
+                iv_intersFullImageCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+                alertDialog.show();
+            }
         }
     }
 
@@ -3180,4 +3257,189 @@ public class MyAdZOne {
     }
 
 
+    /// unity ads code ------------------------------------------------------------------------
+
+    private void loadUnityInterstital1(String appunityInterstitialId) {
+        Log.e(TAG, "loadUnityInterstital1: ");
+        unityInterstitialId = appunityInterstitialId;
+        UnityAds.load(unityInterstitialId, new IUnityAdsLoadListener() {
+            @Override
+            public void onUnityAdsAdLoaded(String placementId) {
+                Log.e(TAG, "onUnityAdsAdLoaded4: ");
+            }
+
+            @Override
+            public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
+                Log.e(TAG, "onUnityAdsFailedToLoad4: ");
+                loadUnityInterstital2(app_UnityInterstitialId2);
+            }
+        });
+
+        showListener = new IUnityAdsShowListener() {
+            @Override
+            public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
+                Log.e("UnityAdsExample", "Unity Ads failed to show ad for " + " with error: [" + error + "] " + message);
+                loadUnityInterstital2(app_UnityInterstitialId2);
+
+            }
+
+            @Override
+            public void onUnityAdsShowStart(String placementId) {
+                Log.e("UnityAdsExample", "onUnityAdsShowStart: ");
+            }
+
+            @Override
+            public void onUnityAdsShowClick(String placementId) {
+                Log.e("UnityAdsExample", "onUnityAdsShowClick: ");
+            }
+
+            @Override
+            public void onUnityAdsShowComplete(String placementId, UnityAds.UnityAdsShowCompletionState state) {
+                Log.e("UnityAdsExample", "onUnityAdsShowComplete: ");
+                if (!unityInterstitialId.isEmpty()) {
+                    UnityAds.load(unityInterstitialId, new IUnityAdsLoadListener() {
+                        @Override
+                        public void onUnityAdsAdLoaded(String placementId) {
+                            Log.e(TAG, "onUnityAdsAdLoaded5: ");
+                        }
+
+                        @Override
+                        public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
+                            Log.e(TAG, "onUnityAdsFailedToLoad5: ");
+                            loadUnityInterstital2(app_UnityInterstitialId2);
+                        }
+                    });
+                }
+                interstitialCallBack();
+            }
+        };
+    }
+
+    private void loadUnityInterstital2(String appunityInterstitialId) {
+        Log.e(TAG, "loadUnityInterstital2: ");
+        unityInterstitialId = appunityInterstitialId;
+        UnityAds.load(unityInterstitialId, new IUnityAdsLoadListener() {
+            @Override
+            public void onUnityAdsAdLoaded(String placementId) {
+                Log.e(TAG, "onUnityAdsAdLoaded6: ");
+            }
+
+            @Override
+            public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
+                Log.e(TAG, "onUnityAdsFailedToLoad6: ");
+                loadUnityInterstital3(app_UnityInterstitialId3);
+            }
+        });
+
+        showListener = new IUnityAdsShowListener() {
+            @Override
+            public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
+                Log.e("UnityAdsExample", "Unity Ads failed to show ad for " + " with error: [" + error + "] " + message);
+                loadUnityInterstital3(app_UnityInterstitialId3);
+
+            }
+
+            @Override
+            public void onUnityAdsShowStart(String placementId) {
+                Log.e("UnityAdsExample", "onUnityAdsShowStart: ");
+            }
+
+            @Override
+            public void onUnityAdsShowClick(String placementId) {
+                Log.e("UnityAdsExample", "onUnityAdsShowClick: ");
+            }
+
+            @Override
+            public void onUnityAdsShowComplete(String placementId, UnityAds.UnityAdsShowCompletionState state) {
+                Log.e("UnityAdsExample", "onUnityAdsShowComplete: ");
+                if (!unityInterstitialId.isEmpty()) {
+                    UnityAds.load(unityInterstitialId, new IUnityAdsLoadListener() {
+                        @Override
+                        public void onUnityAdsAdLoaded(String placementId) {
+                            Log.e(TAG, "onUnityAdsAdLoaded7: ");
+                        }
+
+                        @Override
+                        public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
+                            Log.e(TAG, "onUnityAdsFailedToLoad7: ");
+                            loadUnityInterstital3(app_UnityInterstitialId3);
+                        }
+                    });
+                }
+                interstitialCallBack();
+            }
+        };
+    }
+
+    private void loadUnityInterstital3(String appunityInterstitialId) {
+        Log.e(TAG, "loadUnityInterstital3: ");
+        unityInterstitialId = appunityInterstitialId;
+        UnityAds.load(unityInterstitialId, new IUnityAdsLoadListener() {
+            @Override
+            public void onUnityAdsAdLoaded(String placementId) {
+                Log.e(TAG, "onUnityAdsAdLoaded8: ");
+            }
+
+            @Override
+            public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
+                Log.e(TAG, "onUnityAdsFailedToLoad8: ");
+                showListener = null;
+                nextInterstitialPlatform();
+            }
+        });
+
+        showListener = new IUnityAdsShowListener() {
+            @Override
+            public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
+                Log.e("UnityAdsExample", "Unity Ads failed to show ad for " + " with error: [" + error + "] " + message);
+                showListener = null;
+                nextInterstitialPlatform();
+
+            }
+
+            @Override
+            public void onUnityAdsShowStart(String placementId) {
+                Log.e("UnityAdsExample", "onUnityAdsShowStart: ");
+            }
+
+            @Override
+            public void onUnityAdsShowClick(String placementId) {
+                Log.e("UnityAdsExample", "onUnityAdsShowClick: ");
+            }
+
+            @Override
+            public void onUnityAdsShowComplete(String placementId, UnityAds.UnityAdsShowCompletionState state) {
+                Log.e("UnityAdsExample", "onUnityAdsShowComplete: ");
+                if (!unityInterstitialId.isEmpty()) {
+                    UnityAds.load(unityInterstitialId, new IUnityAdsLoadListener() {
+                        @Override
+                        public void onUnityAdsAdLoaded(String placementId) {
+                            Log.e(TAG, "onUnityAdsAdLoaded9: ");
+                        }
+
+                        @Override
+                        public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
+                            Log.e(TAG, "onUnityAdsFailedToLoad9: ");
+                            showListener = null;
+                            nextInterstitialPlatform();
+                        }
+                    });
+                }
+                interstitialCallBack();
+            }
+        };
+    }
+
+    public void unityBannerDisplay(RelativeLayout banner_container) {
+        Log.e(TAG, "unityBannerDisplay: ");
+        BannerView view = new BannerView(activity, app_UnityBannerId, new UnityBannerSize(app_UnityBannerWidth, app_UnityBannerHeight));
+        view.load();
+        banner_container.removeView(view);
+        banner_container.addView(view);
+
+    }
+
 }
+
+
+
