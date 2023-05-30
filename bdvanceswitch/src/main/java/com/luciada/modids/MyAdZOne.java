@@ -21,8 +21,10 @@ import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.content.ContextCompat;
+
 import com.applovin.mediation.MaxAd;
 import com.applovin.mediation.MaxAdListener;
 import com.applovin.mediation.MaxError;
@@ -57,8 +59,10 @@ import com.unity3d.ads.IUnityAdsShowListener;
 import com.unity3d.ads.UnityAds;
 import com.unity3d.services.banners.BannerView;
 import com.unity3d.services.banners.UnityBannerSize;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -74,10 +78,7 @@ public class MyAdZOne {
     static MyCallback myCallback;
     static OnAdListner onAdListner;
     public Dialog dialog;
-    public InterstitialAd fbinterstitialAd1;
-    public com.google.android.gms.ads.interstitial.InterstitialAd mInterstitialAd;
-    public MaxInterstitialAd maxInterstitialAd;
-    public IUnityAdsShowListener showListener;
+
     public static int app_AllAdShowStatus = 0;
     public static int Dialog_Show = 0;
     public static int app_redirectOtherAppStatus = 0;
@@ -220,10 +221,18 @@ public class MyAdZOne {
     com.facebook.ads.NativeAd fbNativeAd_preLoad = null;
     com.facebook.ads.AdView fbadView = null;
     NativeBannerAd nativeAd1 = null;
-    public String google_i_pre = "";
+
+    public InterstitialAd fbinterstitialAd1;
     public String facebook_i_pre = "";
-    public String unity_i_pre = "";
+
+    public com.google.android.gms.ads.interstitial.InterstitialAd mInterstitialAd;
+    public String google_i_pre = "";
+
+    public MaxInterstitialAd maxInterstitialAd;
     public String maxapplovin_i_pre = "";
+
+    public IUnityAdsShowListener showListener;
+    public String unity_i_pre = "";
 
 
     public interface MyCallback {
@@ -254,12 +263,16 @@ public class MyAdZOne {
 
     public void configDatas(JSONObject jsonObject) throws JSONException {
         app_AllAdShowStatus = jsonObject.getInt("app_AllAdShowStatus");
+
         Dialog_Show = jsonObject.getInt("Dialog_Show");
+
         app_redirectOtherAppStatus = jsonObject.getInt("app_redirectOtherAppStatus");
         app_newPackageName = jsonObject.getString("app_newPackageName");
+
         app_updateAppDialogStatus = jsonObject.getInt("app_updateAppDialogStatus");
         app_versionCode = jsonObject.getString("app_versionCode");
         app_UpdatePackageName = jsonObject.getString("app_UpdatePackageName");
+
         app_Extra_Data1 = jsonObject.getString("app_Extra_Data1");
         app_Extra_Data2 = jsonObject.getString("app_Extra_Data2");
         app_Extra_Data3 = jsonObject.getString("app_Extra_Data3");
@@ -267,73 +280,122 @@ public class MyAdZOne {
         app_Extra_Data5 = jsonObject.getString("app_Extra_Data5");
         app_Extra_Data6 = jsonObject.getString("app_Extra_Data6");
         app_Extra_Data7 = jsonObject.getString("app_Extra_Data7");
+
         True_Video_Show = jsonObject.getString("True_Video_Show");
         False_Video_Show = jsonObject.getString("False_Video_Show");
         Both_video_show = jsonObject.getString("Both_video_show");
         maxvidcount = jsonObject.getInt("maxvidcount");
+
         app_failData = jsonObject.getString("app_failData");
         app_DataIOSocketFail = jsonObject.getString("app_DataIOSocketFail");
+
         app_DeveloperOption_Check_Mode = jsonObject.getString("app_DeveloperOption_Check_Mode");
+
         Privacy_Policy = jsonObject.getString("Privacy_Policy");
         app_onesingle_appid = jsonObject.getString("app_OneSingleID");
+
         app_AdsPriority = jsonObject.getString("app_AdsPriority");
         app_Banner_AdsPriority = jsonObject.getString("app_Banner_AdsPriority");
         app_Native_AdsPriority = jsonObject.getString("app_Native_AdsPriority");
         app_NativeAdCodeType = jsonObject.getString("app_NativeAdCodeType");
         app_BannerPeriority = jsonObject.getString("app_BannerPeriority");
+
         AD_MOB_STATUS = jsonObject.getString("AD_MOB_STATUS");
+
         AD_MOB_APP_ID_Banner1 = jsonObject.getString("AD_MOB_APP_ID_Banner1");
         AD_MOB_APP_ID_Banner2 = jsonObject.getString("AD_MOB_APP_ID_Banner2");
         AD_MOB_APP_ID_Banner3 = jsonObject.getString("AD_MOB_APP_ID_Banner3");
+
         AD_MOB_APP_ID_NativeBanner1 = jsonObject.getString("AD_MOB_APP_ID_NativeBanner1");
         AD_MOB_APP_ID_NativeBanner2 = jsonObject.getString("AD_MOB_APP_ID_NativeBanner2");
         AD_MOB_APP_ID_NativeBanner3 = jsonObject.getString("AD_MOB_APP_ID_NativeBanner3");
+
         AD_MOB_APP_ID_Inter1 = jsonObject.getString("AD_MOB_APP_ID_Inter1");
         AD_MOB_APP_ID_Inter2 = jsonObject.getString("AD_MOB_APP_ID_Inter2");
         AD_MOB_APP_ID_Inter3 = jsonObject.getString("AD_MOB_APP_ID_Inter3");
+
         AD_MOB_APP_ID_Native1 = jsonObject.getString("AD_MOB_APP_ID_Native1");
         AD_MOB_APP_ID_Native2 = jsonObject.getString("AD_MOB_APP_ID_Native2");
         AD_MOB_APP_ID_Native3 = jsonObject.getString("AD_MOB_APP_ID_Native3");
         AD_MOB_APP_ID_Native4 = jsonObject.getString("AD_MOB_APP_ID_Native4");
+
         AD_MOB_OpenAd_STATUS = jsonObject.getString("AD_MOB_OpenAd_STATUS");
         AD_MOB_APP_ID_OpenAd1 = jsonObject.getString("AD_MOB_APP_ID_OpenAd1");
         AD_MOB_APP_ID_OpenAd2 = jsonObject.getString("AD_MOB_APP_ID_OpenAd2");
         AD_MOB_APP_ID_OpenAd3 = jsonObject.getString("AD_MOB_APP_ID_OpenAd3");
+
         FACEBOOK_AD_STATUS = jsonObject.getString("FACEBOOK_AD_STATUS");
+
         FB_Banner_ID1 = jsonObject.getString("FB_Banner_ID1");
         FB_Banner_ID2 = jsonObject.getString("FB_Banner_ID2");
         FB_Banner_ID3 = jsonObject.getString("FB_Banner_ID3");
+
         FB_BannerNative_ID1 = jsonObject.getString("FB_BannerNative_ID1");
         FB_BannerNative_ID2 = jsonObject.getString("FB_BannerNative_ID2");
         FB_BannerNative_ID3 = jsonObject.getString("FB_BannerNative_ID3");
+
         FB_Inter_ID1 = jsonObject.getString("FB_Inter_ID1");
         FB_Inter_ID2 = jsonObject.getString("FB_Inter_ID2");
         FB_Inter_ID3 = jsonObject.getString("FB_Inter_ID3");
+
         FB_Native_ID1 = jsonObject.getString("FB_Native_ID1");
         FB_Native_ID2 = jsonObject.getString("FB_Native_ID2");
         FB_Native_ID3 = jsonObject.getString("FB_Native_ID3");
         FB_Native_ID4 = jsonObject.getString("FB_Native_ID4");
+
+        APPLOVIN_ADS_STATUS = jsonObject.getString("APPLOVIN_ADS_STATUS");
+
+        app_ApplovinInterstitialId1 = jsonObject.getString("app_ApplovinInterstitialId1");
+        app_ApplovinInterstitialId2 = jsonObject.getString("app_ApplovinInterstitialId2");
+        app_ApplovinInterstitialId3 = jsonObject.getString("app_ApplovinInterstitialId3");
+
+        app_ApplovinNative1 = jsonObject.getString("app_ApplovinNative1");
+
+        app_ApplovinBanner1 = jsonObject.getString("app_ApplovinBanner1");
+        app_ApplovinBannerSize = jsonObject.getInt("app_ApplovinBannerSize");
+
+        UNITY_ADS_STATUS = jsonObject.getString("UNITY_ADS_STATUS");
+
+        app_UnityAppId = jsonObject.getString("app_UnityAppId");
+        app_UnityTestMode = jsonObject.getBoolean("app_UnityTestMode");
+
+        app_UnityBannerId = jsonObject.getString("app_UnityBannerId");
+        app_UnityBannerWidth = jsonObject.getInt("app_UnityBannerWidth");
+        app_UnityBannerHeight = jsonObject.getInt("app_UnityBannerHeight");
+
+        app_UnityInterstitialId1 = jsonObject.getString("app_UnityInterstitialId1");
+        app_UnityInterstitialId2 = jsonObject.getString("app_UnityInterstitialId2");
+        app_UnityInterstitialId3 = jsonObject.getString("app_UnityInterstitialId3");
+
         Native_Btn_Color = jsonObject.getString("Native_Btn_Color");
         Native_Btn_text = jsonObject.getString("Native_Btn_Ads_Text");
         Native_Btn_Text_Size = jsonObject.getString("Native_Btn_Text_Size");
         Native_Btn_Text_Color = jsonObject.getString("Native_Btn_Text_Color");
+
         Native_Ad_Shape_Square_Corner = jsonObject.getString("Native_Ad_Shape_Square_Corner");
         Native_Ad_Shape_Round_Corner = jsonObject.getString("Native_Ad_Shape_Round_Corner");
         Native_Ad_Small_Size = jsonObject.getString("Native_Ad_Small_Size");
         Native_Ad_Shape_Normal_Round_Btn = jsonObject.getString("Native_Ad_Shape_Normal_Round_Btn");
+
         Banner_Ads_On = jsonObject.getString("Banner_Ads_On");
         Native_Ads_On = jsonObject.getString("Native_Ads_On");
         NativeBanner_Ads_On = jsonObject.getString("NativeBanner_Ads_On");
+
         app_MainClickCntSwAd = jsonObject.getInt("app_MainClickCntSwAd");
         app_InnerClickCntSwAd = jsonObject.getInt("app_InnerClickCntSwAd");
+
         app_OnlyInterstitalADShow = jsonObject.getString("app_OnlyInterstitalADShow");
         app_OnlyNativeADShow = jsonObject.getString("app_OnlyNativeADShow");
         app_OnlyBannerADShow = jsonObject.getString("app_OnlyBannerADShow");
+
         app_CustClickCntSAd = jsonObject.getInt("app_CustClickCntSAd");
+
         app_CustomeADText = jsonObject.getString("app_CustomeADText");
+
         app_CustomeAdInterstitialLink = jsonObject.getString("app_CustomeAdInterstitialLink");
         app_CustomeAdInterFullscreenImg = jsonObject.getString("app_CustomeAdInterFullscreenImg");
         app_CustomeAdQurekaLink = jsonObject.getString("app_CustomeAdQurekaLink");
+
         app_CustomeAdNativeLargeImage = jsonObject.getString("app_CustomeAdNativeLargeImage");
         app_CustomeAdNativeIconImage = jsonObject.getString("app_CustomeAdNativeIconImage");
         app_CustomeAdNativeTitle = jsonObject.getString("app_CustomeAdNativeTitle");
@@ -341,29 +403,17 @@ public class MyAdZOne {
         app_CustomeAdNativesubHander2 = jsonObject.getString("app_CustomeAdNativesubHander2");
         app_CustomeAdNativeInstallText = jsonObject.getString("app_CustomeAdNativeInstallText");
         app_CustomeADNativeLink = jsonObject.getString("app_CustomeADNativeLink");
+
         app_CustomeAdBannerIcon = jsonObject.getString("app_CustomeAdBannerIcon");
         app_CustomeAdBannerInstallText = jsonObject.getString("app_CustomeAdBannerInstallText");
         app_CustomeAdBannerHanderText = jsonObject.getString("app_CustomeAdBannerHanderText");
         app_CustomeAdBannerSubHanderText = jsonObject.getString("app_CustomeAdBannerSubHanderText");
         app_CustomeADBannerLink = jsonObject.getString("app_CustomeADBannerLink");
+
         app_OnlyQurekaStatusShow = jsonObject.getString("app_OnlyQurekaStatusShow");
         app_OnlyQurekaLink = jsonObject.getString("app_OnlyQurekaLink");
-        UNITY_ADS_STATUS = jsonObject.getString("UNITY_ADS_STATUS");
-        app_UnityAppId = jsonObject.getString("app_UnityAppId");
-        app_UnityTestMode = jsonObject.getBoolean("app_UnityTestMode");
-        app_UnityBannerId = jsonObject.getString("app_UnityBannerId");
-        app_UnityBannerWidth = jsonObject.getInt("app_UnityBannerWidth");
-        app_UnityBannerHeight = jsonObject.getInt("app_UnityBannerHeight");
-        app_UnityInterstitialId1 = jsonObject.getString("app_UnityInterstitialId1");
-        app_UnityInterstitialId2 = jsonObject.getString("app_UnityInterstitialId2");
-        app_UnityInterstitialId3 = jsonObject.getString("app_UnityInterstitialId3");
-        APPLOVIN_ADS_STATUS = jsonObject.getString("APPLOVIN_ADS_STATUS");
-        app_ApplovinInterstitialId1 = jsonObject.getString("app_ApplovinInterstitialId1");
-        app_ApplovinInterstitialId2 = jsonObject.getString("app_ApplovinInterstitialId2");
-        app_ApplovinInterstitialId3 = jsonObject.getString("app_ApplovinInterstitialId3");
-        app_ApplovinBanner1 = jsonObject.getString("app_ApplovinBanner1");
-        app_ApplovinBannerSize = jsonObject.getInt("app_ApplovinBannerSize");
-        app_ApplovinNative1 = jsonObject.getString("app_ApplovinNative1");
+
+
     }
 
     public void Load_BannerAds() {
@@ -523,35 +573,33 @@ public class MyAdZOne {
             return;
         }
         fbBanerLayout = new RelativeLayout(activity);
-        com.facebook.ads.AdView adView = new com.facebook.ads.AdView(activity, FB_Banner_ID1, AdSize.BANNER_HEIGHT_50);
-        this.fbadView = adView;
-        fbBanerLayout.addView(adView);
-        AdListener adListener = new AdListener() { // from class: com.luciada.modids.MyAdZOne.1
+        fbadView = new com.facebook.ads.AdView(activity, FB_Banner_ID1, AdSize.BANNER_HEIGHT_50);
+        fbBanerLayout.addView(fbadView);
+        AdListener adListener = new AdListener() { // from class: com.luciada.modids.1
             @Override // com.facebook.ads.AdListener
             public void onError(Ad ad, AdError adError) {
-                Log.e(MyAdZOne.TAG, "onErrorbner1: ");
-                MyAdZOne.fbBanerLayout.removeAllViews();
-                MyAdZOne.fbBanerLayout = null;
-                MyAdZOne.this.showFacebookBanner2();
+                Log.e(TAG, "onErrorbner1: ");
+                fbBanerLayout.removeAllViews();
+                fbBanerLayout = null;
+                showFacebookBanner2();
             }
 
             @Override // com.facebook.ads.AdListener
             public void onAdLoaded(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onAdLoadedbner1: ");
+                Log.e(TAG, "onAdLoadedbner1: ");
             }
 
             @Override // com.facebook.ads.AdListener
             public void onAdClicked(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onAdClicked1: ");
+                Log.e(TAG, "onAdClicked1: ");
             }
 
             @Override // com.facebook.ads.AdListener
             public void onLoggingImpression(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onLoggingImpressionbner1: ");
+                Log.e(TAG, "onLoggingImpressionbner1: ");
             }
         };
-        com.facebook.ads.AdView adView2 = this.fbadView;
-        adView2.loadAd(adView2.buildLoadAdConfig().withAdListener(adListener).build());
+        fbadView.loadAd(fbadView.buildLoadAdConfig().withAdListener(adListener).build());
     }
 
     public void showFacebookBanner2() {
@@ -561,35 +609,33 @@ public class MyAdZOne {
             return;
         }
         fbBanerLayout2 = new RelativeLayout(activity);
-        com.facebook.ads.AdView adView = new com.facebook.ads.AdView(activity, FB_Banner_ID2, AdSize.BANNER_HEIGHT_50);
-        this.fbadView = adView;
-        fbBanerLayout2.addView(adView);
-        AdListener adListener = new AdListener() { // from class: com.luciada.modids.MyAdZOne.2
+        fbadView = new com.facebook.ads.AdView(activity, FB_Banner_ID2, AdSize.BANNER_HEIGHT_50);
+        fbBanerLayout2.addView(fbadView);
+        AdListener adListener = new AdListener() { // from class: com.luciada.modids.2
             @Override // com.facebook.ads.AdListener
             public void onError(Ad ad, AdError adError) {
-                Log.e(MyAdZOne.TAG, "onErrorbner2: ");
-                MyAdZOne.fbBanerLayout2.removeAllViews();
-                MyAdZOne.fbBanerLayout2 = null;
-                MyAdZOne.this.showFacebookBanner3();
+                Log.e(TAG, "onErrorbner2: ");
+                fbBanerLayout2.removeAllViews();
+                fbBanerLayout2 = null;
+                showFacebookBanner3();
             }
 
             @Override // com.facebook.ads.AdListener
             public void onAdLoaded(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onAdLoadedbner2: ");
+                Log.e(TAG, "onAdLoadedbner2: ");
             }
 
             @Override // com.facebook.ads.AdListener
             public void onAdClicked(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onAdClickedbner2: ");
+                Log.e(TAG, "onAdClickedbner2: ");
             }
 
             @Override // com.facebook.ads.AdListener
             public void onLoggingImpression(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onLoggingImpressionbner2: ");
+                Log.e(TAG, "onLoggingImpressionbner2: ");
             }
         };
-        com.facebook.ads.AdView adView2 = this.fbadView;
-        adView2.loadAd(adView2.buildLoadAdConfig().withAdListener(adListener).build());
+        fbadView.loadAd(fbadView.buildLoadAdConfig().withAdListener(adListener).build());
     }
 
     public void showFacebookBanner3() {
@@ -599,37 +645,35 @@ public class MyAdZOne {
             return;
         }
         fbBanerLayout3 = new RelativeLayout(activity);
-        com.facebook.ads.AdView adView = new com.facebook.ads.AdView(activity, FB_Banner_ID3, AdSize.BANNER_HEIGHT_50);
-        this.fbadView = adView;
-        fbBanerLayout3.addView(adView);
-        AdListener adListener = new AdListener() { // from class: com.luciada.modids.MyAdZOne.3
+        fbadView = new com.facebook.ads.AdView(activity, FB_Banner_ID3, AdSize.BANNER_HEIGHT_50);
+        fbBanerLayout3.addView(fbadView);
+        AdListener adListener = new AdListener() { // from class: com.luciada.modids.3
             @Override // com.facebook.ads.AdListener
             public void onError(Ad ad, AdError adError) {
-                Log.e(MyAdZOne.TAG, "onErrorbner3: ");
-                MyAdZOne.fbBanerLayout3.removeAllViews();
-                MyAdZOne.fbBanerLayout3 = null;
-                if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_Banner_AdsPriority.equalsIgnoreCase("facebook")) {
-                    MyAdZOne.this.showAdmobBanner();
+                Log.e(TAG, "onErrorbner3: ");
+                fbBanerLayout3.removeAllViews();
+                fbBanerLayout3 = null;
+                if (AD_MOB_STATUS.equalsIgnoreCase("true") && app_Banner_AdsPriority.equalsIgnoreCase("facebook")) {
+                    showAdmobBanner();
                 }
             }
 
             @Override // com.facebook.ads.AdListener
             public void onAdLoaded(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onAdLoadedbner3: ");
+                Log.e(TAG, "onAdLoadedbner3: ");
             }
 
             @Override // com.facebook.ads.AdListener
             public void onAdClicked(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onAdClickedbner3: ");
+                Log.e(TAG, "onAdClickedbner3: ");
             }
 
             @Override // com.facebook.ads.AdListener
             public void onLoggingImpression(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onLoggingImpressionbner3: ");
+                Log.e(TAG, "onLoggingImpressionbner3: ");
             }
         };
-        com.facebook.ads.AdView adView2 = this.fbadView;
-        adView2.loadAd(adView2.buildLoadAdConfig().withAdListener(adListener).build());
+        fbadView.loadAd(fbadView.buildLoadAdConfig().withAdListener(adListener).build());
     }
 
     public void showAdmobBanner() {
@@ -638,46 +682,46 @@ public class MyAdZOne {
             return;
         }
         admobBanerLayout = new RelativeLayout(activity);
-        AdView adView = new AdView(activity);
-        this.mAdView = adView;
-        adView.setAdSize(com.google.android.gms.ads.AdSize.BANNER);
-        this.mAdView.setAdUnitId(AD_MOB_APP_ID_Banner1);
+        mAdView = new AdView(activity);
+        mAdView.setAdSize(com.google.android.gms.ads.AdSize.BANNER);
+        mAdView.setAdUnitId(AD_MOB_APP_ID_Banner1);
         AdRequest adRequest = new AdRequest.Builder().build();
-        this.mAdView.loadAd(adRequest);
-        this.mAdView.setAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.4
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.4
             @Override // com.google.android.gms.ads.AdListener
             public void onAdClosed() {
-                Log.e(MyAdZOne.TAG, "onAdClosedggb1: ");
+                Log.e(TAG, "onAdClosedggb1: ");
             }
 
             @Override // com.google.android.gms.ads.AdListener
             public void onAdFailedToLoad(LoadAdError loadAdError) {
-                Log.e(MyAdZOne.TAG, "onAdFailedToLoadggb1: ");
-                MyAdZOne.admobBanerLayout.removeAllViews();
-                MyAdZOne.admobBanerLayout = null;
-                MyAdZOne.this.showAdmobBanner2();
+                Log.e(TAG, "onAdFailedToLoadggb1: ");
+                admobBanerLayout.removeAllViews();
+                admobBanerLayout = null;
+                showAdmobBanner2();
             }
 
             @Override // com.google.android.gms.ads.AdListener
             public void onAdOpened() {
-                Log.e(MyAdZOne.TAG, "onAdOpenedggb1: ");
+                Log.e(TAG, "onAdOpenedggb1: ");
             }
 
             @Override // com.google.android.gms.ads.AdListener
             public void onAdLoaded() {
-                Log.e(MyAdZOne.TAG, "onAdLoadedggb1: ");
-                MyAdZOne.admobBanerLayout.removeAllViews();
-                MyAdZOne.admobBanerLayout.addView(MyAdZOne.this.mAdView);
+                Log.e(TAG, "onAdLoadedggb1: ");
+                admobBanerLayout.removeAllViews();
+                admobBanerLayout.addView(mAdView);
             }
 
-            @Override // com.google.android.gms.ads.AdListener, com.google.android.gms.ads.internal.client.zza
+            @Override
+            // com.google.android.gms.ads.AdListener, com.google.android.gms.ads.internal.client.zza
             public void onAdClicked() {
-                Log.e(MyAdZOne.TAG, "onAdClickedggb1: ");
+                Log.e(TAG, "onAdClickedggb1: ");
             }
 
             @Override // com.google.android.gms.ads.AdListener
             public void onAdImpression() {
-                Log.e(MyAdZOne.TAG, "onAdImpressionggb1: ");
+                Log.e(TAG, "onAdImpressionggb1: ");
             }
         });
     }
@@ -688,46 +732,46 @@ public class MyAdZOne {
             return;
         }
         admobBanerLayout2 = new RelativeLayout(activity);
-        AdView adView = new AdView(activity);
-        this.mAdView = adView;
-        adView.setAdSize(com.google.android.gms.ads.AdSize.BANNER);
-        this.mAdView.setAdUnitId(AD_MOB_APP_ID_Banner2);
+        mAdView = new AdView(activity);
+        mAdView.setAdSize(com.google.android.gms.ads.AdSize.BANNER);
+        mAdView.setAdUnitId(AD_MOB_APP_ID_Banner2);
         AdRequest adRequest = new AdRequest.Builder().build();
-        this.mAdView.loadAd(adRequest);
-        this.mAdView.setAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.5
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.5
             @Override // com.google.android.gms.ads.AdListener
             public void onAdClosed() {
-                Log.e(MyAdZOne.TAG, "onAdClosedggb2: ");
+                Log.e(TAG, "onAdClosedggb2: ");
             }
 
             @Override // com.google.android.gms.ads.AdListener
             public void onAdFailedToLoad(LoadAdError loadAdError) {
-                Log.e(MyAdZOne.TAG, "onAdFailedToLoadggb2: ");
-                MyAdZOne.admobBanerLayout2.removeAllViews();
-                MyAdZOne.admobBanerLayout2 = null;
-                MyAdZOne.this.showAdmobBanner3();
+                Log.e(TAG, "onAdFailedToLoadggb2: ");
+                admobBanerLayout2.removeAllViews();
+                admobBanerLayout2 = null;
+                showAdmobBanner3();
             }
 
             @Override // com.google.android.gms.ads.AdListener
             public void onAdOpened() {
-                Log.e(MyAdZOne.TAG, "onAdOpenedggb2: ");
+                Log.e(TAG, "onAdOpenedggb2: ");
             }
 
             @Override // com.google.android.gms.ads.AdListener
             public void onAdLoaded() {
-                Log.e(MyAdZOne.TAG, "onAdLoadedggb2: ");
-                MyAdZOne.admobBanerLayout2.removeAllViews();
-                MyAdZOne.admobBanerLayout2.addView(MyAdZOne.this.mAdView);
+                Log.e(TAG, "onAdLoadedggb2: ");
+                admobBanerLayout2.removeAllViews();
+                admobBanerLayout2.addView(mAdView);
             }
 
-            @Override // com.google.android.gms.ads.AdListener, com.google.android.gms.ads.internal.client.zza
+            @Override
+            // com.google.android.gms.ads.AdListener, com.google.android.gms.ads.internal.client.zza
             public void onAdClicked() {
-                Log.e(MyAdZOne.TAG, "onAdClickedggb2: ");
+                Log.e(TAG, "onAdClickedggb2: ");
             }
 
             @Override // com.google.android.gms.ads.AdListener
             public void onAdImpression() {
-                Log.e(MyAdZOne.TAG, "onAdImpressionggb2: ");
+                Log.e(TAG, "onAdImpressionggb2: ");
             }
         });
     }
@@ -738,48 +782,48 @@ public class MyAdZOne {
             return;
         }
         admobBanerLayout3 = new RelativeLayout(activity);
-        AdView adView = new AdView(activity);
-        this.mAdView = adView;
-        adView.setAdSize(com.google.android.gms.ads.AdSize.BANNER);
-        this.mAdView.setAdUnitId(AD_MOB_APP_ID_Banner3);
+        mAdView = new AdView(activity);
+        mAdView.setAdSize(com.google.android.gms.ads.AdSize.BANNER);
+        mAdView.setAdUnitId(AD_MOB_APP_ID_Banner3);
         AdRequest adRequest = new AdRequest.Builder().build();
-        this.mAdView.loadAd(adRequest);
-        this.mAdView.setAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.6
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.6
             @Override // com.google.android.gms.ads.AdListener
             public void onAdClosed() {
-                Log.e(MyAdZOne.TAG, "onAdClosedggb3: ");
+                Log.e(TAG, "onAdClosedggb3: ");
             }
 
             @Override // com.google.android.gms.ads.AdListener
             public void onAdFailedToLoad(LoadAdError loadAdError) {
-                Log.e(MyAdZOne.TAG, "onAdFailedToLoadggb3: ");
-                MyAdZOne.admobBanerLayout3.removeAllViews();
-                MyAdZOne.admobBanerLayout3 = null;
-                if (MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_Banner_AdsPriority.equalsIgnoreCase("google")) {
-                    MyAdZOne.this.showFacebookBanner();
+                Log.e(TAG, "onAdFailedToLoadggb3: ");
+                admobBanerLayout3.removeAllViews();
+                admobBanerLayout3 = null;
+                if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_Banner_AdsPriority.equalsIgnoreCase("google")) {
+                    showFacebookBanner();
                 }
             }
 
             @Override // com.google.android.gms.ads.AdListener
             public void onAdOpened() {
-                Log.e(MyAdZOne.TAG, "onAdOpenedggb3: ");
+                Log.e(TAG, "onAdOpenedggb3: ");
             }
 
             @Override // com.google.android.gms.ads.AdListener
             public void onAdLoaded() {
-                Log.e(MyAdZOne.TAG, "onAdLoadedggb3: ");
-                MyAdZOne.admobBanerLayout3.removeAllViews();
-                MyAdZOne.admobBanerLayout3.addView(MyAdZOne.this.mAdView);
+                Log.e(TAG, "onAdLoadedggb3: ");
+                admobBanerLayout3.removeAllViews();
+                admobBanerLayout3.addView(mAdView);
             }
 
-            @Override // com.google.android.gms.ads.AdListener, com.google.android.gms.ads.internal.client.zza
+            @Override
+            // com.google.android.gms.ads.AdListener, com.google.android.gms.ads.internal.client.zza
             public void onAdClicked() {
-                Log.e(MyAdZOne.TAG, "onAdClickedggb3: ");
+                Log.e(TAG, "onAdClickedggb3: ");
             }
 
             @Override // com.google.android.gms.ads.AdListener
             public void onAdImpression() {
-                Log.e(MyAdZOne.TAG, "onAdImpressionggb3: ");
+                Log.e(TAG, "onAdImpressionggb3: ");
             }
         });
     }
@@ -919,42 +963,41 @@ public class MyAdZOne {
             return;
         }
         fbNativeBanerLayout = new RelativeLayout(activity);
-        NativeBannerAd nativeBannerAd = new NativeBannerAd(activity, FB_BannerNative_ID1);
-        this.nativeAd1 = nativeBannerAd;
-        nativeBannerAd.loadAd(nativeBannerAd.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.MyAdZOne.7
-            @Override // com.facebook.ads.NativeAdListener
+        nativeAd1 = new NativeBannerAd(activity, FB_BannerNative_ID1);
+
+        nativeAd1.loadAd(nativeAd1.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.7
+            @Override
             public void onMediaDownloaded(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onMediaDownloadedfbnb1: ");
-                MyAdZOne.fbNativeBanerLayout.removeAllViews();
-                MyAdZOne myAdZOne2 = MyAdZOne.this;
-                myAdZOne2.Inflate_FBNativeBannerADS(myAdZOne2.nativeAd1, MyAdZOne.fbNativeBanerLayout);
+                Log.e(TAG, "onMediaDownloadedfbnb1: ");
+                fbNativeBanerLayout.removeAllViews();
+                Inflate_FBNativeBannerADS(nativeAd1, fbNativeBanerLayout);
             }
 
             @Override // com.facebook.ads.AdListener
             public void onError(Ad ad, AdError adError) {
-                Log.e(MyAdZOne.TAG, "onErrorfbnb1: ");
-                MyAdZOne.fbNativeBanerLayout.removeAllViews();
-                MyAdZOne.fbNativeBanerLayout = null;
-                MyAdZOne.this.showNativeFacebookBanner2();
+                Log.e(TAG, "onErrorfbnb1: ");
+                fbNativeBanerLayout.removeAllViews();
+                fbNativeBanerLayout = null;
+                showNativeFacebookBanner2();
             }
 
             @Override // com.facebook.ads.AdListener
             public void onAdLoaded(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onAdLoadedfbnb1: ");
-                if (MyAdZOne.this.nativeAd1 == null || MyAdZOne.this.nativeAd1 != ad) {
+                Log.e(TAG, "onAdLoadedfbnb1: ");
+                if (nativeAd1 == null || nativeAd1 != ad) {
                     return;
                 }
-                MyAdZOne.this.nativeAd1.downloadMedia();
+                nativeAd1.downloadMedia();
             }
 
             @Override // com.facebook.ads.AdListener
             public void onAdClicked(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onAdClickedfbnb1: ");
+                Log.e(TAG, "onAdClickedfbnb1: ");
             }
 
             @Override // com.facebook.ads.AdListener
             public void onLoggingImpression(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onLoggingImpressionfbnb1: ");
+                Log.e(TAG, "onLoggingImpressionfbnb1: ");
             }
         }).build());
     }
@@ -964,43 +1007,42 @@ public class MyAdZOne {
             LoadGoogleNativeSmall();
             return;
         }
+
         fbNativeBanerLayout2 = new RelativeLayout(activity);
-        NativeBannerAd nativeBannerAd = new NativeBannerAd(activity, FB_BannerNative_ID2);
-        this.nativeAd1 = nativeBannerAd;
-        nativeBannerAd.loadAd(nativeBannerAd.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.MyAdZOne.8
-            @Override // com.facebook.ads.NativeAdListener
+        nativeAd1 = new NativeBannerAd(activity, FB_BannerNative_ID2);
+        nativeAd1.loadAd(nativeAd1.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.8
+            @Override
             public void onMediaDownloaded(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onMediaDownloadedfbnb2: ");
-                MyAdZOne.fbNativeBanerLayout2.removeAllViews();
-                MyAdZOne myAdZOne2 = MyAdZOne.this;
-                myAdZOne2.Inflate_FBNativeBannerADS(myAdZOne2.nativeAd1, MyAdZOne.fbNativeBanerLayout2);
+                Log.e(TAG, "onMediaDownloadedfbnb2: ");
+                fbNativeBanerLayout2.removeAllViews();
+                Inflate_FBNativeBannerADS(nativeAd1, fbNativeBanerLayout2);
             }
 
-            @Override // com.facebook.ads.AdListener
+            @Override
             public void onError(Ad ad, AdError adError) {
-                Log.e(MyAdZOne.TAG, "onErrorfbnb2: ");
-                MyAdZOne.fbNativeBanerLayout2.removeAllViews();
-                MyAdZOne.fbNativeBanerLayout2 = null;
-                MyAdZOne.this.showNativeFacebookBanner3();
+                Log.e(TAG, "onErrorfbnb2: ");
+                fbNativeBanerLayout2.removeAllViews();
+                fbNativeBanerLayout2 = null;
+                showNativeFacebookBanner3();
             }
 
             @Override // com.facebook.ads.AdListener
             public void onAdLoaded(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onAdLoadedfbnb2: ");
-                if (MyAdZOne.this.nativeAd1 == null || MyAdZOne.this.nativeAd1 != ad) {
+                Log.e(TAG, "onAdLoadedfbnb2: ");
+                if (nativeAd1 == null || nativeAd1 != ad) {
                     return;
                 }
-                MyAdZOne.this.nativeAd1.downloadMedia();
+                nativeAd1.downloadMedia();
             }
 
             @Override // com.facebook.ads.AdListener
             public void onAdClicked(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onAdClickedfbnb2: ");
+                Log.e(TAG, "onAdClickedfbnb2: ");
             }
 
             @Override // com.facebook.ads.AdListener
             public void onLoggingImpression(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onLoggingImpressionfbnb2: ");
+                Log.e(TAG, "onLoggingImpressionfbnb2: ");
             }
         }).build());
     }
@@ -1011,32 +1053,31 @@ public class MyAdZOne {
             return;
         }
         fbNativeBanerLayout3 = new RelativeLayout(activity);
-        NativeBannerAd nativeBannerAd = new NativeBannerAd(activity, FB_BannerNative_ID3);
-        this.nativeAd1 = nativeBannerAd;
-        nativeBannerAd.loadAd(nativeBannerAd.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.MyAdZOne.9
-            @Override // com.facebook.ads.NativeAdListener
+        nativeAd1 = new NativeBannerAd(activity, FB_BannerNative_ID3);
+
+        nativeAd1.loadAd(nativeAd1.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.9
+            @Override
             public void onMediaDownloaded(Ad ad) {
-                MyAdZOne.fbNativeBanerLayout3.removeAllViews();
-                MyAdZOne myAdZOne2 = MyAdZOne.this;
-                myAdZOne2.Inflate_FBNativeBannerADS(myAdZOne2.nativeAd1, MyAdZOne.fbNativeBanerLayout3);
+                fbNativeBanerLayout3.removeAllViews();
+                Inflate_FBNativeBannerADS(nativeAd1, fbNativeBanerLayout3);
             }
 
             @Override // com.facebook.ads.AdListener
             public void onError(Ad ad, AdError adError) {
-                Log.e(MyAdZOne.TAG, "onErrorfbnb3: ");
-                MyAdZOne.fbNativeBanerLayout3.removeAllViews();
-                MyAdZOne.fbNativeBanerLayout3 = null;
-                if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_Banner_AdsPriority.equalsIgnoreCase("facebook")) {
-                    MyAdZOne.this.LoadGoogleNativeSmall();
+                Log.e(TAG, "onErrorfbnb3: ");
+                fbNativeBanerLayout3.removeAllViews();
+                fbNativeBanerLayout3 = null;
+                if (AD_MOB_STATUS.equalsIgnoreCase("true") && app_Banner_AdsPriority.equalsIgnoreCase("facebook")) {
+                    LoadGoogleNativeSmall();
                 }
             }
 
             @Override // com.facebook.ads.AdListener
             public void onAdLoaded(Ad ad) {
-                if (MyAdZOne.this.nativeAd1 == null || MyAdZOne.this.nativeAd1 != ad) {
+                if (nativeAd1 == null || nativeAd1 != ad) {
                     return;
                 }
-                MyAdZOne.this.nativeAd1.downloadMedia();
+                nativeAd1.downloadMedia();
             }
 
             @Override // com.facebook.ads.AdListener
@@ -1075,7 +1116,7 @@ public class MyAdZOne {
         nativeBannerAd.registerViewForInteraction(view, nativeAdIconView, clickableViews);
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
+
     public void LoadGoogleNativeSmall() {
         if (AD_MOB_STATUS.equalsIgnoreCase("false")) {
             onlyCustBannerCallAD(activity);
@@ -1083,29 +1124,29 @@ public class MyAdZOne {
         }
         admobNativeBanerLayout = new RelativeLayout(activity);
         AdLoader.Builder builder = new AdLoader.Builder(activity, AD_MOB_APP_ID_NativeBanner1);
-        builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.MyAdZOne.10
+        builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
             @Override // com.google.android.gms.ads.nativead.NativeAd.OnNativeAdLoadedListener
             public void onNativeAdLoaded(NativeAd NativeAd) {
-                if (MyAdZOne.this.admobBannerNativeAd != null) {
-                    MyAdZOne.this.admobBannerNativeAd.destroy();
+                if (admobBannerNativeAd != null) {
+                    admobBannerNativeAd.destroy();
                 }
-                MyAdZOne.this.admobBannerNativeAd = NativeAd;
-                MyAdZOne.this.populateUnifiedNativeBannerAdView(NativeAd, MyAdZOne.admobNativeBanerLayout);
+                admobBannerNativeAd = NativeAd;
+                populateUnifiedNativeBannerAdView(NativeAd, admobNativeBanerLayout);
             }
         });
-        AdLoader adLoader = builder.withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.11
+        AdLoader adLoader = builder.withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.11
             @Override // com.google.android.gms.ads.AdListener
             public void onAdFailedToLoad(LoadAdError loadAdError) {
-                Log.e(MyAdZOne.TAG, "onAdFailedToLoadggnb1: ");
-                MyAdZOne.admobNativeBanerLayout.removeAllViews();
-                MyAdZOne.admobNativeBanerLayout = null;
-                MyAdZOne.this.LoadGoogleNativeSmall2();
+                Log.e(TAG, "onAdFailedToLoadggnb1: ");
+                admobNativeBanerLayout.removeAllViews();
+                admobNativeBanerLayout = null;
+                LoadGoogleNativeSmall2();
             }
         }).build();
         adLoader.loadAd(new AdRequest.Builder().build());
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
+
     public void LoadGoogleNativeSmall2() {
         if (AD_MOB_STATUS.equalsIgnoreCase("false")) {
             onlyCustBannerCallAD(activity);
@@ -1113,29 +1154,29 @@ public class MyAdZOne {
         }
         admobNativeBanerLayout2 = new RelativeLayout(activity);
         AdLoader.Builder builder = new AdLoader.Builder(activity, AD_MOB_APP_ID_NativeBanner2);
-        builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.MyAdZOne.12
+        builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.12
             @Override // com.google.android.gms.ads.nativead.NativeAd.OnNativeAdLoadedListener
             public void onNativeAdLoaded(NativeAd NativeAd) {
-                if (MyAdZOne.this.admobBannerNativeAd != null) {
-                    MyAdZOne.this.admobBannerNativeAd.destroy();
+                if (admobBannerNativeAd != null) {
+                    admobBannerNativeAd.destroy();
                 }
-                MyAdZOne.this.admobBannerNativeAd = NativeAd;
-                MyAdZOne.this.populateUnifiedNativeBannerAdView(NativeAd, MyAdZOne.admobNativeBanerLayout2);
+                admobBannerNativeAd = NativeAd;
+                populateUnifiedNativeBannerAdView(NativeAd, admobNativeBanerLayout2);
             }
         });
-        AdLoader adLoader = builder.withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.13
+        AdLoader adLoader = builder.withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.13
             @Override // com.google.android.gms.ads.AdListener
             public void onAdFailedToLoad(LoadAdError loadAdError) {
-                Log.e(MyAdZOne.TAG, "onAdFailedToLoadggnb2: ");
-                MyAdZOne.admobNativeBanerLayout2.removeAllViews();
-                MyAdZOne.admobNativeBanerLayout2 = null;
-                MyAdZOne.this.LoadGoogleNativeSmall3();
+                Log.e(TAG, "onAdFailedToLoadggnb2: ");
+                admobNativeBanerLayout2.removeAllViews();
+                admobNativeBanerLayout2 = null;
+                LoadGoogleNativeSmall3();
             }
         }).build();
         adLoader.loadAd(new AdRequest.Builder().build());
     }
 
-    /* JADX INFO: Access modifiers changed from: private */
+
     public void LoadGoogleNativeSmall3() {
         if (AD_MOB_STATUS.equalsIgnoreCase("false")) {
             onlyCustBannerCallAD(activity);
@@ -1143,23 +1184,23 @@ public class MyAdZOne {
         }
         admobNativeBanerLayout3 = new RelativeLayout(activity);
         AdLoader.Builder builder = new AdLoader.Builder(activity, AD_MOB_APP_ID_NativeBanner3);
-        builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.MyAdZOne.14
+        builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.14
             @Override // com.google.android.gms.ads.nativead.NativeAd.OnNativeAdLoadedListener
             public void onNativeAdLoaded(NativeAd NativeAd) {
-                if (MyAdZOne.this.admobBannerNativeAd != null) {
-                    MyAdZOne.this.admobBannerNativeAd.destroy();
+                if (admobBannerNativeAd != null) {
+                    admobBannerNativeAd.destroy();
                 }
-                MyAdZOne.this.admobBannerNativeAd = NativeAd;
-                MyAdZOne.this.populateUnifiedNativeBannerAdView(NativeAd, MyAdZOne.admobNativeBanerLayout3);
+                admobBannerNativeAd = NativeAd;
+                populateUnifiedNativeBannerAdView(NativeAd, admobNativeBanerLayout3);
             }
         });
-        AdLoader adLoader = builder.withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.15
+        AdLoader adLoader = builder.withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.15
             @Override // com.google.android.gms.ads.AdListener
             public void onAdFailedToLoad(LoadAdError loadAdError) {
-                MyAdZOne.admobNativeBanerLayout3.removeAllViews();
-                MyAdZOne.admobNativeBanerLayout3 = null;
-                if (MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_Banner_AdsPriority.equalsIgnoreCase("google")) {
-                    MyAdZOne.this.showNativeFacebookBanner();
+                admobNativeBanerLayout3.removeAllViews();
+                admobNativeBanerLayout3 = null;
+                if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_Banner_AdsPriority.equalsIgnoreCase("google")) {
+                    showNativeFacebookBanner();
                 }
             }
         }).build();
@@ -1406,29 +1447,27 @@ public class MyAdZOne {
             onlyCustNativeCallAD(activity);
             return;
         }
-        LinearLayout linearLayout = new LinearLayout(activity);
-        fbNativeNewLayout = linearLayout;
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        fbNativeNewLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        fbNativeNewLayout = new LinearLayout(activity);
+        fbNativeNewLayout.setOrientation(LinearLayout.VERTICAL);
+        fbNativeNewLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         final com.facebook.ads.NativeAd nativeAd = new com.facebook.ads.NativeAd(activity, FB_Native_ID1);
-        NativeAdListener nativeAdListener = new NativeAdListener() { // from class: com.luciada.modids.MyAdZOne.16
+        NativeAdListener nativeAdListener = new NativeAdListener() { // from class: com.luciada.modids.16
             @Override // com.facebook.ads.NativeAdListener
             public void onMediaDownloaded(Ad ad) {
             }
 
             @Override // com.facebook.ads.AdListener
             public void onError(Ad ad, AdError adError) {
-                MyAdZOne.fbNativeNewLayout = null;
-                MyAdZOne.this.showFacebookNativeNew2();
+                fbNativeNewLayout = null;
+                showFacebookNativeNew2();
             }
 
             @Override // com.facebook.ads.AdListener
             public void onAdLoaded(Ad ad) {
-                com.facebook.ads.NativeAd nativeAd2 = nativeAd;
-                if (nativeAd2 == null || nativeAd2 != ad) {
+                if (nativeAd == null || nativeAd != ad) {
                     return;
                 }
-                MyAdZOne.this.inflateFBNativeAd(nativeAd2, MyAdZOne.fbNativeNewLayout);
+                inflateFBNativeAd(nativeAd, fbNativeNewLayout);
             }
 
             @Override // com.facebook.ads.AdListener
@@ -1447,29 +1486,30 @@ public class MyAdZOne {
             onlyCustNativeCallAD(activity);
             return;
         }
-        LinearLayout linearLayout = new LinearLayout(activity);
-        fbNativeNewLayout2 = linearLayout;
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        fbNativeNewLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+
+        fbNativeNewLayout2 = new LinearLayout(activity);
+        fbNativeNewLayout2.setOrientation(LinearLayout.VERTICAL);
+        fbNativeNewLayout2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
         final com.facebook.ads.NativeAd nativeAd = new com.facebook.ads.NativeAd(activity, FB_Native_ID2);
-        NativeAdListener nativeAdListener = new NativeAdListener() { // from class: com.luciada.modids.MyAdZOne.17
+        NativeAdListener nativeAdListener = new NativeAdListener() { // from class: com.luciada.modids.17
             @Override // com.facebook.ads.NativeAdListener
             public void onMediaDownloaded(Ad ad) {
             }
 
             @Override // com.facebook.ads.AdListener
             public void onError(Ad ad, AdError adError) {
-                MyAdZOne.fbNativeNewLayout2 = null;
-                MyAdZOne.this.showFacebookNativeNew3();
+                fbNativeNewLayout2 = null;
+                showFacebookNativeNew3();
             }
 
             @Override // com.facebook.ads.AdListener
             public void onAdLoaded(Ad ad) {
-                com.facebook.ads.NativeAd nativeAd2 = nativeAd;
-                if (nativeAd2 == null || nativeAd2 != ad) {
+
+                if (nativeAd == null || nativeAd != ad) {
                     return;
                 }
-                MyAdZOne.this.inflateFBNativeAd(nativeAd2, MyAdZOne.fbNativeNewLayout2);
+                inflateFBNativeAd(nativeAd, fbNativeNewLayout2);
             }
 
             @Override // com.facebook.ads.AdListener
@@ -1488,29 +1528,29 @@ public class MyAdZOne {
             onlyCustNativeCallAD(activity);
             return;
         }
-        LinearLayout linearLayout = new LinearLayout(activity);
-        fbNativeNewLayout3 = linearLayout;
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        fbNativeNewLayout3.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+
+        fbNativeNewLayout3 = new LinearLayout(activity);
+        fbNativeNewLayout3.setOrientation(LinearLayout.VERTICAL);
+        fbNativeNewLayout3.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
         final com.facebook.ads.NativeAd nativeAd = new com.facebook.ads.NativeAd(activity, FB_Native_ID3);
-        NativeAdListener nativeAdListener = new NativeAdListener() { // from class: com.luciada.modids.MyAdZOne.18
+        NativeAdListener nativeAdListener = new NativeAdListener() { // from class: com.luciada.modids.18
             @Override // com.facebook.ads.NativeAdListener
             public void onMediaDownloaded(Ad ad) {
             }
 
             @Override // com.facebook.ads.AdListener
             public void onError(Ad ad, AdError adError) {
-                MyAdZOne.fbNativeNewLayout3 = null;
-                MyAdZOne.this.showFacebookNativeNew4();
+                fbNativeNewLayout3 = null;
+                showFacebookNativeNew4();
             }
 
             @Override // com.facebook.ads.AdListener
             public void onAdLoaded(Ad ad) {
-                com.facebook.ads.NativeAd nativeAd2 = nativeAd;
-                if (nativeAd2 == null || nativeAd2 != ad) {
+                if (nativeAd == null || nativeAd != ad) {
                     return;
                 }
-                MyAdZOne.this.inflateFBNativeAd(nativeAd2, MyAdZOne.fbNativeNewLayout3);
+                inflateFBNativeAd(nativeAd, fbNativeNewLayout3);
             }
 
             @Override // com.facebook.ads.AdListener
@@ -1529,31 +1569,31 @@ public class MyAdZOne {
             onlyCustNativeCallAD(activity);
             return;
         }
-        LinearLayout linearLayout = new LinearLayout(activity);
-        fbNativeNewLayout4 = linearLayout;
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        fbNativeNewLayout4.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+
+        fbNativeNewLayout4 = new LinearLayout(activity);
+        fbNativeNewLayout4.setOrientation(LinearLayout.VERTICAL);
+        fbNativeNewLayout4.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         final com.facebook.ads.NativeAd nativeAd = new com.facebook.ads.NativeAd(activity, FB_Native_ID4);
-        NativeAdListener nativeAdListener = new NativeAdListener() { // from class: com.luciada.modids.MyAdZOne.19
-            @Override // com.facebook.ads.NativeAdListener
+        NativeAdListener nativeAdListener = new NativeAdListener() { // from class: com.luciada.modids.19
+            @Override
             public void onMediaDownloaded(Ad ad) {
             }
 
-            @Override // com.facebook.ads.AdListener
+            @Override
             public void onError(Ad ad, AdError adError) {
-                MyAdZOne.fbNativeNewLayout4 = null;
-                if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_Native_AdsPriority.equalsIgnoreCase("facebook")) {
-                    MyAdZOne.this.LoadAdNativeNew();
+                fbNativeNewLayout4 = null;
+                if (AD_MOB_STATUS.equalsIgnoreCase("true") && app_Native_AdsPriority.equalsIgnoreCase("facebook")) {
+                    LoadAdNativeNew();
                 }
             }
 
-            @Override // com.facebook.ads.AdListener
+            @Override
             public void onAdLoaded(Ad ad) {
-                com.facebook.ads.NativeAd nativeAd2 = nativeAd;
-                if (nativeAd2 == null || nativeAd2 != ad) {
+
+                if (nativeAd == null || nativeAd != ad) {
                     return;
                 }
-                MyAdZOne.this.inflateFBNativeAd(nativeAd2, MyAdZOne.fbNativeNewLayout4);
+                inflateFBNativeAd(nativeAd, fbNativeNewLayout4);
             }
 
             @Override // com.facebook.ads.AdListener
@@ -1618,27 +1658,26 @@ public class MyAdZOne {
             onlyCustNativeCallAD(activity);
             return;
         }
-        LinearLayout linearLayout = new LinearLayout(activity);
-        admobNativeNewLayout = linearLayout;
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        admobNativeNewLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        admobNativeNewLayout = new LinearLayout(activity);
+        admobNativeNewLayout.setOrientation(LinearLayout.VERTICAL);
+        admobNativeNewLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         AdLoader.Builder builder = new AdLoader.Builder(activity, AD_MOB_APP_ID_Native1);
-        builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.MyAdZOne.20
-            @Override // com.google.android.gms.ads.nativead.NativeAd.OnNativeAdLoadedListener
+        builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.20
+            @Override
             public void onNativeAdLoaded(NativeAd NativeAd) {
-                if (MyAdZOne.this.admobNativeAd_preLoad != null) {
-                    MyAdZOne.this.admobNativeAd_preLoad.destroy();
+                if (admobNativeAd_preLoad != null) {
+                    admobNativeAd_preLoad.destroy();
                 }
-                MyAdZOne.this.admobNativeAd_preLoad = NativeAd;
-                MyAdZOne.this.populateUnifiedNativeAdView(NativeAd, MyAdZOne.admobNativeNewLayout);
+                admobNativeAd_preLoad = NativeAd;
+                populateUnifiedNativeAdView(NativeAd, admobNativeNewLayout);
             }
         });
-        AdLoader adLoader = builder.withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.21
+        AdLoader adLoader = builder.withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.21
             @Override // com.google.android.gms.ads.AdListener
             public void onAdFailedToLoad(LoadAdError loadAdError) {
-                MyAdZOne.admobNativeNewLayout.removeAllViews();
-                MyAdZOne.admobNativeNewLayout = null;
-                MyAdZOne.this.LoadAdNativeNew2();
+                admobNativeNewLayout.removeAllViews();
+                admobNativeNewLayout = null;
+                LoadAdNativeNew2();
             }
         }).build();
         adLoader.loadAd(new AdRequest.Builder().build());
@@ -1649,27 +1688,27 @@ public class MyAdZOne {
             onlyCustNativeCallAD(activity);
             return;
         }
-        LinearLayout linearLayout = new LinearLayout(activity);
-        admobNativeNewLayout2 = linearLayout;
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        admobNativeNewLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        admobNativeNewLayout2 = new LinearLayout(activity);
+        admobNativeNewLayout2.setOrientation(LinearLayout.VERTICAL);
+        admobNativeNewLayout2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
         AdLoader.Builder builder = new AdLoader.Builder(activity, AD_MOB_APP_ID_Native2);
-        builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.MyAdZOne.22
+        builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.22
             @Override // com.google.android.gms.ads.nativead.NativeAd.OnNativeAdLoadedListener
             public void onNativeAdLoaded(NativeAd NativeAd) {
-                if (MyAdZOne.this.admobNativeAd_preLoad != null) {
-                    MyAdZOne.this.admobNativeAd_preLoad.destroy();
+                if (admobNativeAd_preLoad != null) {
+                    admobNativeAd_preLoad.destroy();
                 }
-                MyAdZOne.this.admobNativeAd_preLoad = NativeAd;
-                MyAdZOne.this.populateUnifiedNativeAdView(NativeAd, MyAdZOne.admobNativeNewLayout2);
+                admobNativeAd_preLoad = NativeAd;
+                populateUnifiedNativeAdView(NativeAd, admobNativeNewLayout2);
             }
         });
-        AdLoader adLoader = builder.withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.23
+        AdLoader adLoader = builder.withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.23
             @Override // com.google.android.gms.ads.AdListener
             public void onAdFailedToLoad(LoadAdError loadAdError) {
-                MyAdZOne.admobNativeNewLayout2.removeAllViews();
-                MyAdZOne.admobNativeNewLayout2 = null;
-                MyAdZOne.this.LoadAdNativeNew3();
+                admobNativeNewLayout2.removeAllViews();
+                admobNativeNewLayout2 = null;
+                LoadAdNativeNew3();
             }
         }).build();
         adLoader.loadAd(new AdRequest.Builder().build());
@@ -1680,27 +1719,27 @@ public class MyAdZOne {
             onlyCustNativeCallAD(activity);
             return;
         }
-        LinearLayout linearLayout = new LinearLayout(activity);
-        admobNativeNewLayout3 = linearLayout;
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        admobNativeNewLayout3.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        admobNativeNewLayout3 = new LinearLayout(activity);
+        admobNativeNewLayout3.setOrientation(LinearLayout.VERTICAL);
+        admobNativeNewLayout3.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
         AdLoader.Builder builder = new AdLoader.Builder(activity, AD_MOB_APP_ID_Native3);
-        builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.MyAdZOne.24
-            @Override // com.google.android.gms.ads.nativead.NativeAd.OnNativeAdLoadedListener
+        builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
+            @Override
             public void onNativeAdLoaded(NativeAd NativeAd) {
-                if (MyAdZOne.this.admobNativeAd_preLoad != null) {
-                    MyAdZOne.this.admobNativeAd_preLoad.destroy();
+                if (admobNativeAd_preLoad != null) {
+                    admobNativeAd_preLoad.destroy();
                 }
-                MyAdZOne.this.admobNativeAd_preLoad = NativeAd;
-                MyAdZOne.this.populateUnifiedNativeAdView(NativeAd, MyAdZOne.admobNativeNewLayout3);
+                admobNativeAd_preLoad = NativeAd;
+                populateUnifiedNativeAdView(NativeAd, admobNativeNewLayout3);
             }
         });
-        AdLoader adLoader = builder.withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.25
+        AdLoader adLoader = builder.withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.25
             @Override // com.google.android.gms.ads.AdListener
             public void onAdFailedToLoad(LoadAdError loadAdError) {
-                MyAdZOne.admobNativeNewLayout3.removeAllViews();
-                MyAdZOne.admobNativeNewLayout3 = null;
-                MyAdZOne.this.LoadAdNativeNew4();
+                admobNativeNewLayout3.removeAllViews();
+                admobNativeNewLayout3 = null;
+                LoadAdNativeNew4();
             }
         }).build();
         adLoader.loadAd(new AdRequest.Builder().build());
@@ -1711,28 +1750,27 @@ public class MyAdZOne {
             onlyCustNativeCallAD(activity);
             return;
         }
-        LinearLayout linearLayout = new LinearLayout(activity);
-        admobNativeNewLayout4 = linearLayout;
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        admobNativeNewLayout4.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+        admobNativeNewLayout4 = new LinearLayout(activity);
+        admobNativeNewLayout4.setOrientation(LinearLayout.VERTICAL);
+        admobNativeNewLayout4.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         AdLoader.Builder builder = new AdLoader.Builder(activity, AD_MOB_APP_ID_Native4);
-        builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.MyAdZOne.26
+        builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.26
             @Override // com.google.android.gms.ads.nativead.NativeAd.OnNativeAdLoadedListener
             public void onNativeAdLoaded(NativeAd NativeAd) {
-                if (MyAdZOne.this.admobNativeAd_preLoad != null) {
-                    MyAdZOne.this.admobNativeAd_preLoad.destroy();
+                if (admobNativeAd_preLoad != null) {
+                    admobNativeAd_preLoad.destroy();
                 }
-                MyAdZOne.this.admobNativeAd_preLoad = NativeAd;
-                MyAdZOne.this.populateUnifiedNativeAdView(NativeAd, MyAdZOne.admobNativeNewLayout4);
+                admobNativeAd_preLoad = NativeAd;
+                populateUnifiedNativeAdView(NativeAd, admobNativeNewLayout4);
             }
         });
-        AdLoader adLoader = builder.withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.27
+        AdLoader adLoader = builder.withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.27
             @Override // com.google.android.gms.ads.AdListener
             public void onAdFailedToLoad(LoadAdError loadAdError) {
-                MyAdZOne.admobNativeNewLayout4.removeAllViews();
-                MyAdZOne.admobNativeNewLayout4 = null;
-                if (MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_Native_AdsPriority.equalsIgnoreCase("google")) {
-                    MyAdZOne.this.showFacebookNativeNew();
+                admobNativeNewLayout4.removeAllViews();
+                admobNativeNewLayout4 = null;
+                if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_Native_AdsPriority.equalsIgnoreCase("google")) {
+                    showFacebookNativeNew();
                 }
             }
         }).build();
@@ -1839,26 +1877,25 @@ public class MyAdZOne {
             showAdmobNative(nativeAdContainer, AD_MOB_APP_ID_Native1);
             return;
         }
-        com.facebook.ads.NativeAd nativeAd = this.fbNativeAd_preLoad;
-        if (nativeAd == null) {
+
+        if (fbNativeAd_preLoad == null) {
             final com.facebook.ads.NativeAd nativeAd2 = new com.facebook.ads.NativeAd(activity, facebook_n1);
-            nativeAd2.loadAd(nativeAd2.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.MyAdZOne.28
+            nativeAd2.loadAd(nativeAd2.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.28
                 @Override // com.facebook.ads.NativeAdListener
                 public void onMediaDownloaded(Ad ad) {
                 }
 
                 @Override // com.facebook.ads.AdListener
                 public void onError(Ad ad, AdError adError) {
-                    MyAdZOne.this.showFacebookNative2(nativeAdContainer, MyAdZOne.FB_Native_ID2);
+                    showFacebookNative2(nativeAdContainer, FB_Native_ID2);
                 }
 
                 @Override // com.facebook.ads.AdListener
                 public void onAdLoaded(Ad ad) {
-                    com.facebook.ads.NativeAd nativeAd3 = nativeAd2;
-                    if (nativeAd3 == null || nativeAd3 != ad) {
+                    if (nativeAd2 == null || nativeAd2 != ad) {
                         return;
                     }
-                    MyAdZOne.this.inflate_NATIV_FB(nativeAd3, nativeAdContainer, facebook_n1);
+                    inflate_NATIV_FB(nativeAd2, nativeAdContainer, facebook_n1);
                 }
 
                 @Override // com.facebook.ads.AdListener
@@ -1872,7 +1909,7 @@ public class MyAdZOne {
             return;
         }
         state_fbNative = "Start";
-        inflate_NATIV_FB(nativeAd, nativeAdContainer, facebook_n1);
+        inflate_NATIV_FB(fbNativeAd_preLoad, nativeAdContainer, facebook_n1);
     }
 
     public void showFacebookNative2(final ViewGroup nativeAdContainer, final String facebook_n2) {
@@ -1880,26 +1917,25 @@ public class MyAdZOne {
             showAdmobNative(nativeAdContainer, AD_MOB_APP_ID_Native1);
             return;
         }
-        com.facebook.ads.NativeAd nativeAd = this.fbNativeAd_preLoad;
-        if (nativeAd == null) {
+
+        if (fbNativeAd_preLoad == null) {
             final com.facebook.ads.NativeAd nativeAd2 = new com.facebook.ads.NativeAd(activity, facebook_n2);
-            nativeAd2.loadAd(nativeAd2.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.MyAdZOne.29
+            nativeAd2.loadAd(nativeAd2.buildLoadAdConfig().withAdListener(new NativeAdListener() {
                 @Override // com.facebook.ads.NativeAdListener
                 public void onMediaDownloaded(Ad ad) {
                 }
 
                 @Override // com.facebook.ads.AdListener
                 public void onError(Ad ad, AdError adError) {
-                    MyAdZOne.this.showFacebookNative3(nativeAdContainer, MyAdZOne.FB_Native_ID3);
+                    showFacebookNative3(nativeAdContainer, FB_Native_ID3);
                 }
 
                 @Override // com.facebook.ads.AdListener
                 public void onAdLoaded(Ad ad) {
-                    com.facebook.ads.NativeAd nativeAd3 = nativeAd2;
-                    if (nativeAd3 == null || nativeAd3 != ad) {
+                    if (nativeAd2 == null || nativeAd2 != ad) {
                         return;
                     }
-                    MyAdZOne.this.inflate_NATIV_FB(nativeAd3, nativeAdContainer, facebook_n2);
+                    inflate_NATIV_FB(nativeAd2, nativeAdContainer, facebook_n2);
                 }
 
                 @Override // com.facebook.ads.AdListener
@@ -1913,81 +1949,82 @@ public class MyAdZOne {
             return;
         }
         state_fbNative = "Start";
-        inflate_NATIV_FB(nativeAd, nativeAdContainer, facebook_n2);
+        inflate_NATIV_FB(fbNativeAd_preLoad, nativeAdContainer, facebook_n2);
     }
 
     public void showFacebookNative3(final ViewGroup nativeAdContainer, final String facebook_n3) {
         if (FACEBOOK_AD_STATUS.equalsIgnoreCase("false")) {
             showAdmobNative(nativeAdContainer, AD_MOB_APP_ID_Native1);
-        } else if (this.fbNativeAd_preLoad == null) {
-            Log.e(TAG, "showFacebookNative3IF: ");
-            final com.facebook.ads.NativeAd nativeAd = new com.facebook.ads.NativeAd(activity, facebook_n3);
-            nativeAd.loadAd(nativeAd.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.MyAdZOne.30
+            return;
+        }
+
+        if (fbNativeAd_preLoad == null) {
+            final com.facebook.ads.NativeAd nativeAd2 = new com.facebook.ads.NativeAd(activity, facebook_n3);
+            nativeAd2.loadAd(nativeAd2.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.30
                 @Override // com.facebook.ads.NativeAdListener
                 public void onMediaDownloaded(Ad ad) {
-                    Log.e(MyAdZOne.TAG, "onMediaDownloaded: ");
+                    Log.e(TAG, "onMediaDownloaded: ");
                 }
 
                 @Override // com.facebook.ads.AdListener
                 public void onError(Ad ad, AdError adError) {
-                    Log.e(MyAdZOne.TAG, "onError: ");
-                    MyAdZOne.this.showFacebookNative4(nativeAdContainer, MyAdZOne.FB_Native_ID4);
+                    Log.e(TAG, "onError: ");
+                    showFacebookNative4(nativeAdContainer, FB_Native_ID4);
                 }
 
                 @Override // com.facebook.ads.AdListener
                 public void onAdLoaded(Ad ad) {
-                    Log.e(MyAdZOne.TAG, "onAdLoaded: ");
-                    com.facebook.ads.NativeAd nativeAd2 = nativeAd;
+                    Log.e(TAG, "onAdLoaded: ");
                     if (nativeAd2 == null || nativeAd2 != ad) {
                         return;
                     }
-                    MyAdZOne.this.inflate_NATIV_FB(nativeAd2, nativeAdContainer, facebook_n3);
+                    inflate_NATIV_FB(nativeAd2, nativeAdContainer, facebook_n3);
                 }
 
                 @Override // com.facebook.ads.AdListener
                 public void onAdClicked(Ad ad) {
-                    Log.e(MyAdZOne.TAG, "onAdClicked: ");
+                    Log.e(TAG, "onAdClicked: ");
                 }
 
                 @Override // com.facebook.ads.AdListener
                 public void onLoggingImpression(Ad ad) {
-                    Log.e(MyAdZOne.TAG, "onLoggingImpression: ");
+                    Log.e(TAG, "onLoggingImpression: ");
                 }
             }).build());
         } else {
-            Log.e(TAG, "showFacebookNative3else: ");
             state_fbNative = "Start";
-            inflate_NATIV_FB(this.fbNativeAd_preLoad, nativeAdContainer, facebook_n3);
+            inflate_NATIV_FB(fbNativeAd_preLoad, nativeAdContainer, facebook_n3);
         }
     }
 
     public void showFacebookNative4(final ViewGroup nativeAdContainer, final String facebook_n4) {
+
         if (FACEBOOK_AD_STATUS.equalsIgnoreCase("false")) {
             showAdmobNative(nativeAdContainer, AD_MOB_APP_ID_Native1);
             return;
         }
-        com.facebook.ads.NativeAd nativeAd = this.fbNativeAd_preLoad;
-        if (nativeAd == null) {
+
+
+        if (fbNativeAd_preLoad == null) {
             final com.facebook.ads.NativeAd nativeAd2 = new com.facebook.ads.NativeAd(activity, facebook_n4);
-            nativeAd2.loadAd(nativeAd2.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.MyAdZOne.31
+            nativeAd2.loadAd(nativeAd2.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.31
                 @Override // com.facebook.ads.NativeAdListener
                 public void onMediaDownloaded(Ad ad) {
                 }
 
                 @Override // com.facebook.ads.AdListener
                 public void onError(Ad ad, AdError adError) {
-                    if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_Native_AdsPriority.equalsIgnoreCase("facebook")) {
-                        MyAdZOne.this.showAdmobNative(nativeAdContainer, MyAdZOne.AD_MOB_APP_ID_Native1);
+                    if (AD_MOB_STATUS.equalsIgnoreCase("true") && app_Native_AdsPriority.equalsIgnoreCase("facebook")) {
+                        showAdmobNative(nativeAdContainer, AD_MOB_APP_ID_Native1);
                     }
                 }
 
                 @Override // com.facebook.ads.AdListener
                 public void onAdLoaded(Ad ad) {
-                    com.facebook.ads.NativeAd nativeAd3 = nativeAd2;
-                    if (nativeAd3 == null || nativeAd3 != ad) {
+                    if (nativeAd2 == null || nativeAd2 != ad) {
                         return;
                     }
-                    MyAdZOne.this.inflate_NATIV_FB(nativeAd3, nativeAdContainer, facebook_n4);
+                    inflate_NATIV_FB(nativeAd2, nativeAdContainer, facebook_n4);
                 }
 
                 @Override // com.facebook.ads.AdListener
@@ -2001,7 +2038,7 @@ public class MyAdZOne {
             return;
         }
         state_fbNative = "Start";
-        inflate_NATIV_FB(nativeAd, nativeAdContainer, facebook_n4);
+        inflate_NATIV_FB(fbNativeAd_preLoad, nativeAdContainer, facebook_n4);
     }
 
     public void inflate_NATIV_FB(com.facebook.ads.NativeAd nativeAd, final ViewGroup card, final String facebook_n) {
@@ -2054,41 +2091,40 @@ public class MyAdZOne {
             }
             state_fbNative = "Loading";
             final com.facebook.ads.NativeAd nativeAd1 = new com.facebook.ads.NativeAd(activity, facebook_n);
-            nativeAd1.loadAd(nativeAd1.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.MyAdZOne.32
+            nativeAd1.loadAd(nativeAd1.buildLoadAdConfig().withAdListener(new NativeAdListener() { // from class: com.luciada.modids.32
                 @Override // com.facebook.ads.NativeAdListener
                 public void onMediaDownloaded(Ad ad) {
-                    Log.e(MyAdZOne.TAG, "onMediaDownloadedinflate: ");
+                    Log.e(TAG, "onMediaDownloadedinflate: ");
                 }
 
                 @Override // com.facebook.ads.AdListener
                 public void onError(Ad ad, AdError adError) {
-                    Log.e(MyAdZOne.TAG, "onErrorinflate: ");
-                    MyAdZOne.state_fbNative = "Fail";
-                    MyAdZOne.this.fbNativeAd_preLoad = null;
-                    MyAdZOne.this.showFacebookNative(card, facebook_n);
+                    Log.e(TAG, "onErrorinflate: ");
+                    state_fbNative = "Fail";
+                    fbNativeAd_preLoad = null;
+                    showFacebookNative(card, facebook_n);
                 }
 
                 @Override // com.facebook.ads.AdListener
                 public void onAdLoaded(Ad ad) {
-                    Log.e(MyAdZOne.TAG, "onAdLoadedinflate: ");
-                    com.facebook.ads.NativeAd nativeAd2 = nativeAd1;
-                    if (nativeAd2 == null || nativeAd2 != ad) {
-                        Log.e(MyAdZOne.TAG, "onAdLoadedIFinflate: ");
+                    Log.e(TAG, "onAdLoadedinflate: ");
+                    if (nativeAd1 == null || nativeAd1 != ad) {
+                        Log.e(TAG, "onAdLoadedIFinflate: ");
                         return;
                     }
-                    MyAdZOne.this.fbNativeAd_preLoad = null;
-                    MyAdZOne.this.fbNativeAd_preLoad = nativeAd1;
-                    MyAdZOne.state_fbNative = "Loaded";
+                    fbNativeAd_preLoad = null;
+                    fbNativeAd_preLoad = nativeAd1;
+                    state_fbNative = "Loaded";
                 }
 
                 @Override // com.facebook.ads.AdListener
                 public void onAdClicked(Ad ad) {
-                    Log.e(MyAdZOne.TAG, "onAdClickedinflate: ");
+                    Log.e(TAG, "onAdClickedinflate: ");
                 }
 
                 @Override // com.facebook.ads.AdListener
                 public void onLoggingImpression(Ad ad) {
-                    Log.e(MyAdZOne.TAG, "onLoggingImpressioninflate: ");
+                    Log.e(TAG, "onLoggingImpressioninflate: ");
                 }
             }).build());
             return;
@@ -2101,27 +2137,27 @@ public class MyAdZOne {
             onlyCustNativeCallAD(activity);
             return;
         }
-        NativeAd nativeAd = this.admobNativeAd_preLoad;
-        if (nativeAd == null) {
+
+        if (admobNativeAd_preLoad == null) {
             Log.e(TAG, "showAdmobNativePreloadIF: ");
-            AdLoader adLoader = new AdLoader.Builder(activity, admob_native1).forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.MyAdZOne.34
+            AdLoader adLoader = new AdLoader.Builder(activity, admob_native1).forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.34
                 @Override // com.google.android.gms.ads.nativead.NativeAd.OnNativeAdLoadedListener
                 public void onNativeAdLoaded(NativeAd nativeAd2) {
-                    Log.e(MyAdZOne.TAG, "onNativeAdLoaded0condition::");
-                    MyAdZOne.this.inflate_NATIV_ADMOB(nativeAd2, nativeAdContainer, admob_native1);
+                    Log.e(TAG, "onNativeAdLoaded0condition::");
+                    inflate_NATIV_ADMOB(nativeAd2, nativeAdContainer, admob_native1);
                 }
-            }).withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.33
+            }).withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.33
                 @Override // com.google.android.gms.ads.AdListener
                 public void onAdFailedToLoad(LoadAdError adError) {
-                    Log.e(MyAdZOne.TAG, "onAdFailedToLoad0condition:: ");
-                    MyAdZOne.this.showAdmobNative2(nativeAdContainer, MyAdZOne.AD_MOB_APP_ID_Native2);
+                    Log.e(TAG, "onAdFailedToLoad0condition:: ");
+                    showAdmobNative2(nativeAdContainer, AD_MOB_APP_ID_Native2);
                 }
             }).withNativeAdOptions(new NativeAdOptions.Builder().build()).build();
             adLoader.loadAd(new AdRequest.Builder().build());
             return;
         }
         state_admobNative = "Start";
-        inflate_NATIV_ADMOB(nativeAd, nativeAdContainer, admob_native1);
+        inflate_NATIV_ADMOB(admobNativeAd_preLoad, nativeAdContainer, admob_native1);
     }
 
     public void showAdmobNative2(final ViewGroup nativeAdContainer, final String admob_native2) {
@@ -2130,26 +2166,26 @@ public class MyAdZOne {
             onlyCustNativeCallAD(activity);
             return;
         }
-        NativeAd nativeAd = this.admobNativeAd_preLoad;
-        if (nativeAd == null) {
-            AdLoader adLoader = new AdLoader.Builder(activity, admob_native2).forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.MyAdZOne.36
+
+        if (admobNativeAd_preLoad == null) {
+            AdLoader adLoader = new AdLoader.Builder(activity, admob_native2).forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.36
                 @Override // com.google.android.gms.ads.nativead.NativeAd.OnNativeAdLoadedListener
                 public void onNativeAdLoaded(NativeAd nativeAd2) {
-                    Log.e(MyAdZOne.TAG, "onNativeAdLoaded0condition2::");
-                    MyAdZOne.this.inflate_NATIV_ADMOB(nativeAd2, nativeAdContainer, admob_native2);
+                    Log.e(TAG, "onNativeAdLoaded0condition2::");
+                    inflate_NATIV_ADMOB(nativeAd2, nativeAdContainer, admob_native2);
                 }
-            }).withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.35
+            }).withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.35
                 @Override // com.google.android.gms.ads.AdListener
                 public void onAdFailedToLoad(LoadAdError adError) {
-                    Log.e(MyAdZOne.TAG, "onAdFailedToLoad0condition2:: ");
-                    MyAdZOne.this.showAdmobNative3(nativeAdContainer, MyAdZOne.AD_MOB_APP_ID_Native3);
+                    Log.e(TAG, "onAdFailedToLoad0condition2:: ");
+                    showAdmobNative3(nativeAdContainer, AD_MOB_APP_ID_Native3);
                 }
             }).withNativeAdOptions(new NativeAdOptions.Builder().build()).build();
             adLoader.loadAd(new AdRequest.Builder().build());
             return;
         }
         state_admobNative = "Start";
-        inflate_NATIV_ADMOB(nativeAd, nativeAdContainer, admob_native2);
+        inflate_NATIV_ADMOB(admobNativeAd_preLoad, nativeAdContainer, admob_native2);
     }
 
     public void showAdmobNative3(final ViewGroup nativeAdContainer, final String admob_native3) {
@@ -2157,27 +2193,27 @@ public class MyAdZOne {
             onlyCustNativeCallAD(activity);
             return;
         }
-        NativeAd nativeAd = this.admobNativeAd_preLoad;
-        if (nativeAd == null) {
+
+        if (admobNativeAd_preLoad == null) {
             Log.e(TAG, "showAdmobNative3PreloadIF3: ");
-            AdLoader adLoader = new AdLoader.Builder(activity, admob_native3).forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.MyAdZOne.38
+            AdLoader adLoader = new AdLoader.Builder(activity, admob_native3).forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.38
                 @Override // com.google.android.gms.ads.nativead.NativeAd.OnNativeAdLoadedListener
                 public void onNativeAdLoaded(NativeAd nativeAd2) {
-                    Log.e(MyAdZOne.TAG, "onNativeAdLoaded0condition3::");
-                    MyAdZOne.this.inflate_NATIV_ADMOB(nativeAd2, nativeAdContainer, admob_native3);
+                    Log.e(TAG, "onNativeAdLoaded0condition3::");
+                    inflate_NATIV_ADMOB(nativeAd2, nativeAdContainer, admob_native3);
                 }
-            }).withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.37
+            }).withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.37
                 @Override // com.google.android.gms.ads.AdListener
                 public void onAdFailedToLoad(LoadAdError adError) {
-                    Log.e(MyAdZOne.TAG, "onAdFailedToLoad0condition3:: ");
-                    MyAdZOne.this.showAdmobNative4(nativeAdContainer, MyAdZOne.AD_MOB_APP_ID_Native4);
+                    Log.e(TAG, "onAdFailedToLoad0condition3:: ");
+                    showAdmobNative4(nativeAdContainer, AD_MOB_APP_ID_Native4);
                 }
             }).withNativeAdOptions(new NativeAdOptions.Builder().build()).build();
             adLoader.loadAd(new AdRequest.Builder().build());
             return;
         }
         state_admobNative = "Start";
-        inflate_NATIV_ADMOB(nativeAd, nativeAdContainer, admob_native3);
+        inflate_NATIV_ADMOB(admobNativeAd_preLoad, nativeAdContainer, admob_native3);
     }
 
     public void showAdmobNative4(final ViewGroup nativeAdContainer, final String admob_native4) {
@@ -2185,21 +2221,21 @@ public class MyAdZOne {
             onlyCustNativeCallAD(activity);
             return;
         }
-        NativeAd nativeAd = this.admobNativeAd_preLoad;
-        if (nativeAd == null) {
+
+        if (admobNativeAd_preLoad == null) {
             Log.e(TAG, "showAdmobNative4PreloadIF4: ");
-            AdLoader adLoader = new AdLoader.Builder(activity, admob_native4).forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.MyAdZOne.40
+            AdLoader adLoader = new AdLoader.Builder(activity, admob_native4).forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.40
                 @Override // com.google.android.gms.ads.nativead.NativeAd.OnNativeAdLoadedListener
                 public void onNativeAdLoaded(NativeAd nativeAd2) {
-                    Log.e(MyAdZOne.TAG, "3onNativeAdLoaded0condition4::");
-                    MyAdZOne.this.inflate_NATIV_ADMOB(nativeAd2, nativeAdContainer, admob_native4);
+                    Log.e(TAG, "3onNativeAdLoaded0condition4::");
+                    inflate_NATIV_ADMOB(nativeAd2, nativeAdContainer, admob_native4);
                 }
-            }).withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.39
+            }).withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.39
                 @Override // com.google.android.gms.ads.AdListener
                 public void onAdFailedToLoad(LoadAdError adError) {
-                    Log.e(MyAdZOne.TAG, "onAdFailedToLoad0condition4:: ");
-                    if (MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_Native_AdsPriority.equalsIgnoreCase("google")) {
-                        MyAdZOne.this.showFacebookNative(nativeAdContainer, MyAdZOne.FB_Native_ID1);
+                    Log.e(TAG, "onAdFailedToLoad0condition4:: ");
+                    if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_Native_AdsPriority.equalsIgnoreCase("google")) {
+                        showFacebookNative(nativeAdContainer, FB_Native_ID1);
                     }
                 }
             }).withNativeAdOptions(new NativeAdOptions.Builder().build()).build();
@@ -2207,7 +2243,7 @@ public class MyAdZOne {
             return;
         }
         state_admobNative = "Start";
-        inflate_NATIV_ADMOB(nativeAd, nativeAdContainer, admob_native4);
+        inflate_NATIV_ADMOB(admobNativeAd_preLoad, nativeAdContainer, admob_native4);
     }
 
     public void inflate_NATIV_ADMOB(NativeAd nativeAd, final ViewGroup nativeAdContainer, final String admob_native) {
@@ -2290,20 +2326,20 @@ public class MyAdZOne {
                 return;
             }
             state_admobNative = "Loading";
-            AdLoader adLoader = new AdLoader.Builder(activity, admob_native).forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.MyAdZOne.42
+            AdLoader adLoader = new AdLoader.Builder(activity, admob_native).forNativeAd(new NativeAd.OnNativeAdLoadedListener() { // from class: com.luciada.modids.42
                 @Override // com.google.android.gms.ads.nativead.NativeAd.OnNativeAdLoadedListener
                 public void onNativeAdLoaded(NativeAd nativeAd2) {
-                    Log.e(MyAdZOne.TAG, "MainonNativeAdLoaded: ");
-                    MyAdZOne.this.admobNativeAd_preLoad = null;
-                    MyAdZOne.this.admobNativeAd_preLoad = nativeAd2;
-                    MyAdZOne.state_admobNative = "Loaded";
+                    Log.e(TAG, "MainonNativeAdLoaded: ");
+                    admobNativeAd_preLoad = null;
+                    admobNativeAd_preLoad = nativeAd2;
+                    state_admobNative = "Loaded";
                 }
-            }).withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.MyAdZOne.41
+            }).withAdListener(new com.google.android.gms.ads.AdListener() { // from class: com.luciada.modids.41
                 @Override // com.google.android.gms.ads.AdListener
                 public void onAdFailedToLoad(LoadAdError adError) {
-                    MyAdZOne.this.admobNativeAd_preLoad = null;
-                    MyAdZOne.state_admobNative = "Fail";
-                    MyAdZOne.this.showAdmobNative(nativeAdContainer, admob_native);
+                    admobNativeAd_preLoad = null;
+                    state_admobNative = "Fail";
+                    showAdmobNative(nativeAdContainer, admob_native);
                 }
             }).withNativeAdOptions(new NativeAdOptions.Builder().build()).build();
             adLoader.loadAd(new AdRequest.Builder().build());
@@ -2358,349 +2394,377 @@ public class MyAdZOne {
     public void displayInterstitialAd(final Activity context) {
 
         this.dialog = new Dialog(context);
-        View view = LayoutInflater.from(context).inflate(R.layout.ad_loading_progress_dialog, (ViewGroup) null);
+        View view = LayoutInflater.from(context).inflate(R.layout.ad_loading_progress_dialog, null);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        this.dialog.setContentView(view);
-        this.dialog.setCancelable(false);
-        this.dialog.getWindow();
+        dialog.setContentView(view);
+        dialog.setCancelable(false);
+        //  dialog.getWindow();
+        Window window = dialog.getWindow();
+
         if (app_AdsPriority.equalsIgnoreCase("google")) {
             if (AD_MOB_STATUS.equalsIgnoreCase("true") && mInterstitialAd != null) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10L) { // from class: com.luciada.modids.MyAdZOne.43
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) {
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            MyAdZOne.this.mInterstitialAd.show(context);
+                            dialog.dismiss();
+                            mInterstitialAd.show((Activity) context);
                         }
                     }.start();
-                    return;
+                    //  return;
+                } else {
+                    mInterstitialAd.show((Activity) context);
                 }
-                mInterstitialAd.show(context);
-            } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && this.fbinterstitialAd1.isAdLoaded()) {
+            } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && fbinterstitialAd1.isAdLoaded()) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 100L) { // from class: com.luciada.modids.MyAdZOne.44
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.44
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            MyAdZOne.this.fbinterstitialAd1.show();
+                            dialog.dismiss();
+                            fbinterstitialAd1.show();
                         }
                     }.start();
-                    return;
+                    // return;
+                } else {
+                    fbinterstitialAd1.show();
                 }
-                this.fbinterstitialAd1.show();
-            } else if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && this.maxInterstitialAd.isReady()) {
+
+            } else if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && maxInterstitialAd.isReady()) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 100L) { // from class: com.luciada.modids.MyAdZOne.45
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.45
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            MyAdZOne.this.maxInterstitialAd.showAd();
+                            dialog.dismiss();
+                            maxInterstitialAd.showAd();
                         }
                     }.start();
-                    return;
+                    // return;
+                } else {
+                    maxInterstitialAd.showAd();
                 }
-                this.maxInterstitialAd.showAd();
+
             } else if (UNITY_ADS_STATUS.equalsIgnoreCase("true") && showListener != null) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 100L) { // from class: com.luciada.modids.MyAdZOne.46
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.46
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            UnityAds.show(MyAdZOne.activity, MyAdZOne.this.unity_i_pre, MyAdZOne.this.showListener);
+                            dialog.dismiss();
+                            UnityAds.show(activity, unity_i_pre, showListener);
                         }
                     }.start();
-                    return;
+                    //  return;
+                } else {
+                    UnityAds.show(activity, unity_i_pre, showListener);
                 }
-                UnityAds.show(activity, this.unity_i_pre, showListener);
             } else {
-                if (!this.google_i_pre.isEmpty()) {
-                    loadAdmobInterstitial(context, this.google_i_pre);
+                if (!google_i_pre.isEmpty()) {
+                    loadAdmobInterstitial(context, google_i_pre);
                 }
                 nextInterstitialPlatform();
             }
         } else if (app_AdsPriority.equalsIgnoreCase("facebook")) {
-            if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && this.fbinterstitialAd1.isAdLoaded()) {
+            if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && fbinterstitialAd1.isAdLoaded()) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 100L) { // from class: com.luciada.modids.MyAdZOne.47
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.47
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            MyAdZOne.this.fbinterstitialAd1.show();
+                            dialog.dismiss();
+                            fbinterstitialAd1.show();
                         }
                     }.start();
-                    return;
+                  //  return;
+                }else{
+                    fbinterstitialAd1.show();
                 }
-                this.fbinterstitialAd1.show();
+
             } else if (AD_MOB_STATUS.equalsIgnoreCase("true") && mInterstitialAd != null) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10L) { // from class: com.luciada.modids.MyAdZOne.48
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.48
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            MyAdZOne.this.mInterstitialAd.show(context);
+                            dialog.dismiss();
+                            mInterstitialAd.show(context);
                         }
                     }.start();
-                    return;
+                   // return;
+                }else{
+                    mInterstitialAd.show(context);
                 }
-                mInterstitialAd.show(context);
-            } else if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && this.maxInterstitialAd.isReady()) {
+
+            } else if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && maxInterstitialAd.isReady()) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 100L) { // from class: com.luciada.modids.MyAdZOne.49
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.49
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            MyAdZOne.this.maxInterstitialAd.showAd();
+                            dialog.dismiss();
+                            maxInterstitialAd.showAd();
                         }
                     }.start();
-                    return;
+                  //  return;
+                }else {
+                    maxInterstitialAd.showAd();
                 }
-                this.maxInterstitialAd.showAd();
             } else if (UNITY_ADS_STATUS.equalsIgnoreCase("true") && showListener != null) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 100L) { // from class: com.luciada.modids.MyAdZOne.50
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.50
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            UnityAds.show(MyAdZOne.activity, MyAdZOne.this.unity_i_pre, MyAdZOne.this.showListener);
+                            dialog.dismiss();
+                            UnityAds.show(activity, unity_i_pre, showListener);
                         }
                     }.start();
-                    return;
+                   // return;
+                }else {
+                    UnityAds.show(activity, unity_i_pre, showListener);
                 }
-                UnityAds.show(activity, this.unity_i_pre, showListener);
             } else {
-                if (!this.facebook_i_pre.isEmpty()) {
-                    loadFacebookInterstitial(context, this.facebook_i_pre);
+                if (!facebook_i_pre.isEmpty()) {
+                    loadFacebookInterstitial(context, facebook_i_pre);
                 }
                 nextInterstitialPlatform();
             }
         } else if (app_AdsPriority.equalsIgnoreCase("applovin")) {
-            if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && this.maxInterstitialAd.isReady()) {
+            if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && maxInterstitialAd.isReady()) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 100L) { // from class: com.luciada.modids.MyAdZOne.51
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.51
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            MyAdZOne.this.maxInterstitialAd.showAd();
+                            dialog.dismiss();
+                            maxInterstitialAd.showAd();
                         }
                     }.start();
-                    return;
+                   // return;
+                }else{
+                    maxInterstitialAd.showAd();
                 }
-                this.maxInterstitialAd.showAd();
             } else if (AD_MOB_STATUS.equalsIgnoreCase("true") && mInterstitialAd != null) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10L) { // from class: com.luciada.modids.MyAdZOne.52
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.52
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            MyAdZOne.this.mInterstitialAd.show(context);
+                            dialog.dismiss();
+                            mInterstitialAd.show(context);
                         }
                     }.start();
-                    return;
+                  //  return;
+                }else{
+                    mInterstitialAd.show(context);
                 }
-                mInterstitialAd.show(context);
-            } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && this.fbinterstitialAd1.isAdLoaded()) {
+            } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && fbinterstitialAd1.isAdLoaded()) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 100L) { // from class: com.luciada.modids.MyAdZOne.53
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.53
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            MyAdZOne.this.fbinterstitialAd1.show();
+                            dialog.dismiss();
+                            fbinterstitialAd1.show();
                         }
                     }.start();
-                    return;
+                 //   return;
+                }else{
+                    fbinterstitialAd1.show();
+
                 }
-                this.fbinterstitialAd1.show();
             } else if (UNITY_ADS_STATUS.equalsIgnoreCase("true") && showListener != null) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 100L) { // from class: com.luciada.modids.MyAdZOne.54
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.54
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            UnityAds.show(MyAdZOne.activity, MyAdZOne.this.unity_i_pre, MyAdZOne.this.showListener);
+                            dialog.dismiss();
+                            UnityAds.show(activity, unity_i_pre, showListener);
                         }
                     }.start();
-                    return;
+                   // return;
+                }else{
+                    UnityAds.show(activity, unity_i_pre, showListener);
                 }
-                UnityAds.show(activity, this.unity_i_pre, showListener);
+
             } else {
                 if (!this.maxapplovin_i_pre.isEmpty()) {
-                    loadApplovinInterstital1(context, this.maxapplovin_i_pre);
+                    loadApplovinInterstital1(context, maxapplovin_i_pre);
                 }
                 nextInterstitialPlatform();
             }
         } else if (app_AdsPriority.equalsIgnoreCase("unity")) {
             if (UNITY_ADS_STATUS.equalsIgnoreCase("true") && showListener != null) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 100L) { // from class: com.luciada.modids.MyAdZOne.55
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.55
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            UnityAds.show(MyAdZOne.activity, MyAdZOne.this.unity_i_pre, MyAdZOne.this.showListener);
+                            dialog.dismiss();
+                            UnityAds.show(activity, unity_i_pre, showListener);
                         }
                     }.start();
-                    return;
+                 //   return;
+                }else{
+                    UnityAds.show(activity, unity_i_pre, showListener);
                 }
-                UnityAds.show(activity, this.unity_i_pre, showListener);
+
             } else if (AD_MOB_STATUS.equalsIgnoreCase("true") && mInterstitialAd != null) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10L) { // from class: com.luciada.modids.MyAdZOne.56
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.56
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            MyAdZOne.this.mInterstitialAd.show(context);
+                            dialog.dismiss();
+                            mInterstitialAd.show(context);
                         }
                     }.start();
-                    return;
+                   // return;
+                }else{
+                    mInterstitialAd.show(context);
                 }
-                mInterstitialAd.show(context);
-            } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && this.fbinterstitialAd1.isAdLoaded()) {
+            } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && fbinterstitialAd1.isAdLoaded()) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 100L) { // from class: com.luciada.modids.MyAdZOne.57
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.57
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            MyAdZOne.this.fbinterstitialAd1.show();
+                            dialog.dismiss();
+                            fbinterstitialAd1.show();
                         }
                     }.start();
-                    return;
+                  //  return;
+                }else{
+                    fbinterstitialAd1.show();
                 }
-                this.fbinterstitialAd1.show();
-            } else if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && this.maxInterstitialAd.isReady()) {
+
+            } else if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && maxInterstitialAd.isReady()) {
                 if (Dialog_Show == 1) {
-                    this.dialog.show();
-                    new CountDownTimer(ad_dialog_time_in_second * 1000, 100L) { // from class: com.luciada.modids.MyAdZOne.58
+                    dialog.show();
+                    new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.58
                         @Override // android.os.CountDownTimer
                         public void onTick(long millisUntilFinished) {
-                            double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                            double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                         }
 
                         @Override // android.os.CountDownTimer
                         public void onFinish() {
-                            MyAdZOne.this.dialog.dismiss();
-                            MyAdZOne.this.maxInterstitialAd.showAd();
+                            dialog.dismiss();
+                            maxInterstitialAd.showAd();
                         }
                     }.start();
-                    return;
+                  //  return;
+                }else {
+                    maxInterstitialAd.showAd();
                 }
-                this.maxInterstitialAd.showAd();
+
             } else {
-                if (!this.unity_i_pre.isEmpty()) {
-                    loadUnityInterstital1(context, this.unity_i_pre);
+                if (!unity_i_pre.isEmpty()) {
+                    loadUnityInterstital1(context, unity_i_pre);
                 }
                 nextInterstitialPlatform();
             }
         } else {
             nextInterstitialPlatform();
         }
+
     }
 
     public void loadAdmobInterstitial(final Activity activity2, String google_i) {
-        this.google_i_pre = google_i;
+        google_i_pre = google_i;
         AdRequest adRequest = new AdRequest.Builder().build();
-        com.google.android.gms.ads.interstitial.InterstitialAd.load(activity2, google_i, adRequest, new InterstitialAdLoadCallback() { // from class: com.luciada.modids.MyAdZOne.59
+        com.google.android.gms.ads.interstitial.InterstitialAd.load(activity2, google_i, adRequest, new InterstitialAdLoadCallback() { // from class: com.luciada.modids.59
             @Override // com.google.android.gms.ads.AdLoadCallback
             public void onAdLoaded(com.google.android.gms.ads.interstitial.InterstitialAd interstitialAd) {
-                MyAdZOne.this.mInterstitialAd = interstitialAd;
-                Log.e(MyAdZOne.TAG, "onAdLoadedgg1");
-                MyAdZOne.this.mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() { // from class: com.luciada.modids.MyAdZOne.59.1
+                mInterstitialAd = interstitialAd;
+                Log.e(TAG, "onAdLoadedgg1");
+                mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() { // from class: com.luciada.modids.59.1
                     @Override // com.google.android.gms.ads.FullScreenContentCallback
                     public void onAdDismissedFullScreenContent() {
                         Log.e("TAG", "onAdDismissedFullScreenContentgg1");
-                        MyAdZOne.this.google_i_pre = MyAdZOne.AD_MOB_APP_ID_Inter1;
-                        if (!MyAdZOne.this.google_i_pre.isEmpty()) {
-                            MyAdZOne.this.loadAdmobInterstitial(activity2, MyAdZOne.this.google_i_pre);
+                        google_i_pre = AD_MOB_APP_ID_Inter1;
+                        if (!google_i_pre.isEmpty()) {
+                            loadAdmobInterstitial(activity2, google_i_pre);
                         }
-                        MyAdZOne.this.interstitialCallBack();
+                        interstitialCallBack();
                     }
 
                     @Override // com.google.android.gms.ads.FullScreenContentCallback
@@ -2710,7 +2774,7 @@ public class MyAdZOne {
 
                     @Override // com.google.android.gms.ads.FullScreenContentCallback
                     public void onAdShowedFullScreenContent() {
-                        MyAdZOne.this.mInterstitialAd = null;
+                        mInterstitialAd = null;
                         Log.e("TAG", "onAdShowedFullScreenContentgg1");
                     }
                 });
@@ -2718,12 +2782,12 @@ public class MyAdZOne {
 
             @Override // com.google.android.gms.ads.AdLoadCallback
             public void onAdFailedToLoad(LoadAdError loadAdError) {
-                Log.e(MyAdZOne.TAG, "onAdFailedToLoadgg1");
-                MyAdZOne.this.mInterstitialAd = null;
-                MyAdZOne.this.google_i_pre = MyAdZOne.AD_MOB_APP_ID_Inter2;
-                if (!MyAdZOne.this.google_i_pre.isEmpty()) {
-                    MyAdZOne myAdZOne2 = MyAdZOne.this;
-                    myAdZOne2.loadAdmobInterstitial2(activity2, myAdZOne2.google_i_pre);
+                Log.e(TAG, "onAdFailedToLoadgg1");
+                mInterstitialAd = null;
+                google_i_pre = AD_MOB_APP_ID_Inter2;
+                if (!google_i_pre.isEmpty()) {
+
+                    loadAdmobInterstitial2(activity2, google_i_pre);
                 }
             }
         });
@@ -2732,20 +2796,20 @@ public class MyAdZOne {
     public void loadAdmobInterstitial2(final Activity activity2, String google_i) {
         this.google_i_pre = google_i;
         AdRequest adRequest = new AdRequest.Builder().build();
-        com.google.android.gms.ads.interstitial.InterstitialAd.load(activity2, google_i, adRequest, new InterstitialAdLoadCallback() { // from class: com.luciada.modids.MyAdZOne.60
+        com.google.android.gms.ads.interstitial.InterstitialAd.load(activity2, google_i, adRequest, new InterstitialAdLoadCallback() { // from class: com.luciada.modids.60
             @Override // com.google.android.gms.ads.AdLoadCallback
             public void onAdLoaded(com.google.android.gms.ads.interstitial.InterstitialAd interstitialAd) {
-                MyAdZOne.this.mInterstitialAd = interstitialAd;
-                Log.e(MyAdZOne.TAG, "onAdLoadedgg2");
-                MyAdZOne.this.mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() { // from class: com.luciada.modids.MyAdZOne.60.1
+                mInterstitialAd = interstitialAd;
+                Log.e(TAG, "onAdLoadedgg2");
+                mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() { // from class: com.luciada.modids.60.1
                     @Override // com.google.android.gms.ads.FullScreenContentCallback
                     public void onAdDismissedFullScreenContent() {
                         Log.e("TAG", "onAdDismissedFullScreenContentgg2");
-                        MyAdZOne.this.google_i_pre = MyAdZOne.AD_MOB_APP_ID_Inter2;
-                        if (!MyAdZOne.this.google_i_pre.isEmpty()) {
-                            MyAdZOne.this.loadAdmobInterstitial2(activity2, MyAdZOne.this.google_i_pre);
+                        google_i_pre = AD_MOB_APP_ID_Inter2;
+                        if (!google_i_pre.isEmpty()) {
+                            loadAdmobInterstitial2(activity2, google_i_pre);
                         }
-                        MyAdZOne.this.interstitialCallBack();
+                        interstitialCallBack();
                     }
 
                     @Override // com.google.android.gms.ads.FullScreenContentCallback
@@ -2755,7 +2819,7 @@ public class MyAdZOne {
 
                     @Override // com.google.android.gms.ads.FullScreenContentCallback
                     public void onAdShowedFullScreenContent() {
-                        MyAdZOne.this.mInterstitialAd = null;
+                        mInterstitialAd = null;
                         Log.e("TAG", "onAdShowedFullScreenContentgg2");
                     }
                 });
@@ -2763,12 +2827,11 @@ public class MyAdZOne {
 
             @Override // com.google.android.gms.ads.AdLoadCallback
             public void onAdFailedToLoad(LoadAdError loadAdError) {
-                Log.e(MyAdZOne.TAG, "onAdFailedToLoadgg2");
-                MyAdZOne.this.mInterstitialAd = null;
-                MyAdZOne.this.google_i_pre = MyAdZOne.AD_MOB_APP_ID_Inter3;
-                if (!MyAdZOne.this.google_i_pre.isEmpty()) {
-                    MyAdZOne myAdZOne2 = MyAdZOne.this;
-                    myAdZOne2.loadAdmobInterstitial3(activity2, myAdZOne2.google_i_pre);
+                Log.e(TAG, "onAdFailedToLoadgg2");
+                mInterstitialAd = null;
+                google_i_pre = AD_MOB_APP_ID_Inter3;
+                if (!google_i_pre.isEmpty()) {
+                    loadAdmobInterstitial3(activity2, google_i_pre);
                 }
             }
         });
@@ -2777,20 +2840,20 @@ public class MyAdZOne {
     public void loadAdmobInterstitial3(final Activity activity2, String google_i) {
         this.google_i_pre = google_i;
         AdRequest adRequest = new AdRequest.Builder().build();
-        com.google.android.gms.ads.interstitial.InterstitialAd.load(activity2, google_i, adRequest, new InterstitialAdLoadCallback() { // from class: com.luciada.modids.MyAdZOne.61
+        com.google.android.gms.ads.interstitial.InterstitialAd.load(activity2, google_i, adRequest, new InterstitialAdLoadCallback() { // from class: com.luciada.modids.61
             @Override // com.google.android.gms.ads.AdLoadCallback
             public void onAdLoaded(com.google.android.gms.ads.interstitial.InterstitialAd interstitialAd) {
-                MyAdZOne.this.mInterstitialAd = interstitialAd;
-                Log.e(MyAdZOne.TAG, "onAdLoadedgg3");
-                MyAdZOne.this.mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() { // from class: com.luciada.modids.MyAdZOne.61.1
+                mInterstitialAd = interstitialAd;
+                Log.e(TAG, "onAdLoadedgg3");
+                mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() { // from class: com.luciada.modids.61.1
                     @Override // com.google.android.gms.ads.FullScreenContentCallback
                     public void onAdDismissedFullScreenContent() {
                         Log.e("TAG", "onAdDismissedFullScreenContentgg3");
-                        MyAdZOne.this.google_i_pre = MyAdZOne.AD_MOB_APP_ID_Inter3;
-                        if (!MyAdZOne.this.google_i_pre.isEmpty()) {
-                            MyAdZOne.this.loadAdmobInterstitial3(activity2, MyAdZOne.this.google_i_pre);
+                        google_i_pre = AD_MOB_APP_ID_Inter3;
+                        if (!google_i_pre.isEmpty()) {
+                            loadAdmobInterstitial3(activity2, google_i_pre);
                         }
-                        MyAdZOne.this.interstitialCallBack();
+                        interstitialCallBack();
                     }
 
                     @Override // com.google.android.gms.ads.FullScreenContentCallback
@@ -2800,7 +2863,7 @@ public class MyAdZOne {
 
                     @Override // com.google.android.gms.ads.FullScreenContentCallback
                     public void onAdShowedFullScreenContent() {
-                        MyAdZOne.this.mInterstitialAd = null;
+                        mInterstitialAd = null;
                         Log.e("TAG", "onAdShowedFullScreenContentgg3");
                     }
                 });
@@ -2808,28 +2871,28 @@ public class MyAdZOne {
 
             @Override // com.google.android.gms.ads.AdLoadCallback
             public void onAdFailedToLoad(LoadAdError loadAdError) {
-                Log.e(MyAdZOne.TAG, "onAdFailedToLoadgg3");
-                MyAdZOne.this.mInterstitialAd = null;
-                if (MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("google")) {
-                    MyAdZOne.this.loadFacebookInterstitial(activity2, MyAdZOne.FB_Inter_ID1);
-                } else if (MyAdZOne.APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("facebook")) {
-                    MyAdZOne.this.loadApplovinInterstital1(activity2, MyAdZOne.app_ApplovinInterstitialId1);
-                } else if (MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("applovin")) {
-                    MyAdZOne.this.loadFacebookInterstitial(activity2, MyAdZOne.FB_Inter_ID1);
-                } else if (MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                    MyAdZOne.this.loadFacebookInterstitial(activity2, MyAdZOne.FB_Inter_ID1);
-                } else if (MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && MyAdZOne.APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("google")) {
-                    MyAdZOne.this.loadApplovinInterstital1(activity2, MyAdZOne.app_ApplovinInterstitialId1);
-                } else if (MyAdZOne.APPLOVIN_ADS_STATUS.equalsIgnoreCase("false") && MyAdZOne.UNITY_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("google")) {
-                    MyAdZOne.this.loadUnityInterstital1(activity2, MyAdZOne.app_UnityInterstitialId1);
-                } else if (MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && MyAdZOne.APPLOVIN_ADS_STATUS.equalsIgnoreCase("false") && MyAdZOne.UNITY_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("facebook")) {
-                    MyAdZOne.this.loadUnityInterstital1(activity2, MyAdZOne.app_UnityInterstitialId1);
-                } else if (MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && MyAdZOne.UNITY_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("applovin")) {
-                    MyAdZOne.this.loadUnityInterstital1(activity2, MyAdZOne.app_UnityInterstitialId1);
-                } else if (MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && MyAdZOne.APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                    MyAdZOne.this.loadApplovinInterstital1(activity2, MyAdZOne.app_ApplovinInterstitialId1);
+                Log.e(TAG, "onAdFailedToLoadgg3");
+                mInterstitialAd = null;
+                if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("google")) {
+                    loadFacebookInterstitial(activity2, FB_Inter_ID1);
+                } else if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("facebook")) {
+                    loadApplovinInterstital1(activity2, app_ApplovinInterstitialId1);
+                } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("applovin")) {
+                    loadFacebookInterstitial(activity2, FB_Inter_ID1);
+                } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                    loadFacebookInterstitial(activity2, FB_Inter_ID1);
+                } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("google")) {
+                    loadApplovinInterstital1(activity2, app_ApplovinInterstitialId1);
+                } else if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("false") && UNITY_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("google")) {
+                    loadUnityInterstital1(activity2, app_UnityInterstitialId1);
+                } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && APPLOVIN_ADS_STATUS.equalsIgnoreCase("false") && UNITY_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("facebook")) {
+                    loadUnityInterstital1(activity2, app_UnityInterstitialId1);
+                } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && UNITY_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("applovin")) {
+                    loadUnityInterstital1(activity2, app_UnityInterstitialId1);
+                } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                    loadApplovinInterstital1(activity2, app_ApplovinInterstitialId1);
                 } else {
-                    MyAdZOne.this.nextInterstitialPlatform();
+                    nextInterstitialPlatform();
                 }
             }
         });
@@ -2837,107 +2900,106 @@ public class MyAdZOne {
 
     public void loadFacebookInterstitial(final Activity activity2, String facebook_i) {
         this.facebook_i_pre = facebook_i;
-        InterstitialAd interstitialAd = new InterstitialAd(activity2, facebook_i);
-        this.fbinterstitialAd1 = interstitialAd;
-        interstitialAd.loadAd(interstitialAd.buildLoadAdConfig().withAdListener(new AbstractAdListener() { // from class: com.luciada.modids.MyAdZOne.62
+        fbinterstitialAd1 = new InterstitialAd(activity2, facebook_i);
+        fbinterstitialAd1.loadAd(fbinterstitialAd1.buildLoadAdConfig().withAdListener(new AbstractAdListener() { // from class: com.luciada.modids.62
             @Override // com.facebook.ads.AbstractAdListener, com.facebook.ads.AdListener
             public void onError(Ad ad, AdError error) {
                 super.onError(ad, error);
-                Log.e(MyAdZOne.TAG, "onError1: ");
-                if (!MyAdZOne.this.facebook_i_pre.isEmpty()) {
-                    MyAdZOne.this.loadFacebookInterstitial2(activity2, MyAdZOne.FB_Inter_ID2);
+                Log.e(TAG, "onError1: ");
+                if (!facebook_i_pre.isEmpty()) {
+                    loadFacebookInterstitial2(activity2, FB_Inter_ID2);
                 }
             }
 
             @Override // com.facebook.ads.AbstractAdListener, com.facebook.ads.AdListener
             public void onAdLoaded(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onAdLoaded1: ");
+                Log.e(TAG, "onAdLoaded1: ");
                 super.onAdLoaded(ad);
             }
 
-            @Override // com.facebook.ads.AbstractAdListener, com.facebook.ads.InterstitialAdListener
+            @Override
+            // com.facebook.ads.AbstractAdListener, com.facebook.ads.InterstitialAdListener
             public void onInterstitialDismissed(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onInterstitialDismissed1: ");
+                Log.e(TAG, "onInterstitialDismissed1: ");
                 super.onInterstitialDismissed(ad);
-                MyAdZOne myAdZOne2 = MyAdZOne.this;
-                myAdZOne2.loadFacebookInterstitial(activity2, myAdZOne2.facebook_i_pre);
-                MyAdZOne.this.interstitialCallBack();
+                loadFacebookInterstitial(activity2, facebook_i_pre);
+                interstitialCallBack();
             }
         }).build());
     }
 
     public void loadFacebookInterstitial2(final Activity activity2, String facebook_i) {
         this.facebook_i_pre = facebook_i;
-        InterstitialAd interstitialAd = new InterstitialAd(activity2, facebook_i);
-        this.fbinterstitialAd1 = interstitialAd;
-        interstitialAd.loadAd(interstitialAd.buildLoadAdConfig().withAdListener(new AbstractAdListener() { // from class: com.luciada.modids.MyAdZOne.63
+        fbinterstitialAd1 = new InterstitialAd(activity2, facebook_i);
+
+        fbinterstitialAd1.loadAd(fbinterstitialAd1.buildLoadAdConfig().withAdListener(new AbstractAdListener() { // from class: com.luciada.modids.63
             @Override // com.facebook.ads.AbstractAdListener, com.facebook.ads.AdListener
             public void onError(Ad ad, AdError error) {
-                Log.e(MyAdZOne.TAG, "onError2: ");
+                Log.e(TAG, "onError2: ");
                 super.onError(ad, error);
-                if (!MyAdZOne.this.facebook_i_pre.isEmpty()) {
-                    MyAdZOne.this.loadFacebookInterstitial3(activity2, MyAdZOne.FB_Inter_ID3);
+                if (!facebook_i_pre.isEmpty()) {
+                    loadFacebookInterstitial3(activity2, FB_Inter_ID3);
                 }
             }
 
             @Override // com.facebook.ads.AbstractAdListener, com.facebook.ads.AdListener
             public void onAdLoaded(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onAdLoaded2: ");
+                Log.e(TAG, "onAdLoaded2: ");
                 super.onAdLoaded(ad);
             }
 
-            @Override // com.facebook.ads.AbstractAdListener, com.facebook.ads.InterstitialAdListener
+            @Override
+            // com.facebook.ads.AbstractAdListener, com.facebook.ads.InterstitialAdListener
             public void onInterstitialDismissed(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onInterstitialDismissed2: ");
+                Log.e(TAG, "onInterstitialDismissed2: ");
                 super.onInterstitialDismissed(ad);
-                MyAdZOne myAdZOne2 = MyAdZOne.this;
-                myAdZOne2.loadFacebookInterstitial(activity2, myAdZOne2.facebook_i_pre);
-                MyAdZOne.this.interstitialCallBack();
+               loadFacebookInterstitial(activity2, facebook_i_pre);
+                interstitialCallBack();
             }
         }).build());
     }
 
     public void loadFacebookInterstitial3(final Activity activity2, String facebook_i) {
         this.facebook_i_pre = facebook_i;
-        InterstitialAd interstitialAd = new InterstitialAd(activity2, facebook_i);
-        this.fbinterstitialAd1 = interstitialAd;
-        interstitialAd.loadAd(interstitialAd.buildLoadAdConfig().withAdListener(new AbstractAdListener() { // from class: com.luciada.modids.MyAdZOne.64
+        fbinterstitialAd1 = new InterstitialAd(activity2, facebook_i);
+
+        fbinterstitialAd1.loadAd(fbinterstitialAd1.buildLoadAdConfig().withAdListener(new AbstractAdListener() { // from class: com.luciada.modids.64
             @Override // com.facebook.ads.AbstractAdListener, com.facebook.ads.AdListener
             public void onError(Ad ad, AdError error) {
                 super.onError(ad, error);
-                Log.e(MyAdZOne.TAG, "onErrorinter3: ");
-                if (MyAdZOne.APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("google")) {
-                    MyAdZOne.this.loadApplovinInterstital1(activity2, MyAdZOne.app_ApplovinInterstitialId1);
-                } else if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("facebook")) {
-                    MyAdZOne.this.loadAdmobInterstitial(activity2, MyAdZOne.AD_MOB_APP_ID_Inter1);
-                } else if (MyAdZOne.UNITY_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("applovin")) {
-                    MyAdZOne.this.loadUnityInterstital1(activity2, MyAdZOne.app_UnityInterstitialId1);
-                } else if (MyAdZOne.APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                    MyAdZOne.this.loadApplovinInterstital1(activity2, MyAdZOne.app_ApplovinInterstitialId1);
-                } else if (MyAdZOne.APPLOVIN_ADS_STATUS.equalsIgnoreCase("false") && MyAdZOne.UNITY_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("google")) {
-                    MyAdZOne.this.loadUnityInterstital1(activity2, MyAdZOne.app_UnityInterstitialId1);
-                } else if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("false") && MyAdZOne.APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("facebook")) {
-                    MyAdZOne.this.loadApplovinInterstital1(activity2, MyAdZOne.app_ApplovinInterstitialId1);
-                } else if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("false") && MyAdZOne.APPLOVIN_ADS_STATUS.equalsIgnoreCase("false") && MyAdZOne.UNITY_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("facebook")) {
-                    MyAdZOne.this.loadUnityInterstital1(activity2, MyAdZOne.app_UnityInterstitialId1);
+                Log.e(TAG, "onErrorinter3: ");
+                if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("google")) {
+                    loadApplovinInterstital1(activity2, app_ApplovinInterstitialId1);
+                } else if (AD_MOB_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("facebook")) {
+                    loadAdmobInterstitial(activity2, AD_MOB_APP_ID_Inter1);
+                } else if (UNITY_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("applovin")) {
+                    loadUnityInterstital1(activity2, app_UnityInterstitialId1);
+                } else if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                    loadApplovinInterstital1(activity2, app_ApplovinInterstitialId1);
+                } else if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("false") && UNITY_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("google")) {
+                    loadUnityInterstital1(activity2, app_UnityInterstitialId1);
+                } else if (AD_MOB_STATUS.equalsIgnoreCase("false") && APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("facebook")) {
+                    loadApplovinInterstital1(activity2, app_ApplovinInterstitialId1);
+                } else if (AD_MOB_STATUS.equalsIgnoreCase("false") && APPLOVIN_ADS_STATUS.equalsIgnoreCase("false") && UNITY_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("facebook")) {
+                    loadUnityInterstital1(activity2, app_UnityInterstitialId1);
                 } else {
-                    MyAdZOne.this.nextInterstitialPlatform();
+                    nextInterstitialPlatform();
                 }
             }
 
             @Override // com.facebook.ads.AbstractAdListener, com.facebook.ads.AdListener
             public void onAdLoaded(Ad ad) {
                 super.onAdLoaded(ad);
-                Log.e(MyAdZOne.TAG, "onAdLoaded3: ");
+                Log.e(TAG, "onAdLoaded3: ");
             }
 
-            @Override // com.facebook.ads.AbstractAdListener, com.facebook.ads.InterstitialAdListener
+            @Override
+            // com.facebook.ads.AbstractAdListener, com.facebook.ads.InterstitialAdListener
             public void onInterstitialDismissed(Ad ad) {
-                Log.e(MyAdZOne.TAG, "onInterstitialDismissed3: ");
+                Log.e(TAG, "onInterstitialDismissed3: ");
                 super.onInterstitialDismissed(ad);
-                MyAdZOne myAdZOne2 = MyAdZOne.this;
-                myAdZOne2.loadFacebookInterstitial(activity2, myAdZOne2.facebook_i_pre);
-                MyAdZOne.this.interstitialCallBack();
+                loadFacebookInterstitial(activity2, facebook_i_pre);
+                interstitialCallBack();
             }
         }).build());
     }
@@ -2966,10 +3028,10 @@ public class MyAdZOne {
             banner_ad_title.setText(app_CustomeAdBannerHanderText);
             banner_subhander.setText(app_CustomeAdBannerSubHanderText);
             bner_install.setText(app_CustomeAdBannerInstallText);
-            iv_qurekabanner.setOnClickListener(new View.OnClickListener() { // from class: com.luciada.modids.MyAdZOne.65
+            iv_qurekabanner.setOnClickListener(new View.OnClickListener() { // from class: com.luciada.modids..65
                 @Override // android.view.View.OnClickListener
                 public void onClick(View view) {
-                    MyAdZOne.this.openChromeCustomTabUrl(activity2, MyAdZOne.app_CustomeADBannerLink);
+                    openChromeCustomTabUrl(activity2, app_CustomeADBannerLink);
                 }
             });
         }
@@ -2991,10 +3053,10 @@ public class MyAdZOne {
             ad_subheadline.setText(app_CustomeAdNativesubHander);
             ad_subheadline2.setText(app_CustomeAdNativesubHander2);
             ad_call_to_action.setText(app_CustomeAdNativeInstallText);
-            iv_qurekanative.setOnClickListener(new View.OnClickListener() { // from class: com.luciada.modids.MyAdZOne.66
+            iv_qurekanative.setOnClickListener(new View.OnClickListener() { // from class: com.luciada.modids.66
                 @Override // android.view.View.OnClickListener
                 public void onClick(View view) {
-                    MyAdZOne.this.openChromeCustomTabUrl(activity2, MyAdZOne.app_CustomeADNativeLink);
+                    openChromeCustomTabUrl(activity2, app_CustomeADNativeLink);
                 }
             });
         }
@@ -3026,18 +3088,18 @@ public class MyAdZOne {
                 ImageView iv_intersFullImage = (ImageView) dialogView.findViewById(R.id.iv_intersFullImage);
                 ImageView iv_intersFullImageCancel = (ImageView) dialogView.findViewById(R.id.iv_intersFullImageCancel);
                 Glide.with(activity2).load(app_CustomeAdInterFullscreenImg).into(iv_intersFullImage);
-                iv_intersFullImage.setOnClickListener(new View.OnClickListener() { // from class: com.luciada.modids.MyAdZOne.67
+                iv_intersFullImage.setOnClickListener(new View.OnClickListener() { // from class: com.luciada.modids.67
                     @Override // android.view.View.OnClickListener
                     public void onClick(View v) {
                         alertDialog.dismiss();
                         try {
-                            activity2.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(MyAdZOne.app_CustomeAdInterstitialLink)));
+                            activity2.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(app_CustomeAdInterstitialLink)));
                         } catch (ActivityNotFoundException e) {
-                            activity2.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(MyAdZOne.app_CustomeAdInterstitialLink)));
+                            activity2.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(app_CustomeAdInterstitialLink)));
                         }
                     }
                 });
-                iv_intersFullImageCancel.setOnClickListener(new View.OnClickListener() { // from class: com.luciada.modids.MyAdZOne.68
+                iv_intersFullImageCancel.setOnClickListener(new View.OnClickListener() { // from class: com.luciada.modids.68
                     @Override // android.view.View.OnClickListener
                     public void onClick(View v) {
                         alertDialog.dismiss();
@@ -3058,19 +3120,19 @@ public class MyAdZOne {
         dialog.getWindow();
         if (Dialog_Show == 1) {
             dialog.show();
-            new CountDownTimer(ad_dialog_time_in_second * 1000, 10L) { // from class: com.luciada.modids.MyAdZOne.69
+            new CountDownTimer(ad_dialog_time_in_second * 1000, 10) { // from class: com.luciada.modids.69
                 @Override // android.os.CountDownTimer
                 public void onTick(long millisUntilFinished) {
-                    double d = (millisUntilFinished / 10) / MyAdZOne.ad_dialog_time_in_second;
+                    double d = (millisUntilFinished / 10) / ad_dialog_time_in_second;
                 }
 
                 @Override // android.os.CountDownTimer
                 public void onFinish() {
                     dialog.dismiss();
-                    MyAdZOne.this.openChromeCustomTabUrl(context, s);
+                    openChromeCustomTabUrl(context, s);
                 }
             }.start();
-            return;
+            // return;
         }
         openChromeCustomTabUrl(context, s);
     }
@@ -3091,44 +3153,43 @@ public class MyAdZOne {
 
     public void loadApplovinInterstital1(final Activity activity2, String interid) {
         Log.e(TAG, "loadApplovinInterstital1: ");
-        this.maxapplovin_i_pre = interid;
-        this.maxInterstitialAd = new MaxInterstitialAd(this.maxapplovin_i_pre, activity2);
-        MaxAdListener maxAdListener = new MaxAdListener() { // from class: com.luciada.modids.MyAdZOne.70
+        maxapplovin_i_pre = interid;
+        maxInterstitialAd = new MaxInterstitialAd(this.maxapplovin_i_pre, activity2);
+        MaxAdListener maxAdListener = new MaxAdListener() { // from class: com.luciada.modids.70
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdLoaded(MaxAd ad) {
-                Log.e(MyAdZOne.TAG, "onAdLoadedmax1: ");
+                Log.e(TAG, "onAdLoadedmax1: ");
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdDisplayed(MaxAd ad) {
-                Log.e(MyAdZOne.TAG, "onAdDisplayedmax1: ");
+                Log.e(TAG, "onAdDisplayedmax1: ");
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdHidden(MaxAd ad) {
-                Log.e(MyAdZOne.TAG, "onAdHiddenmax1: ");
-                if (!MyAdZOne.this.maxapplovin_i_pre.isEmpty()) {
-                    MyAdZOne myAdZOne2 = MyAdZOne.this;
-                    myAdZOne2.loadApplovinInterstital1(activity2, myAdZOne2.maxapplovin_i_pre);
+                Log.e(TAG, "onAdHiddenmax1: ");
+                if (!maxapplovin_i_pre.isEmpty()) {
+                    loadApplovinInterstital1(activity2, maxapplovin_i_pre);
                 }
-                MyAdZOne.this.interstitialCallBack();
+                interstitialCallBack();
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdClicked(MaxAd ad) {
-                Log.e(MyAdZOne.TAG, "onAdClickedmax1: ");
+                Log.e(TAG, "onAdClickedmax1: ");
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdLoadFailed(String adUnitId, MaxError error) {
-                Log.e(MyAdZOne.TAG, "onAdLoadFailedmax1: ");
-                MyAdZOne.this.loadApplovinInterstital2(activity2, MyAdZOne.app_ApplovinInterstitialId2);
+                Log.e(TAG, "onAdLoadFailedmax1: ");
+                loadApplovinInterstital2(activity2, app_ApplovinInterstitialId2);
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdDisplayFailed(MaxAd ad, MaxError error) {
-                Log.e(MyAdZOne.TAG, "onAdDisplayFailedmax1: ");
-                MyAdZOne.this.loadApplovinInterstital2(activity2, MyAdZOne.app_ApplovinInterstitialId2);
+                Log.e(TAG, "onAdDisplayFailedmax1: ");
+                loadApplovinInterstital2(activity2, app_ApplovinInterstitialId2);
             }
         };
         this.maxInterstitialAd.setListener(maxAdListener);
@@ -3137,44 +3198,44 @@ public class MyAdZOne {
 
     public void loadApplovinInterstital2(final Activity activity2, String interid) {
         Log.e(TAG, "loadApplovinInterstital2: ");
-        this.maxapplovin_i_pre = interid;
-        this.maxInterstitialAd = new MaxInterstitialAd(this.maxapplovin_i_pre, activity2);
-        MaxAdListener maxAdListener = new MaxAdListener() { // from class: com.luciada.modids.MyAdZOne.71
+        maxapplovin_i_pre = interid;
+        maxInterstitialAd = new MaxInterstitialAd(this.maxapplovin_i_pre, activity2);
+        MaxAdListener maxAdListener = new MaxAdListener() { // from class: com.luciada.modids.71
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdLoaded(MaxAd ad) {
-                Log.e(MyAdZOne.TAG, "onAdLoadedmax2: ");
+                Log.e(TAG, "onAdLoadedmax2: ");
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdDisplayed(MaxAd ad) {
-                Log.e(MyAdZOne.TAG, "onAdDisplayedmax2: ");
+                Log.e(TAG, "onAdDisplayedmax2: ");
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdHidden(MaxAd ad) {
-                Log.e(MyAdZOne.TAG, "onAdHiddenmax2: ");
-                if (!MyAdZOne.this.maxapplovin_i_pre.isEmpty()) {
-                    MyAdZOne myAdZOne2 = MyAdZOne.this;
-                    myAdZOne2.loadApplovinInterstital2(activity2, myAdZOne2.maxapplovin_i_pre);
+                Log.e(TAG, "onAdHiddenmax2: ");
+                if (!maxapplovin_i_pre.isEmpty()) {
+
+                    loadApplovinInterstital2(activity2, maxapplovin_i_pre);
                 }
-                MyAdZOne.this.interstitialCallBack();
+                interstitialCallBack();
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdClicked(MaxAd ad) {
-                Log.e(MyAdZOne.TAG, "onAdClickedmax2: ");
+                Log.e(TAG, "onAdClickedmax2: ");
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdLoadFailed(String adUnitId, MaxError error) {
-                Log.e(MyAdZOne.TAG, "onAdLoadFailedmax2: ");
-                MyAdZOne.this.loadApplovinInterstital3(activity2, MyAdZOne.app_ApplovinInterstitialId3);
+                Log.e(TAG, "onAdLoadFailedmax2: ");
+                loadApplovinInterstital3(activity2, app_ApplovinInterstitialId3);
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdDisplayFailed(MaxAd ad, MaxError error) {
-                Log.e(MyAdZOne.TAG, "onAdDisplayFailedmax2: ");
-                MyAdZOne.this.loadApplovinInterstital3(activity2, MyAdZOne.app_ApplovinInterstitialId3);
+                Log.e(TAG, "onAdDisplayFailedmax2: ");
+                loadApplovinInterstital3(activity2, app_ApplovinInterstitialId3);
             }
         };
         this.maxInterstitialAd.setListener(maxAdListener);
@@ -3183,67 +3244,66 @@ public class MyAdZOne {
 
     public void loadApplovinInterstital3(final Activity activity2, String interid) {
         Log.e(TAG, "loadApplovinInterstital3: ");
-        this.maxapplovin_i_pre = interid;
-        this.maxInterstitialAd = new MaxInterstitialAd(this.maxapplovin_i_pre, activity2);
-        MaxAdListener maxAdListener = new MaxAdListener() { // from class: com.luciada.modids.MyAdZOne.72
+        maxapplovin_i_pre = interid;
+        maxInterstitialAd = new MaxInterstitialAd(this.maxapplovin_i_pre, activity2);
+        MaxAdListener maxAdListener = new MaxAdListener() { // from class: com.luciada.modids.72
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdLoaded(MaxAd ad) {
-                Log.e(MyAdZOne.TAG, "onAdLoadedmax3: ");
+                Log.e(TAG, "onAdLoadedmax3: ");
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdDisplayed(MaxAd ad) {
-                Log.e(MyAdZOne.TAG, "onAdDisplayedmax3: ");
+                Log.e(TAG, "onAdDisplayedmax3: ");
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdHidden(MaxAd ad) {
-                Log.e(MyAdZOne.TAG, "onAdHiddenmax3: ");
-                if (!MyAdZOne.this.maxapplovin_i_pre.isEmpty()) {
-                    MyAdZOne myAdZOne2 = MyAdZOne.this;
-                    myAdZOne2.loadApplovinInterstital3(activity2, myAdZOne2.maxapplovin_i_pre);
+                Log.e(TAG, "onAdHiddenmax3: ");
+                if (!maxapplovin_i_pre.isEmpty()) {
+                loadApplovinInterstital3(activity2, maxapplovin_i_pre);
                 }
-                MyAdZOne.this.interstitialCallBack();
+                interstitialCallBack();
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdClicked(MaxAd ad) {
-                Log.e(MyAdZOne.TAG, "onAdClickedmax3: ");
+                Log.e(TAG, "onAdClickedmax3: ");
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdLoadFailed(String adUnitId, MaxError error) {
-                Log.e(MyAdZOne.TAG, "onAdLoadFailedmax3: ");
-                if (MyAdZOne.UNITY_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("google")) {
-                    MyAdZOne.this.loadUnityInterstital1(activity2, MyAdZOne.app_UnityInterstitialId1);
-                } else if (MyAdZOne.UNITY_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("facebook")) {
-                    MyAdZOne.this.loadUnityInterstital1(activity2, MyAdZOne.app_UnityInterstitialId1);
-                } else if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("applovin")) {
-                    MyAdZOne.this.loadAdmobInterstitial(activity2, MyAdZOne.AD_MOB_APP_ID_Inter1);
-                } else if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("false") && MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("applovin")) {
-                    MyAdZOne.this.loadFacebookInterstitial(activity2, MyAdZOne.FB_Inter_ID1);
-                } else if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("false") && MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && MyAdZOne.UNITY_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("applovin")) {
-                    MyAdZOne.this.loadUnityInterstital1(activity2, MyAdZOne.app_UnityInterstitialId1);
+                Log.e(TAG, "onAdLoadFailedmax3: ");
+                if (UNITY_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("google")) {
+                    loadUnityInterstital1(activity2, app_UnityInterstitialId1);
+                } else if (UNITY_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("facebook")) {
+                    loadUnityInterstital1(activity2, app_UnityInterstitialId1);
+                } else if (AD_MOB_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("applovin")) {
+                    loadAdmobInterstitial(activity2, AD_MOB_APP_ID_Inter1);
+                } else if (AD_MOB_STATUS.equalsIgnoreCase("false") && FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("applovin")) {
+                    loadFacebookInterstitial(activity2, FB_Inter_ID1);
+                } else if (AD_MOB_STATUS.equalsIgnoreCase("false") && FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && UNITY_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("applovin")) {
+                    loadUnityInterstital1(activity2, app_UnityInterstitialId1);
                 } else {
-                    MyAdZOne.this.nextInterstitialPlatform();
+                    nextInterstitialPlatform();
                 }
             }
 
             @Override // com.applovin.mediation.MaxAdListener
             public void onAdDisplayFailed(MaxAd ad, MaxError error) {
-                Log.e(MyAdZOne.TAG, "onAdDisplayFailedmax3: ");
-                if (MyAdZOne.UNITY_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("google")) {
-                    MyAdZOne.this.loadUnityInterstital1(activity2, MyAdZOne.app_UnityInterstitialId1);
-                } else if (MyAdZOne.UNITY_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("facebook")) {
-                    MyAdZOne.this.loadUnityInterstital1(activity2, MyAdZOne.app_UnityInterstitialId1);
-                } else if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("applovin")) {
-                    MyAdZOne.this.loadAdmobInterstitial(activity2, MyAdZOne.AD_MOB_APP_ID_Inter1);
-                } else if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("false") && MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("applovin")) {
-                    MyAdZOne.this.loadFacebookInterstitial(activity2, MyAdZOne.FB_Inter_ID1);
-                } else if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("false") && MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && MyAdZOne.UNITY_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("applovin")) {
-                    MyAdZOne.this.loadUnityInterstital1(activity2, MyAdZOne.app_UnityInterstitialId1);
+                Log.e(TAG, "onAdDisplayFailedmax3: ");
+                if (UNITY_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("google")) {
+                    loadUnityInterstital1(activity2, app_UnityInterstitialId1);
+                } else if (UNITY_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("facebook")) {
+                    loadUnityInterstital1(activity2, app_UnityInterstitialId1);
+                } else if (AD_MOB_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("applovin")) {
+                    loadAdmobInterstitial(activity2, AD_MOB_APP_ID_Inter1);
+                } else if (AD_MOB_STATUS.equalsIgnoreCase("false") && FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("applovin")) {
+                    loadFacebookInterstitial(activity2, FB_Inter_ID1);
+                } else if (AD_MOB_STATUS.equalsIgnoreCase("false") && FACEBOOK_AD_STATUS.equalsIgnoreCase("false") && UNITY_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("applovin")) {
+                    loadUnityInterstital1(activity2, app_UnityInterstitialId1);
                 } else {
-                    MyAdZOne.this.nextInterstitialPlatform();
+                    nextInterstitialPlatform();
                 }
             }
         };
@@ -3253,10 +3313,9 @@ public class MyAdZOne {
 
     public void applovinBannerDisplay(RelativeLayout banner_container) {
         Log.e(TAG, "applovinBannerDisplay: ");
-        MaxAdView maxAdView = new MaxAdView(app_ApplovinBanner1, activity);
-        this.adViewBanner = maxAdView;
+        adViewBanner = new MaxAdView(app_ApplovinBanner1, activity);
         int heightPx = app_ApplovinBannerSize;
-        maxAdView.setLayoutParams(new FrameLayout.LayoutParams(-1, heightPx));
+        adViewBanner.setLayoutParams(new FrameLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, heightPx));
         this.adViewBanner.setBackgroundColor(ContextCompat.getColor(activity, R.color.white));
         banner_container.addView(this.adViewBanner);
         this.adViewBanner.loadAd();
@@ -3265,15 +3324,15 @@ public class MyAdZOne {
 
     public void applovinNativeDisplay(final ViewGroup banner_container) {
         Log.e(TAG, "applovinNativeDisplay: ");
-        MaxNativeAdLoader maxNativeAdLoader = new MaxNativeAdLoader(app_ApplovinNative1, activity);
-        this.nativeAdLoader = maxNativeAdLoader;
-        maxNativeAdLoader.setNativeAdListener(new MaxNativeAdListener() { // from class: com.luciada.modids.MyAdZOne.73
+        nativeAdLoader = new MaxNativeAdLoader(app_ApplovinNative1, activity);
+
+        nativeAdLoader.setNativeAdListener(new MaxNativeAdListener() { // from class: com.luciada.modids.73
             @Override // com.applovin.mediation.nativeAds.MaxNativeAdListener
             public void onNativeAdLoaded(MaxNativeAdView nativeAdView, MaxAd ad) {
-                if (MyAdZOne.this.nativeAd != null) {
-                    MyAdZOne.this.nativeAdLoader.destroy(MyAdZOne.this.nativeAd);
+                if (nativeAd != null) {
+                    nativeAdLoader.destroy(nativeAd);
                 }
-                MyAdZOne.this.nativeAd = ad;
+                nativeAd = ad;
                 banner_container.removeAllViews();
                 banner_container.addView(nativeAdView);
             }
@@ -3292,23 +3351,23 @@ public class MyAdZOne {
     public void loadUnityInterstital1(final Activity activity2, String appunityInterstitialId) {
         Log.e(TAG, "loadUnityInterstital1: ");
         this.unity_i_pre = appunityInterstitialId;
-        UnityAds.load(appunityInterstitialId, new IUnityAdsLoadListener() { // from class: com.luciada.modids.MyAdZOne.74
+        UnityAds.load(appunityInterstitialId, new IUnityAdsLoadListener() { // from class: com.luciada.modids.74
             @Override // com.unity3d.ads.IUnityAdsLoadListener
             public void onUnityAdsAdLoaded(String placementId) {
-                Log.e(MyAdZOne.TAG, "onUnityAdsAdLoaded4: ");
+                Log.e(TAG, "onUnityAdsAdLoaded4: ");
             }
 
             @Override // com.unity3d.ads.IUnityAdsLoadListener
             public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
-                Log.e(MyAdZOne.TAG, "onUnityAdsFailedToLoad4: ");
-                MyAdZOne.this.loadUnityInterstital2(activity2, MyAdZOne.app_UnityInterstitialId2);
+                Log.e(TAG, "onUnityAdsFailedToLoad4: ");
+                loadUnityInterstital2(activity2, app_UnityInterstitialId2);
             }
         });
-        this.showListener = new IUnityAdsShowListener() { // from class: com.luciada.modids.MyAdZOne.75
+        this.showListener = new IUnityAdsShowListener() { // from class: com.luciada.modids.75
             @Override // com.unity3d.ads.IUnityAdsShowListener
             public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
                 Log.e("UnityAdsExample", "Unity Ads failed to show ad for  with error: [" + error + "] " + message);
-                MyAdZOne.this.loadUnityInterstital2(activity2, MyAdZOne.app_UnityInterstitialId2);
+                loadUnityInterstital2(activity2, app_UnityInterstitialId2);
             }
 
             @Override // com.unity3d.ads.IUnityAdsShowListener
@@ -3324,21 +3383,21 @@ public class MyAdZOne {
             @Override // com.unity3d.ads.IUnityAdsShowListener
             public void onUnityAdsShowComplete(String placementId, UnityAds.UnityAdsShowCompletionState state) {
                 Log.e("UnityAdsExample", "onUnityAdsShowComplete: ");
-                if (!MyAdZOne.this.unity_i_pre.isEmpty()) {
-                    UnityAds.load(MyAdZOne.this.unity_i_pre, new IUnityAdsLoadListener() { // from class: com.luciada.modids.MyAdZOne.75.1
+                if (!unity_i_pre.isEmpty()) {
+                    UnityAds.load(unity_i_pre, new IUnityAdsLoadListener() { // from class: com.luciada.modids.75.1
                         @Override // com.unity3d.ads.IUnityAdsLoadListener
                         public void onUnityAdsAdLoaded(String placementId2) {
-                            Log.e(MyAdZOne.TAG, "onUnityAdsAdLoaded5: ");
+                            Log.e(TAG, "onUnityAdsAdLoaded5: ");
                         }
 
                         @Override // com.unity3d.ads.IUnityAdsLoadListener
                         public void onUnityAdsFailedToLoad(String placementId2, UnityAds.UnityAdsLoadError error, String message) {
-                            Log.e(MyAdZOne.TAG, "onUnityAdsFailedToLoad5: ");
-                            MyAdZOne.this.loadUnityInterstital2(activity2, MyAdZOne.app_UnityInterstitialId2);
+                            Log.e(TAG, "onUnityAdsFailedToLoad5: ");
+                            loadUnityInterstital2(activity2, app_UnityInterstitialId2);
                         }
                     });
                 }
-                MyAdZOne.this.interstitialCallBack();
+                interstitialCallBack();
             }
         };
     }
@@ -3346,23 +3405,23 @@ public class MyAdZOne {
     public void loadUnityInterstital2(final Activity activity2, String appunityInterstitialId) {
         Log.e(TAG, "loadUnityInterstital2: ");
         this.unity_i_pre = appunityInterstitialId;
-        UnityAds.load(appunityInterstitialId, new IUnityAdsLoadListener() { // from class: com.luciada.modids.MyAdZOne.76
+        UnityAds.load(appunityInterstitialId, new IUnityAdsLoadListener() { // from class: com.luciada.modids.76
             @Override // com.unity3d.ads.IUnityAdsLoadListener
             public void onUnityAdsAdLoaded(String placementId) {
-                Log.e(MyAdZOne.TAG, "onUnityAdsAdLoaded6: ");
+                Log.e(TAG, "onUnityAdsAdLoaded6: ");
             }
 
             @Override // com.unity3d.ads.IUnityAdsLoadListener
             public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
-                Log.e(MyAdZOne.TAG, "onUnityAdsFailedToLoad6: ");
-                MyAdZOne.this.loadUnityInterstital3(activity2, MyAdZOne.app_UnityInterstitialId3);
+                Log.e(TAG, "onUnityAdsFailedToLoad6: ");
+                loadUnityInterstital3(activity2, app_UnityInterstitialId3);
             }
         });
-        this.showListener = new IUnityAdsShowListener() { // from class: com.luciada.modids.MyAdZOne.77
+        this.showListener = new IUnityAdsShowListener() { // from class: com.luciada.modids.77
             @Override // com.unity3d.ads.IUnityAdsShowListener
             public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
                 Log.e("UnityAdsExample", "Unity Ads failed to show ad for  with error: [" + error + "] " + message);
-                MyAdZOne.this.loadUnityInterstital3(activity2, MyAdZOne.app_UnityInterstitialId3);
+                loadUnityInterstital3(activity2, app_UnityInterstitialId3);
             }
 
             @Override // com.unity3d.ads.IUnityAdsShowListener
@@ -3378,21 +3437,21 @@ public class MyAdZOne {
             @Override // com.unity3d.ads.IUnityAdsShowListener
             public void onUnityAdsShowComplete(String placementId, UnityAds.UnityAdsShowCompletionState state) {
                 Log.e("UnityAdsExample", "onUnityAdsShowComplete: ");
-                if (!MyAdZOne.this.unity_i_pre.isEmpty()) {
-                    UnityAds.load(MyAdZOne.this.unity_i_pre, new IUnityAdsLoadListener() { // from class: com.luciada.modids.MyAdZOne.77.1
+                if (!unity_i_pre.isEmpty()) {
+                    UnityAds.load(unity_i_pre, new IUnityAdsLoadListener() { // from class: com.luciada.modids.77.1
                         @Override // com.unity3d.ads.IUnityAdsLoadListener
                         public void onUnityAdsAdLoaded(String placementId2) {
-                            Log.e(MyAdZOne.TAG, "onUnityAdsAdLoaded7: ");
+                            Log.e(TAG, "onUnityAdsAdLoaded7: ");
                         }
 
                         @Override // com.unity3d.ads.IUnityAdsLoadListener
                         public void onUnityAdsFailedToLoad(String placementId2, UnityAds.UnityAdsLoadError error, String message) {
-                            Log.e(MyAdZOne.TAG, "onUnityAdsFailedToLoad7: ");
-                            MyAdZOne.this.loadUnityInterstital3(activity2, MyAdZOne.app_UnityInterstitialId3);
+                            Log.e(TAG, "onUnityAdsFailedToLoad7: ");
+                            loadUnityInterstital3(activity2, app_UnityInterstitialId3);
                         }
                     });
                 }
-                MyAdZOne.this.interstitialCallBack();
+                interstitialCallBack();
             }
         };
     }
@@ -3400,44 +3459,44 @@ public class MyAdZOne {
     public void loadUnityInterstital3(final Activity activity2, String appunityInterstitialId) {
         Log.e(TAG, "loadUnityInterstital3: ");
         this.unity_i_pre = appunityInterstitialId;
-        UnityAds.load(appunityInterstitialId, new IUnityAdsLoadListener() { // from class: com.luciada.modids.MyAdZOne.78
+        UnityAds.load(appunityInterstitialId, new IUnityAdsLoadListener() { // from class: com.luciada.modids.78
             @Override // com.unity3d.ads.IUnityAdsLoadListener
             public void onUnityAdsAdLoaded(String placementId) {
-                Log.e(MyAdZOne.TAG, "onUnityAdsAdLoaded8: ");
+                Log.e(TAG, "onUnityAdsAdLoaded8: ");
             }
 
             @Override // com.unity3d.ads.IUnityAdsLoadListener
             public void onUnityAdsFailedToLoad(String placementId, UnityAds.UnityAdsLoadError error, String message) {
-                Log.e(MyAdZOne.TAG, "onUnityAdsFailedToLoad8: ");
-                MyAdZOne.this.showListener = null;
-                if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                    MyAdZOne.this.loadAdmobInterstitial(activity2, MyAdZOne.AD_MOB_APP_ID_Inter1);
-                } else if (MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                    MyAdZOne.this.loadFacebookInterstitial(activity2, MyAdZOne.FB_Inter_ID1);
-                } else if (MyAdZOne.APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                    MyAdZOne.this.loadApplovinInterstital1(activity2, MyAdZOne.app_ApplovinInterstitialId1);
-                } else if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("false") && MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                    MyAdZOne.this.loadFacebookInterstitial(activity2, MyAdZOne.FB_Inter_ID1);
+                Log.e(TAG, "onUnityAdsFailedToLoad8: ");
+                showListener = null;
+                if (AD_MOB_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                    loadAdmobInterstitial(activity2, AD_MOB_APP_ID_Inter1);
+                } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                    loadFacebookInterstitial(activity2, FB_Inter_ID1);
+                } else if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                    loadApplovinInterstital1(activity2, app_ApplovinInterstitialId1);
+                } else if (AD_MOB_STATUS.equalsIgnoreCase("false") && FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                    loadFacebookInterstitial(activity2, FB_Inter_ID1);
                 } else {
-                    MyAdZOne.this.nextInterstitialPlatform();
+                    nextInterstitialPlatform();
                 }
             }
         });
-        this.showListener = new IUnityAdsShowListener() { // from class: com.luciada.modids.MyAdZOne.79
+        this.showListener = new IUnityAdsShowListener() { // from class: com.luciada.modids.79
             @Override // com.unity3d.ads.IUnityAdsShowListener
             public void onUnityAdsShowFailure(String placementId, UnityAds.UnityAdsShowError error, String message) {
                 Log.e("UnityAdsExample", "Unity Ads failed to show ad for  with error: [" + error + "] " + message);
-                MyAdZOne.this.showListener = null;
-                if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                    MyAdZOne.this.loadAdmobInterstitial(activity2, MyAdZOne.AD_MOB_APP_ID_Inter1);
-                } else if (MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                    MyAdZOne.this.loadFacebookInterstitial(activity2, MyAdZOne.FB_Inter_ID1);
-                } else if (MyAdZOne.APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                    MyAdZOne.this.loadApplovinInterstital1(activity2, MyAdZOne.app_ApplovinInterstitialId1);
-                } else if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("false") && MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                    MyAdZOne.this.loadFacebookInterstitial(activity2, MyAdZOne.FB_Inter_ID1);
+                showListener = null;
+                if (AD_MOB_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                    loadAdmobInterstitial(activity2, AD_MOB_APP_ID_Inter1);
+                } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                    loadFacebookInterstitial(activity2, FB_Inter_ID1);
+                } else if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                    loadApplovinInterstital1(activity2, app_ApplovinInterstitialId1);
+                } else if (AD_MOB_STATUS.equalsIgnoreCase("false") && FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                    loadFacebookInterstitial(activity2, FB_Inter_ID1);
                 } else {
-                    MyAdZOne.this.nextInterstitialPlatform();
+                    nextInterstitialPlatform();
                 }
             }
 
@@ -3454,39 +3513,39 @@ public class MyAdZOne {
             @Override // com.unity3d.ads.IUnityAdsShowListener
             public void onUnityAdsShowComplete(String placementId, UnityAds.UnityAdsShowCompletionState state) {
                 Log.e("UnityAdsExample", "onUnityAdsShowComplete: ");
-                if (!MyAdZOne.this.unity_i_pre.isEmpty()) {
-                    UnityAds.load(MyAdZOne.this.unity_i_pre, new IUnityAdsLoadListener() { // from class: com.luciada.modids.MyAdZOne.79.1
+                if (!unity_i_pre.isEmpty()) {
+                    UnityAds.load(unity_i_pre, new IUnityAdsLoadListener() { // from class: com.luciada.modids.79.1
                         @Override // com.unity3d.ads.IUnityAdsLoadListener
                         public void onUnityAdsAdLoaded(String placementId2) {
-                            Log.e(MyAdZOne.TAG, "onUnityAdsAdLoaded9: ");
+                            Log.e(TAG, "onUnityAdsAdLoaded9: ");
                         }
 
                         @Override // com.unity3d.ads.IUnityAdsLoadListener
                         public void onUnityAdsFailedToLoad(String placementId2, UnityAds.UnityAdsLoadError error, String message) {
-                            Log.e(MyAdZOne.TAG, "onUnityAdsFailedToLoad9: ");
-                            MyAdZOne.this.showListener = null;
-                            if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                                MyAdZOne.this.loadAdmobInterstitial(activity2, MyAdZOne.AD_MOB_APP_ID_Inter1);
-                            } else if (MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                                MyAdZOne.this.loadFacebookInterstitial(activity2, MyAdZOne.FB_Inter_ID1);
-                            } else if (MyAdZOne.APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                                MyAdZOne.this.loadApplovinInterstital1(activity2, MyAdZOne.app_ApplovinInterstitialId1);
-                            } else if (MyAdZOne.AD_MOB_STATUS.equalsIgnoreCase("false") && MyAdZOne.FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && MyAdZOne.app_AdsPriority.equalsIgnoreCase("unity")) {
-                                MyAdZOne.this.loadFacebookInterstitial(activity2, MyAdZOne.FB_Inter_ID1);
+                            Log.e(TAG, "onUnityAdsFailedToLoad9: ");
+                            showListener = null;
+                            if (AD_MOB_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                                loadAdmobInterstitial(activity2, AD_MOB_APP_ID_Inter1);
+                            } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                                loadFacebookInterstitial(activity2, FB_Inter_ID1);
+                            } else if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                                loadApplovinInterstital1(activity2, app_ApplovinInterstitialId1);
+                            } else if (AD_MOB_STATUS.equalsIgnoreCase("false") && FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && app_AdsPriority.equalsIgnoreCase("unity")) {
+                                loadFacebookInterstitial(activity2, FB_Inter_ID1);
                             } else {
-                                MyAdZOne.this.nextInterstitialPlatform();
+                                nextInterstitialPlatform();
                             }
                         }
                     });
                 }
-                MyAdZOne.this.interstitialCallBack();
+                interstitialCallBack();
             }
         };
     }
 
     public void unityBannerDisplay(RelativeLayout banner_container) {
         Log.e(TAG, "unityBannerDisplay: ");
-        BannerView view = new BannerView(activity, app_UnityBannerId, new UnityBannerSize(-1, app_UnityBannerHeight));
+        BannerView view = new BannerView(activity, app_UnityBannerId, new UnityBannerSize(LinearLayout.LayoutParams.MATCH_PARENT, app_UnityBannerHeight));
         view.load();
         banner_container.removeView(view);
         banner_container.addView(view);

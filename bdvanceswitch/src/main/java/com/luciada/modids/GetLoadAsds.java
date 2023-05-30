@@ -230,8 +230,8 @@ public class GetLoadAsds {
         UnityAds.initialize(activity, app_UnityAppId, app_UnityTestMode);
 
         AppLovinSdk.getInstance(activity).setMediationProvider(AppLovinMediationProvider.MAX);
-        AppLovinSdk.initializeSdk(activity, new AppLovinSdk.SdkInitializationListener() { // from class: com.luciada.modids.GetLoadAsds.6
-            @Override // com.applovin.sdk.AppLovinSdk.SdkInitializationListener
+        AppLovinSdk.initializeSdk(activity, new AppLovinSdk.SdkInitializationListener() {
+            @Override
             public void onSdkInitialized(AppLovinSdkConfiguration configuration) {
             }
         });
