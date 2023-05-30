@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/normalokas_Round_Image.iml" filepath="$PROJECT_DIR$/.idea/modules/normalokas_Round_Image.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image.app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image.app.unitTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image.bdvanceswitch.iml" filepath="$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image.bdvanceswitch.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image.bdvanceswitch.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image.bdvanceswitch.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image.bdvanceswitch.main.iml" filepath="$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image.bdvanceswitch.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image.bdvanceswitch.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image.bdvanceswitch.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/normalokas_Round_Image_5_2_2.iml" filepath="$PROJECT_DIR$/.idea/modules/normalokas_Round_Image_5_2_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image_5_2_2.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image_5_2_2.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image_5_2_2.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image_5_2_2.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image_5_2_2.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image_5_2_2.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image_5_2_2.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/normalokas_Round_Image_5_2_2.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image_5_2_2.bdvanceswitch.iml" filepath="$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image_5_2_2.bdvanceswitch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image_5_2_2.bdvanceswitch.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image_5_2_2.bdvanceswitch.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image_5_2_2.bdvanceswitch.main.iml" filepath="$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image_5_2_2.bdvanceswitch.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image_5_2_2.bdvanceswitch.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/bdvanceswitch/normalokas_Round_Image_5_2_2.bdvanceswitch.unitTest.iml" />
     </modules>
   </component>
 </project>

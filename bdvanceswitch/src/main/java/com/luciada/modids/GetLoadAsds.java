@@ -40,6 +40,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.applovin.sdk.AppLovinMediationProvider;
+import com.applovin.sdk.AppLovinSdk;
+import com.applovin.sdk.AppLovinSdkConfiguration;
 import com.facebook.ads.AudienceNetworkAds;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
@@ -223,7 +226,15 @@ public class GetLoadAsds {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
+
         UnityAds.initialize(activity, app_UnityAppId, app_UnityTestMode);
+
+        AppLovinSdk.getInstance(activity).setMediationProvider(AppLovinMediationProvider.MAX);
+        AppLovinSdk.initializeSdk(activity, new AppLovinSdk.SdkInitializationListener() { // from class: com.luciada.modids.GetLoadAsds.6
+            @Override // com.applovin.sdk.AppLovinSdk.SdkInitializationListener
+            public void onSdkInitialized(AppLovinSdkConfiguration configuration) {
+            }
+        });
     }
 
     public void NoInzilseAllloadeddarts() {

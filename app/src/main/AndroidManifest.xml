@@ -4,7 +4,6 @@
     package="com.luciada.normotos">
 
     <application
-        android:name="com.luciada.modids.Applicationclass"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

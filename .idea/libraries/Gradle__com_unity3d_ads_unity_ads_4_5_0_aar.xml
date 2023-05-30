@@ -7,7 +7,6 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0d0d6db28af569f7e9700ad3b21cf0af/transformed/jetified-unity-ads-4.5.0/jars/libs/unity-scaradapter-2000.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0d0d6db28af569f7e9700ad3b21cf0af/transformed/jetified-unity-ads-4.5.0/jars/libs/unity-scaradapter-2100.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0d0d6db28af569f7e9700ad3b21cf0af/transformed/jetified-unity-ads-4.5.0/jars/libs/unity-scaradapter-common.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0d0d6db28af569f7e9700ad3b21cf0af/transformed/jetified-unity-ads-4.5.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0d0d6db28af569f7e9700ad3b21cf0af/transformed/jetified-unity-ads-4.5.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>

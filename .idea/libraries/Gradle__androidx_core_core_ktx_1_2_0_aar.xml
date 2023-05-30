@@ -2,7 +2,6 @@
   <library name="Gradle: androidx.core:core-ktx:1.2.0@aar">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/d39be75ed665a5e838e957ec2a718b1e/transformed/jetified-core-ktx-1.2.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d39be75ed665a5e838e957ec2a718b1e/transformed/jetified-core-ktx-1.2.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d39be75ed665a5e838e957ec2a718b1e/transformed/jetified-core-ktx-1.2.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
