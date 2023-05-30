@@ -152,5 +152,4 @@
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.asynclayoutinflater:asynclayoutinflater:1.0.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.unity3d.ads:unity-ads:4.5.0@aar" level="project" />
   </component>
-  <component name="TestModuleProperties" production-module="normalokas_Round_Image.bdvanceswitch.main" />
 </module>
