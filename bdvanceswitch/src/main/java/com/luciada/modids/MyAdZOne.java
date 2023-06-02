@@ -2502,8 +2502,8 @@ public class MyAdZOne {
                             fbinterstitialAd1.show();
                         }
                     }.start();
-                  //  return;
-                }else{
+                    //  return;
+                } else {
                     fbinterstitialAd1.show();
                 }
 
@@ -2522,8 +2522,8 @@ public class MyAdZOne {
                             mInterstitialAd.show(context);
                         }
                     }.start();
-                   // return;
-                }else{
+                    // return;
+                } else {
                     mInterstitialAd.show(context);
                 }
 
@@ -2542,8 +2542,8 @@ public class MyAdZOne {
                             maxInterstitialAd.showAd();
                         }
                     }.start();
-                  //  return;
-                }else {
+                    //  return;
+                } else {
                     maxInterstitialAd.showAd();
                 }
             } else if (UNITY_ADS_STATUS.equalsIgnoreCase("true") && showListener != null) {
@@ -2561,8 +2561,8 @@ public class MyAdZOne {
                             UnityAds.show(activity, unity_i_pre, showListener);
                         }
                     }.start();
-                   // return;
-                }else {
+                    // return;
+                } else {
                     UnityAds.show(activity, unity_i_pre, showListener);
                 }
             } else {
@@ -2587,8 +2587,8 @@ public class MyAdZOne {
                             maxInterstitialAd.showAd();
                         }
                     }.start();
-                   // return;
-                }else{
+                    // return;
+                } else {
                     maxInterstitialAd.showAd();
                 }
             } else if (AD_MOB_STATUS.equalsIgnoreCase("true") && mInterstitialAd != null) {
@@ -2606,8 +2606,8 @@ public class MyAdZOne {
                             mInterstitialAd.show(context);
                         }
                     }.start();
-                  //  return;
-                }else{
+                    //  return;
+                } else {
                     mInterstitialAd.show(context);
                 }
             } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && fbinterstitialAd1.isAdLoaded()) {
@@ -2625,8 +2625,8 @@ public class MyAdZOne {
                             fbinterstitialAd1.show();
                         }
                     }.start();
-                 //   return;
-                }else{
+                    //   return;
+                } else {
                     fbinterstitialAd1.show();
 
                 }
@@ -2645,8 +2645,8 @@ public class MyAdZOne {
                             UnityAds.show(activity, unity_i_pre, showListener);
                         }
                     }.start();
-                   // return;
-                }else{
+                    // return;
+                } else {
                     UnityAds.show(activity, unity_i_pre, showListener);
                 }
 
@@ -2672,8 +2672,8 @@ public class MyAdZOne {
                             UnityAds.show(activity, unity_i_pre, showListener);
                         }
                     }.start();
-                 //   return;
-                }else{
+                    //   return;
+                } else {
                     UnityAds.show(activity, unity_i_pre, showListener);
                 }
 
@@ -2692,8 +2692,8 @@ public class MyAdZOne {
                             mInterstitialAd.show(context);
                         }
                     }.start();
-                   // return;
-                }else{
+                    // return;
+                } else {
                     mInterstitialAd.show(context);
                 }
             } else if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true") && fbinterstitialAd1.isAdLoaded()) {
@@ -2711,8 +2711,8 @@ public class MyAdZOne {
                             fbinterstitialAd1.show();
                         }
                     }.start();
-                  //  return;
-                }else{
+                    //  return;
+                } else {
                     fbinterstitialAd1.show();
                 }
 
@@ -2731,8 +2731,8 @@ public class MyAdZOne {
                             maxInterstitialAd.showAd();
                         }
                     }.start();
-                  //  return;
-                }else {
+                    //  return;
+                } else {
                     maxInterstitialAd.showAd();
                 }
 
@@ -2953,7 +2953,7 @@ public class MyAdZOne {
             public void onInterstitialDismissed(Ad ad) {
                 Log.e(TAG, "onInterstitialDismissed2: ");
                 super.onInterstitialDismissed(ad);
-               loadFacebookInterstitial(activity2, facebook_i_pre);
+                loadFacebookInterstitial(activity2, facebook_i_pre);
                 interstitialCallBack();
             }
         }).build());
@@ -3133,8 +3133,10 @@ public class MyAdZOne {
                 }
             }.start();
             // return;
+        } else {
+            openChromeCustomTabUrl(context, s);
         }
-        openChromeCustomTabUrl(context, s);
+
     }
 
     public void openChromeCustomTabUrl(Context activity2, String s) {
@@ -3261,7 +3263,7 @@ public class MyAdZOne {
             public void onAdHidden(MaxAd ad) {
                 Log.e(TAG, "onAdHiddenmax3: ");
                 if (!maxapplovin_i_pre.isEmpty()) {
-                loadApplovinInterstital3(activity2, maxapplovin_i_pre);
+                    loadApplovinInterstital3(activity2, maxapplovin_i_pre);
                 }
                 interstitialCallBack();
             }
@@ -3553,46 +3555,68 @@ public class MyAdZOne {
 
     public void distoryAllAd() {
         Log.e(TAG, "distoryAllAd: ");
-        if (this.mInterstitialAd != null) {
-            this.mInterstitialAd = null;
-        }
-        if (fbinterstitialAd1 != null) {
-            fbinterstitialAd1.destroy();
+        if (AD_MOB_STATUS.equalsIgnoreCase("true")) {
+            if (this.mInterstitialAd != null) {
+                this.mInterstitialAd = null;
+            }
+
+            if (admobNativeAd_preLoad != null) {
+                admobNativeAd_preLoad.destroy();
+            }
+
+            if (admobBannerNativeAd != null) {
+                admobBannerNativeAd.destroy();
+            }
+
+            if (mAdView != null) {
+                mAdView.destroy();
+            }
         }
 
-        if (maxInterstitialAd != null) {
-            maxInterstitialAd.destroy();
-        }
-        if (this.showListener != null) {
-            this.showListener = null;
+        if (FACEBOOK_AD_STATUS.equalsIgnoreCase("true")) {
+            if (fbinterstitialAd1 != null) {
+                fbinterstitialAd1.destroy();
+            }
+
+            if (fbNativeAd_preLoad != null) {
+                fbNativeAd_preLoad.destroy();
+            }
+
+            if (nativeAd1 != null) {
+                nativeAd1.destroy();
+            }
+
+            if (this.fbadView != null) {
+                this.fbadView.destroy();
+            }
         }
 
-        if (admobNativeAd_preLoad != null) {
-            admobNativeAd_preLoad.destroy();
-        }
-        if (fbNativeAd_preLoad != null) {
-            fbNativeAd_preLoad.destroy();
-        }
-        if (nativeAd != null) {
-            this.nativeAdLoader.destroy(nativeAd);
+        if (APPLOVIN_ADS_STATUS.equalsIgnoreCase("true")) {
+
+            if (maxInterstitialAd != null) {
+                maxInterstitialAd.destroy();
+            }
+
+            if (nativeAd != null) {
+                this.nativeAdLoader.destroy(nativeAd);
+            }
+
+            if (adViewBanner != null) {
+                adViewBanner.stopAutoRefresh();
+                this.adViewBanner.destroy();
+            }
         }
 
-        if (admobBannerNativeAd != null) {
-            admobBannerNativeAd.destroy();
+        if (UNITY_ADS_STATUS.equalsIgnoreCase("true")) {
+            if (this.showListener != null) {
+                this.showListener = null;
+            }
         }
-        if (nativeAd1 != null) {
-            nativeAd1.destroy();
+
+        if (AD_MOB_OpenAd_STATUS.equalsIgnoreCase("true")) {
+            GetLoadAsds.appOpenManager.DestroyAllAds();
         }
-        if (mAdView != null) {
-            mAdView.destroy();
-        }
-        if (this.fbadView != null) {
-            this.nativeAd1.destroy();
-        }
-        if (adViewBanner != null) {
-            adViewBanner.stopAutoRefresh();
-            this.adViewBanner.destroy();
-        }
-        GetLoadAsds.appOpenManager.DestroyAllAds();
+
+
     }
 }

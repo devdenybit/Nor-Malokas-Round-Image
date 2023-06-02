@@ -279,7 +279,9 @@ public class GetLoadAsds {
         if (app_redirectOtherAppStatus == 1) {
             showRedirectDialog(activity, app_newPackageName);
             return;
-        } else if (app_updateAppDialogStatus == 1 && checkUpdate(vercode)) {
+        }
+
+        if (app_updateAppDialogStatus == 1 && checkUpdate(vercode)) {
             showUpdateDialog(activity, app_UpdatePackageName);
             return;
         }
