@@ -3063,13 +3063,14 @@ public class MyAdZOne {
     }
 
     public void onlyCustInterstitialCallAD(final Activity activity2) {
-        if (app_AllAdShowStatus != 0 && app_OnlyInterstitalADShow.equalsIgnoreCase("true")) {
+        if (app_OnlyInterstitalADShow.equalsIgnoreCase("true")) {
             int i = Custcadscnt_click + 1;
             Custcadscnt_click = i;
             int i2 = app_CustClickCntSAd;
             if (i2 != 0 && i % i2 != 0) {
                 return;
             }
+
             if (app_CustomeADText.equalsIgnoreCase("Qureka")) {
                 displayQurekaInterstitialAd(activity2, app_CustomeAdQurekaLink);
             } else if (app_CustomeADText.equalsIgnoreCase("Custome")) {
