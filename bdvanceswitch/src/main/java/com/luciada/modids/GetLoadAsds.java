@@ -136,7 +136,7 @@ public class GetLoadAsds {
         });
 
         intent = intent1;
-        String ghtjdfl679056 = activity.getString(R.string.gdkrd);
+        String ghtjdfl679056 = activity.getString(R.string.bshaemfvl654egh2we1r2);
         try {
             mode = AESSUtils.Logd(ghtjdfl679056);
         } catch (Exception e) {
