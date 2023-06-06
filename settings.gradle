@@ -6,9 +6,9 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
-        flatDir {
-            dirs 'libs'
-        }
+//        flatDir {
+//            dirs 'libs'
+//        }
     }
 }
 dependencyResolutionManagement {
@@ -20,9 +20,9 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
-        flatDir {
-            dirs 'libs'
-        }
+//        flatDir {
+//            dirs 'libs'
+//        }
     }
 }
 include ':app'
