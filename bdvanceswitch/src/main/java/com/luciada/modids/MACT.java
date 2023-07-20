@@ -40,8 +40,8 @@ public class MACT extends AppCompatActivity {
         return 0;
     }
 
-    public static void getRetryBtn(Activity activity, Intent intent1, String url) {
-        MyAminManage.getInstance(activity).ADSinit(activity, intent1, url, getCurrentVersionCode(activity));
+    public static void getRetryBtn(Activity activity, Intent intent1, String url, String url2) {
+        MyAminManage.getInstance(activity).ADSinit(activity, intent1, url, url2, getCurrentVersionCode(activity));
     }
 
     @Override

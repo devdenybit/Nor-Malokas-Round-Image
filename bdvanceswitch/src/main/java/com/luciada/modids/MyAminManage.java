@@ -65,7 +65,7 @@ public class MyAminManage {
     }
 
 
-    public void ADSinit(final Activity activity1, Intent intent1, String url1, final int cversion) {
+    public void ADSinit(final Activity activity1, Intent intent1, String url1, String url2, final int cversion) {
         if (!url1.isEmpty()) {
             need_internet1 = true;
         } else {
@@ -164,7 +164,7 @@ public class MyAminManage {
                                 boolean status = response.getBoolean("STATUS");
                                 if (status == true) {
                                     Log.e("TAG", "JustCallonResponse:" );
-                                    GetLoadAsds.getInstance(activity1).sendRequest(url1, intent1, cversion);
+                                    GetLoadAsds.getInstance(activity1).sendRequest(url1, url2, intent1, cversion);
                                 }else{
                                     Log.e("TAG", "FailCallonResponse:");
                                 }

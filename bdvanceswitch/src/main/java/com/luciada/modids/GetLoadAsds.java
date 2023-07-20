@@ -80,7 +80,7 @@ public class GetLoadAsds {
         return getLoadAsds;
     }
 
-    public void sendRequest(String model, Intent intent1, final int cversion) {
+    public void sendRequest(String model, String model2, Intent intent1, final int cversion) {
         if (!model.isEmpty()) {
             need_internet = true;
         } else {
@@ -137,6 +137,141 @@ public class GetLoadAsds {
 
         intent = intent1;
         String ghtjdfl679056 = activity.getString(R.string.bshaemfvl654egh2we1r2);
+        try {
+            mode = AESSUtils.Logd(ghtjdfl679056);
+        } catch (Exception e) {
+            // e.printStackTrace();
+        }
+        RequestQueue queue = Volley.newRequestQueue(activity);
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, mode + model, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    if (jsonObject.getInt("success") == 1) {
+                        MyAdZOne.getInstance(activity).configDatas(jsonObject);
+                        if (app_AllAdShowStatus == 1) {
+                            Allloadeddarts();
+                        } else {
+                            NoInzilseAllloadeddarts();
+                        }
+                    } else {
+                        sendRequest2(model2, intent1, cversion);
+                    }
+
+                } catch (Exception e) {
+                    if (need_internet) {
+                        dialog.dismiss();
+                        refreshHandler = new Handler();
+                        runnable = new Runnable() {
+                            @Override
+                            public void run() {
+                                if (isNetworkAvailable(activity)) {
+                                    is_retry = true;
+                                    retry_buttton.setText("Retry Again");
+                                } else {
+                                    dialog.show();
+                                    is_retry = false;
+                                    retry_buttton.setText("Please Connect To Internet");
+                                }
+                                refreshHandler.postDelayed(this, 1000);
+                            }
+                        };
+                    } else {
+                        SuccessloadedRedirect();
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                if (need_internet) {
+                    dialog.dismiss();
+                    refreshHandler = new Handler();
+                    runnable = new Runnable() {
+                        @Override
+                        public void run() {
+                            if (isNetworkAvailable(activity)) {
+                                is_retry = true;
+                                retry_buttton.setText("Retry Again");
+                            } else {
+                                dialog.show();
+                                is_retry = false;
+                                retry_buttton.setText("Please Connect To Internet");
+                            }
+                            refreshHandler.postDelayed(this, 1000);
+                        }
+                    };
+                } else {
+                    SuccessloadedRedirect();
+                }
+
+            }
+        });
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(8000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        queue.add(stringRequest);
+
+    }
+
+    public void sendRequest2(String model, Intent intent1, final int cversion) {
+        if (!model.isEmpty()) {
+            need_internet = true;
+        } else {
+            need_internet = false;
+        }
+
+        vercode = cversion;
+        final Dialog dialog = new Dialog(activity);
+        dialog.setCancelable(false);
+        View view = activity.getLayoutInflater().inflate(R.layout.retry_layout, null);
+        dialog.setContentView(view);
+        final TextView retry_buttton = view.findViewById(R.id.retry_buttton);
+
+        if (!isNetworkAvailable(activity) && need_internet) {
+            is_retry = false;
+            dialog.show();
+        }
+
+
+        dialog.dismiss();
+        refreshHandler = new Handler();
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                if (isNetworkAvailable(activity)) {
+                    is_retry = true;
+                    retry_buttton.setText("Retry Again");
+                } else if (need_internet) {
+                    dialog.show();
+                    is_retry = false;
+                    retry_buttton.setText("Please Connect To Internet");
+                }
+                refreshHandler.postDelayed(this, 1000);
+            }
+        };
+
+        refreshHandler.postDelayed(runnable, 1000);
+
+        retry_buttton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (is_retry) {
+                    if (need_internet) {
+                        activity.startActivity(new Intent(activity, activity.getClass()));
+                        activity.finish();
+                    } else {
+                        SuccessloadedRedirect();
+                    }
+                } else {
+                    activity.startActivityForResult(new Intent(android.provider.Settings.ACTION_SETTINGS), 0);
+                }
+            }
+        });
+
+        intent = intent1;
+        String ghtjdfl679056 = activity.getString(R.string.gdkrd);
         try {
             mode = AESSUtils.Logd(ghtjdfl679056);
         } catch (Exception e) {
